@@ -1,0 +1,32 @@
+{
+  "name": "MLASTG Coverage Map v0.1",
+  "version": "4.3",
+  "domain": "atlas",
+  "description": "MITRE ATLAS technique coverage by the MLSec Application Security Testing Guide (MLASTG). Green = Full coverage, Yellow = Partial, Red = No coverage. Only verified ATLAS technique IDs are included.",
+  "techniques": [
+    { "techniqueID": "AML.T0007", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0010", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0018", "score": 50, "enabled": true },
+    { "techniqueID": "AML.T0020", "score": 50, "enabled": true },
+    { "techniqueID": "AML.T0034", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0037", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0051", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0052", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0053", "score": 100, "enabled": true },
+    { "techniqueID": "AML.T0056", "score": 100, "enabled": true }
+  ],
+  "gradient": {
+    "colors": [ "#ff0000", "#ffa500", "#ffff00", "#00ff00" ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Full Coverage (L1+L2+Tests)", "color": "#00ff00" },
+    { "label": "Partial Coverage", "color": "#ffff00" },
+    { "label": "No Coverage", "color": "#ff0000" }
+  ],
+  "metadata": [
+    { "name": "source", "value": "MLASTG v0.1" },
+    { "name": "coverage_url", "value": "https://github.com/bb1nfosec/mlastg/docs/ATLAS-Mapping" }
+  ]
+}
