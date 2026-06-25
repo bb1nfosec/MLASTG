@@ -8,6 +8,13 @@
 
 ---
 
+[![English](https://img.shields.io/badge/lang-en-blue.svg)](README.md)
+[![中文](https://img.shields.io/badge/lang-zh-red.svg)](README.zh-CN.md)
+
+**🌐 We welcome international contributors! Translations in progress.**
+
+---
+
 ## Overview
 
 The **MLSec Application Security Testing Guide (MLASTG)** is a comprehensive, open-source framework for security testing machine learning (ML) systems across the full threat landscape — from traditional ML classifiers to deep neural networks and large language models (LLMs). 
