@@ -15,7 +15,7 @@
 
 ## 概述
 
-**MLSec 应用安全测试指南 (MLASTG)** 是一个全面、开源的安全测试框架，覆盖从传统机器学习分类器到深度神经网络及大语言模型（LLM）的完整威胁 landscape。
+**MLSec 应用安全测试指南 (MLASTG)** 是一个全面、开源的安全测试框架，覆盖从传统机器学习分类器到深度神经网络及大语言模型（LLM）的完整威胁全景。
 
 受 **[OWASP 移动应用安全测试指南 (MASTG)](https://github.com/OWASP/MASTG)** 启发，并与 **[MITRE ATLAS](https://atlas.mitre.org/)**、**[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)** 和 **[OWASP AI Exchange](https://owaspai.org/)** 保持一致，MLASTG 提供：
 
@@ -103,6 +103,32 @@ MLASWE（弱点枚举）               ─── 可能出什么问题
 - 大语言模型安全测试方法
 - 案例研究和真实世界攻击演示
 - **翻译和国际化（欢迎中文贡献者！）**
+
+---
+
+## 项目结构
+
+```
+mlastg/
+├── README.md                    ← 本文件（英文）
+├── README.zh-CN.md              ← 本文件（中文）
+├── mkdocs.yml                   ← 文档站点配置
+├── docs/                        ← 文档源文件
+│   ├── index.md                 ← 主页/概览
+│   ├── zh/                      ← 中文文档
+│   ├── MLASVS/                  ← 验证标准
+│   ├── MLASTG/                  ← 测试指南
+│   └── MLASWE/                  ← 弱点枚举
+├── tests/                       ← Python 测试脚本
+│   ├── data/
+│   ├── model/
+│   ├── llm/
+│   ├── supply/
+│   ├── pipeline/
+│   ├── infra/
+│   └── gov/
+└── demos/                       ← 示例脆弱模型和应用
+```
 
 ---
 
