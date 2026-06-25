@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# ML artifacts
+*.pth
+*.pt
+*.h5
+*.onnx
+*.pkl
+*.joblib
+*.npy
+*.npz
+*.hdf5
+*.pb
+*.ckpt
+*.safetensors
+mlruns/
+wandb/
+
+# Datasets
+*.csv
+*.parquet
+*.tfrecord
+data/raw/
+data/processed/
+
+# MkDocs
+site/
+docs/__pycache__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.key
+*.pem
+*.crt
+.env.local
+credentials.json
+service-account.json
+
+# Testing
+.report/
+*.report.json
+htmlcov/
+.coverage

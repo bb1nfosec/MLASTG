@@ -1,0 +1,30 @@
+# MLASTG Test Script Dependencies
+# Core ML security testing
+adversarial-robustness-toolbox>=1.16
+secml>=0.14
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.2
+
+# Deep learning frameworks (choose one based on your stack)
+torch>=2.0
+torchvision>=0.15
+
+# LLM security testing
+giskard>=2.0
+rebuff>=0.2
+promptinject>=0.1
+
+# Privacy testing
+diffprivlib>=0.6
+aif360>=0.5
+
+# NLP adversarial testing
+textattack>=0.3
+
+# Supply chain
+modelscan>=0.1
+
+# Reporting
+pytest>=7.0
+pytest-json>=0.4

@@ -1,0 +1,53 @@
+name: Run MLASTG Test Scripts
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install core dependencies
+        run: |
+          pip install scikit-learn numpy requests
+
+      - name: Install ART (for adversarial robustness tests)
+        run: |
+          pip install adversarial-robustness-toolbox
+
+      - name: Run adversarial robustness demo
+        run: python tests/model/test_adversarial_robustness.py --demo
+
+      - name: Run data sanitization demo
+        run: python tests/data/test_data_sanitization.py --demo
+
+      - name: Run model extraction demo
+        run: python tests/model/test_extraction.py --demo
+
+      - name: Run backdoor detection demo
+        run: python tests/model/test_backdoor.py --demo
+
+      - name: Run ML-SBOM demo
+        run: python tests/supply/test_mlsbom.py --demo
+
+      - name: Run governance audit demo
+        run: python tests/gov/test_governance.py --demo
+
+      - name: Run API security demo
+        run: python tests/infra/test_api_security.py --demo
+
+      - name: Run prompt injection demo (requires requests)
+        run: python tests/llm/test_prompt_injection.py --help
