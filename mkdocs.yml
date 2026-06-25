@@ -38,11 +38,20 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/org/mlastg
+      link: https://github.com/bb1nfosec/mlastg
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/
+    - icon: fontawesome/brands/language
+      link: https://github.com/bb1nfosec/mlastg
   version:
     provider: mike
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: 中文
+      link: /zh/
+      lang: zh
 
 markdown_extensions:
   - admonition
@@ -72,6 +81,17 @@ markdown_extensions:
 
 plugins:
   - search
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        zh: 中文
+      nav_translations:
+        zh:
+          Home: 首页
+          Introduction: 介绍
+          Testing Methodology: 测试方法论
+          Checklist: 检查清单
   - git-revision-date-localized:
       enable_creation_date: true
   - minify:
