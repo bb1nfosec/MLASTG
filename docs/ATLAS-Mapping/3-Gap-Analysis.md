@@ -7,11 +7,11 @@ This document identifies MITRE ATLAS techniques that have **no or insufficient c
 
 | ATLAS ID | Technique | Risk | Recommended New Control |
 |----------|-----------|------|------------------------|
-| AML.TA0001.001 | ML Model Inventory Discovery | Medium | GOV-016a: Model inventory obfuscation; restrict API discovery endpoints |
+| — | ML Model Inventory Discovery | Medium | GOV-016a: Model inventory obfuscation; restrict API discovery endpoints |
 
-**Impact:** An adversary can discover what ML models an organization uses without any defensive detection.
+**Impact:** An adversary can discover what ML models an organization uses without any defensive detection. No official ATLAS ID exists for this attack path — tracked as MLASTG-internal gap.
 
-🟡 **6 techniques with Partial coverage need L2 controls and/or dedicated test cases:**
+🟡 **4 techniques with Partial coverage need L2 controls and/or dedicated test cases:**
 
 | ATLAS ID | Technique | Current Gap | Recommended |
 |----------|-----------|-------------|-------------|
@@ -26,7 +26,7 @@ This document identifies MITRE ATLAS techniques that have **no or insufficient c
 
 | Priority | Tactic | Technique | Action | Effort |
 |----------|--------|-----------|--------|--------|
-| P0 | Reconnaissance | Model Discovery | Add MLASVS-GOV control for discovery monitoring | Medium |
+| P0 | Reconnaissance (TA0001) | Model Discovery | Add MLASVS-GOV control for discovery monitoring | Medium |
 | P1 | Impact | Data Poisoning | Add L1 statistical poisoning detection | Medium |
 | P2 | Collection | Model Inversion | Add L1 output clipping control | Low |
 | P3 | Persistence | Backdoor | Add automated training-time prevention | High |
