@@ -35,7 +35,7 @@ This directory contains the complete mapping between the **MLASTG framework** (M
 
 To visualize coverage in the MITRE ATLAS Navigator:
 1. Download [`2-atlas-navigator-layer.json`](2-atlas-navigator-layer.json)
-2. Open [MITRE ATLAS Navigator](https://mitre-attack.github.io/atlas-navigator/)
+2. Open [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/)
 3. Click **Layer Controls** → **Import Layer** → select the JSON file
 4. Coverage will appear as a heat map (green = full, yellow = partial, red = none)
 

@@ -131,7 +131,7 @@ Enhanced controls for high-risk, enterprise/defense, and regulated environments.
 
 ### ATLAS Navigator
 
-Visualize MLASTG coverage in the [MITRE ATLAS Navigator](https://mitre-attack.github.io/atlas-navigator/):
+Visualize MLASTG coverage in the [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/):
 
 1. Download the [Navigator Layer JSON](docs/ATLAS-Mapping/2-atlas-navigator-layer.json)
 2. Open ATLAS Navigator → **Layer Controls** → **Import Layer**
