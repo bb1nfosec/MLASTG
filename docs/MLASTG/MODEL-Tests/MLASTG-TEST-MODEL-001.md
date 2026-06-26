@@ -22,63 +22,90 @@
 2. Evaluate clean (unperturbed) accuracy
 3. Record baseline metrics:
    ```python
+   import numpy as np
    from art.estimators.classification import PyTorchClassifier
-   
+
    classifier = PyTorchClassifier(
        model=model, loss=criterion,
        input_shape=(3, 32, 32), nb_classes=10,
        clip_values=(0.0, 1.0)
    )
-   clean_accuracy = classifier._model.evaluate(x_test, y_test)[1]
+
+   # ART uses predict(); accuracy must be computed manually
+   predictions = classifier.predict(x_test)
+   clean_accuracy = np.sum(
+       np.argmax(predictions, axis=1) == np.argmax(y_test, axis=1)
+   ) / len(y_test)
    print(f"Clean accuracy: {clean_accuracy:.4f}")
    ```
 
 ### Step 2: Execute White-Box Evasion Attacks (L1)
-1. Generate adversarial examples using Fast Gradient Sign Method (FGSM):
+1. Generate adversarial examples using Fast Gradient Sign Method (FGSM) at two perturbation budgets:
    ```python
    from art.attacks.evasion import FastGradientMethod
-   
-   attack = FastGradientMethod(estimator=classifier, eps=0.3)
-   x_test_adv_fgsm = attack.generate(x=x_test)
-   accuracy_fgsm = classifier._model.evaluate(x_test_adv_fgsm, y_test)[1]
+
+   # Moderate perturbation (L1 pass threshold)
+   attack_fgsm_01 = FastGradientMethod(estimator=classifier, eps=0.1)
+   x_test_adv_fgsm_01 = attack_fgsm_01.generate(x=x_test)
+   preds_fgsm_01 = classifier.predict(x_test_adv_fgsm_01)
+   accuracy_fgsm_01 = np.sum(
+       np.argmax(preds_fgsm_01, axis=1) == np.argmax(y_test, axis=1)
+   ) / len(y_test)
+
+   # Strong perturbation (L2 stress test)
+   attack_fgsm_03 = FastGradientMethod(estimator=classifier, eps=0.3)
+   x_test_adv_fgsm_03 = attack_fgsm_03.generate(x=x_test)
+   preds_fgsm_03 = classifier.predict(x_test_adv_fgsm_03)
+   accuracy_fgsm_03 = np.sum(
+       np.argmax(preds_fgsm_03, axis=1) == np.argmax(y_test, axis=1)
+   ) / len(y_test)
    ```
 2. Generate using Projected Gradient Descent (PGD):
    ```python
    from art.attacks.evasion import ProjectedGradientDescent
-   
-   attack = ProjectedGradientDescent(
+
+   attack_pgd = ProjectedGradientDescent(
        estimator=classifier, eps=0.3, eps_step=0.01,
        max_iter=40, targeted=False
    )
-   x_test_adv_pgd = attack.generate(x=x_test)
-   accuracy_pgd = classifier._model.evaluate(x_test_adv_pgd, y_test)[1]
+   x_test_adv_pgd = attack_pgd.generate(x=x_test)
+   preds_pgd = classifier.predict(x_test_adv_pgd)
+   accuracy_pgd = np.sum(
+       np.argmax(preds_pgd, axis=1) == np.argmax(y_test, axis=1)
+   ) / len(y_test)
    ```
 
 ### Step 3: Execute Black-Box Evasion Attacks (L1)
-1. Generate using HopSkipJump attack:
+1. Generate using HopSkipJump attack (decision-based; no gradient access required):
    ```python
    from art.attacks.evasion import HopSkipJump
-   
-   attack = HopSkipJump(
+
+   attack_hsj = HopSkipJump(
        classifier=classifier, targeted=False,
        max_iter=50, max_eval=10000, init_eval=100
    )
-   x_test_adv_hsj = attack.generate(x=x_test)
-   accuracy_hsj = classifier._model.evaluate(x_test_adv_hsj, y_test)[1]
+   x_test_adv_hsj = attack_hsj.generate(x=x_test)
+   preds_hsj = classifier.predict(x_test_adv_hsj)
+   accuracy_hsj = np.sum(
+       np.argmax(preds_hsj, axis=1) == np.argmax(y_test, axis=1)
+   ) / len(y_test)
    ```
-2. Document query budget and success rate
+2. Document total query count and attack success rate per sample
 
 ### Step 4: Analyze Robustness Metrics
-1. Calculate accuracy under each attack:
+1. Summarize accuracy under each attack in a results table:
    ```
-   Attack    | Clean Acc | Attacked Acc | Degradation
-   ----------|-----------|--------------|------------
-   FGSM      | 94.2%     | 72.1%        | 22.1%
-   PGD       | 94.2%     | 55.3%        | 38.9%
-   HopSkipJump | 94.2%   | 78.4%        | 15.8%
+   Attack          | ε     | Clean Acc | Attacked Acc | Degradation | Result
+   ----------------|-------|-----------|--------------|-------------|--------
+   FGSM (moderate) | 0.1   | 94.2%     | 72.1%        | 22.1%       | ✅ Pass
+   FGSM (strong)   | 0.3   | 94.2%     | 55.3%        | 38.9%       | ❌ Fail
+   PGD (40 steps)  | 0.3   | 94.2%     | 48.7%        | 45.5%       | ❌ Fail
+   HopSkipJump     | N/A   | 94.2%     | 78.4%        | 15.8%       | ✅ Pass
    ```
-2. **L1 Pass Condition:** Accuracy drop ≤ 25% for moderate perturbations (ε = 0.1)
-3. **L1 Fail Condition:** Accuracy drop > 25% for any attack
+   *(values above are illustrative examples — replace with actual results)*
+2. **L1 Pass Condition:** Accuracy drop ≤ 25% under FGSM at ε = 0.1 (moderate perturbation)
+3. **L1 Fail Condition:** Accuracy drop > 25% under FGSM at ε = 0.1
+4. **Note:** Strong-perturbation results (ε = 0.3) are informational for L1; they become pass/fail criteria only at L2
 
 ### Step 5: Test Input Validation (L1)
 1. Send inputs outside expected range (very large/small values)
@@ -97,10 +124,10 @@
 3. **L2 Pass Condition:** Certified accuracy ≥ 80% at radius r ≥ 0.1 (L2 norm)
 
 ### Step 7: Validate Adversarial Training (L2)
-1. Verify training pipeline includes adversarial training
-2. Compare robust accuracy of adversarially vs. standard trained model
-3. Test against attack types not used during training (generalization)
-4. **Pass if:** Adversarially trained model shows >15% improvement in robust accuracy
+1. Verify training pipeline includes adversarial training (e.g., PGD-AT or TRADES)
+2. Compare robust accuracy of the adversarially trained model against the standard trained baseline **under the same attack and budget (ε = 0.3, PGD-40)**
+3. Test against attack types not used during adversarial training to assess generalization (e.g., train on PGD, test with CW or AutoAttack)
+4. **Pass if:** Adversarially trained model achieves >15% higher robust accuracy than the standard trained model under the same attack budget
 
 ### Step 8: Test Input Detection Capabilities (L2)
 1. Deploy feature squeezing defense:
@@ -146,7 +173,11 @@
 5. Consider certified defenses (randomized smoothing)
 
 ## References
-- **MITRE ATLAS:** AML.T0010, AML.T0037, AML.T0007
+- **MITRE ATLAS:**
+  - `AML.T0010` — Adversarial Examples (Evasion)
+  - `AML.T0037` — Craft Adversarial Data
+  - `AML.T0007` — Discover Model Ontology
 - **MLASWE:** MLASWE-0001 (Adversarial Perturbation)
-- **NIST AI RMF:** MEASURE-1, MANAGE-1
-- **NIST AI 100-2e2025:** Evasion attacks
+- **NIST AI RMF:** MEASURE 1.1, MANAGE 2.2
+- **NIST AI 100-2e2025:** Section 2.1 — Evasion Attacks
+- **Academic:** Madry et al. (2018) "Towards Deep Learning Models Resistant to Adversarial Attacks"

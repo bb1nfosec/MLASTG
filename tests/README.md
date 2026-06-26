@@ -7,10 +7,10 @@ This directory contains executable Python test scripts that implement the MLASTG
 
 ```bash
 # Install base requirements
-pip install adversarial-robustness-toolbox secml scikit-learn torch torchvision
+pip install adversarial-robustness-toolbox scikit-learn torch torchvision requests
 
 # For LLM testing
-pip install giskard rebuff
+pip install giskard
 
 # For data privacy testing
 pip install diffprivlib aif360
@@ -21,27 +21,27 @@ pip install -r requirements.txt
 
 ## Script Organization
 
-| Directory | Coverage | MLASTG Test Refs |
-|-----------|----------|------------------|
-| `data/` | Data provenance, sanitization, differential privacy | TEST-DATA-001 to 004 |
-| `model/` | Adversarial robustness, extraction, membership inference | TEST-MODEL-001 to 004 |
-| `llm/` | Prompt injection, output handling, jailbreak testing | TEST-LLM-001 to 003 |
-| `supply/` | ML-SBOM audit, model provenance verification | TEST-SUPPLY-001 to 002 |
-| `pipeline/` | CI/CD security scanning | TEST-PIPELINE-001 |
-| `infra/` | Model serving, API security review | TEST-INFRA-001 to 002 |
-| `gov/` | Governance assessment automation | TEST-GOV-001 |
+| Directory | Coverage | MLASTG Test Refs | Script |
+|-----------|----------|------------------|--------|
+| `data/` | Data provenance, sanitization, differential privacy, federated learning poisoning | TEST-DATA-001 to 005 | `test_data_sanitization.py` |
+| `model/` | Adversarial robustness, extraction, membership inference, backdoor, RL reward hacking | TEST-MODEL-001 to 006 | `test_adversarial_robustness.py`, `test_extraction.py`, `test_backdoor.py` |
+| `llm/` | Prompt injection, output handling, jailbreak testing | TEST-LLM-001 to 004 | `test_prompt_injection.py` |
+| `supply/` | ML-SBOM audit, model provenance verification | TEST-SUPPLY-001 to 002 | `test_mlsbom.py` |
+| `pipeline/` | CI/CD security scanning, artifact integrity | TEST-PIPELINE-001 | `test_pipeline_security.py` |
+| `infra/` | Model serving, API security, agentic workflow, confidential computing/TEE | TEST-INFRA-001 to 004 | `test_api_security.py`, `test_tee_security.py` |
+| `gov/` | Governance assessment automation | TEST-GOV-001 | `test_governance.py` |
 
 ## Running Tests
 
 ```bash
-# Run all tests
-python -m pytest tests/
+# Run all demos
+python tests/model/test_adversarial_robustness.py --demo
+python tests/data/test_data_sanitization.py --demo
+python tests/pipeline/test_pipeline_security.py --demo
 
-# Run specific category
-python -m pytest tests/model/
-
-# Run specific test with verbosity
-python tests/model/test_adversarial_robustness.py -v
+# Run specific category with pytest
+python -m pytest tests/model/ -v
+python -m pytest tests/data/ -v
 
 # Generate report
 python tests/model/test_adversarial_robustness.py --report output.json

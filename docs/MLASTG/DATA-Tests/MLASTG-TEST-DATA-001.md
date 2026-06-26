@@ -108,6 +108,11 @@
 3. Record random seeds and parameters for stochastic transformations
 
 ## References
-- **MITRE ATLAS:** AML.TA0009, AML.TA0010
-- **MLASWE:** MLASWE-0002, MLASWE-0009
-- **NIST AI RMF:** MAP-1, MEASURE-2
+- **MITRE ATLAS:**
+  - `AML.T0020` — Poison Training Data (provenance context)
+  - `AML.T0059` — Backdoor ML Model (integrity monitoring context)
+  - `AML.TA0009` — Collection (tactic; for lineage / data harvesting scenarios)
+  - `AML.TA0010` — Exfiltration (tactic; for training data exfiltration scenarios)
+- **MLASWE:** MLASWE-0002 (Training Data Poisoning), MLASWE-0009 (Insufficient ML-SBOM)
+- **NIST AI RMF:** MAP 1.6 (Data provenance), MEASURE 2.5 (Data quality)
+- **Related Standard:** ISO/IEC 5259 (Data quality for analytics and ML)

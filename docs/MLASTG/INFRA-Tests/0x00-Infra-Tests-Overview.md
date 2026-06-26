@@ -9,3 +9,5 @@ Test cases for verifying MLASVS-INFRA controls covering model serving security, 
 |---------|-------|------------|-------|
 | MLASTG-TEST-INFRA-001 | Model Serving Security Review | INFRA-001, 005-008, 012-022 | L1/L2 |
 | MLASTG-TEST-INFRA-002 | API Security Review | INFRA-002, 003, 004, 009, 010, 011, 021 | L1/L2 |
+| MLASTG-TEST-INFRA-003 | Agentic Workflow Security | LLM-006, 007, 010, 020, 021, 023 | L1/L2 |
+| MLASTG-TEST-INFRA-004 | Confidential Computing & TEE Security | INFRA-017, 022, 016, 005, PIPELINE-003, MODEL-005 | L1/L2 |

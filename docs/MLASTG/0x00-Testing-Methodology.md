@@ -2,9 +2,9 @@
 
 ## 1. Overview
 
-This document defines the methodology for conducting a structured security assessment of machine learning systems using the MLASVS (standard) and MLASWE (weakness taxonomy).
+This document defines the methodology for conducting a structured security assessment of machine learning systems using the **MLASVS** (ML Application Security Verification Standard) and **MLASWE** (ML Application Security Weakness Enumeration).
 
-The methodology follows a phased approach adapted from standard penetration testing methodologies (PTES, OWASP) and extended for the unique characteristics of ML systems.
+The methodology follows a phased approach adapted from the Penetration Testing Execution Standard (PTES) and OWASP Testing Guide, and extended to address the unique attack surface of ML systems.
 
 ## 2. The ML Security Assessment Lifecycle
 
@@ -87,7 +87,7 @@ Map the system architecture to MITRE ATLAS tactics:
 | IBM ART | Adversarial robustness testing | `pip install adversarial-robustness-toolbox` |
 | SecML | ML security evaluation | `pip install secml` |
 | Giskard | LLM security testing | `pip install giskard` |
-| Counterfit | AI security automation | `pip install counterfit` |
+| Guardrails AI | LLM output validation | `pip install guardrails-ai` |
 | PromptInject | Prompt injection testing | `pip install promptinject` |
 | TextAttack | NLP adversarial testing | `pip install textattack` |
 
@@ -107,13 +107,13 @@ For each applicable MLASVS control:
 
 | Category | Test Cases | Focus |
 |----------|-----------|-------|
-| **DATA** | MLASTG-TEST-DATA-001 to 004 | Data provenance, sanitization, differential privacy, access controls |
-| **MODEL** | MLASTG-TEST-MODEL-001 to 005 | Adversarial robustness, extraction, inversion, backdoors, integrity |
-| **LLM** | MLASTG-TEST-LLM-001 to 003 | Prompt injection, output handling, jailbreak testing |
-| **SUPPLY** | MLASTG-TEST-SUPPLY-001 to 002 | ML-SBOM audit, model provenance |
-| **PIPELINE** | MLASTG-TEST-PIPELINE-001 | CI/CD security audit |
-| **INFRA** | MLASTG-TEST-INFRA-001 to 002 | Model serving, API security |
-| **GOV** | MLASTG-TEST-GOV-001 | Governance assessment |
+| **DATA** | MLASTG-TEST-DATA-001 | Data provenance, cryptographic integrity, lineage, trust scoring |
+| **MODEL** | MLASTG-TEST-MODEL-001 to 004 | Adversarial robustness, extraction, membership inference, backdoor detection |
+| **LLM** | MLASTG-TEST-LLM-001 to 003 | Prompt injection, output handling, jailbreak and DoS testing |
+| **SUPPLY** | MLASTG-TEST-SUPPLY-001 to 002 | ML-SBOM audit, model provenance verification |
+| **PIPELINE** | MLASTG-TEST-PIPELINE-001 | CI/CD and MLOps security audit |
+| **INFRA** | MLASTG-TEST-INFRA-001 to 002 | Model serving infrastructure, API security |
+| **GOV** | MLASTG-TEST-GOV-001 | Governance and compliance audit |
 
 ### 5.3 Test Procedure Template
 
@@ -173,10 +173,10 @@ For L2 assessments, adversarial exploitation is in scope:
 
 | Attack Success Rate | Risk Level |
 |--------------------|------------|
-| < 5% success | Low risk |
-| 5-15% success | Medium risk |
-| 15-30% success | High risk |
-| > 30% success | Critical risk |
+| &lt; 5% success | Low risk |
+| 5–15% success | Medium risk |
+| 15–30% success | High risk |
+| &gt; 30% success | Critical risk |
 
 ## 7. Phase 5: Reporting
 
@@ -222,7 +222,7 @@ Appendices
 |--------|------------|-----------|
 | **Critical** | Immediate exploitation with severe impact | Model can be reliably poisoned, extracted with >50% fidelity, or made unavailable |
 | **High** | Exploitation possible with moderate effort | Model evasion >30% success rate, training data leakage confirmed |
-| **Medium** | Exploitation requires significant resources | Model injection requires >100K queries, membership inference marginally above baseline |
+| **Medium** | Exploitation requires significant resources | Model extraction requires > 100K queries; membership inference accuracy only marginally above the 50% random baseline |
 | **Low** | Limited exploitation potential | Control deficiency with compensating controls in place |
 
 ### 7.3 Remediation Timing

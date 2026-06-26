@@ -4,12 +4,15 @@
 
 > **状态:** 积极开发中 — 版本 0.1（草案）
 > 
-> **许可证:** CC BY-SA 4.0
+> [![Version](https://img.shields.io/badge/version-0.1--draft-orange)](https://github.com/bb1nfosec/MLASTG)
+> [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
 
 ---
 
 [![English](https://img.shields.io/badge/lang-en-blue.svg)](README.md)
 [![中文](https://img.shields.io/badge/lang-zh-red.svg)](README.zh-CN.md)
+
+**🌐 我们欢迎国际贡献者！翻译工作正在进行中。**
 
 ---
 
@@ -98,37 +101,14 @@ MLASWE（弱点枚举）               ─── 可能出什么问题
 ## 参与贡献
 
 本项目处于积极开发阶段。欢迎各类贡献：
-- 新的测试用例和流程
-- Python 测试脚本实现
-- 大语言模型安全测试方法
+- 新的测试用例和逐步流程
+- Python 测试脚本实现（参见 `tests/` 目录）
+- 大语言模型安全测试方法和数据集
 - 案例研究和真实世界攻击演示
-- **翻译和国际化（欢迎中文贡献者！）**
+- **翻译和国际化（欢迎中文贡献者！）**（参见 `docs/zh/`）
+- 覆盖更多 MLASVS 控制类别的内容
 
----
-
-## 项目结构
-
-```
-mlastg/
-├── README.md                    ← 本文件（英文）
-├── README.zh-CN.md              ← 本文件（中文）
-├── mkdocs.yml                   ← 文档站点配置
-├── docs/                        ← 文档源文件
-│   ├── index.md                 ← 主页/概览
-│   ├── zh/                      ← 中文文档
-│   ├── MLASVS/                  ← 验证标准
-│   ├── MLASTG/                  ← 测试指南
-│   └── MLASWE/                  ← 弱点枚举
-├── tests/                       ← Python 测试脚本
-│   ├── data/
-│   ├── model/
-│   ├── llm/
-│   ├── supply/
-│   ├── pipeline/
-│   ├── infra/
-│   └── gov/
-└── demos/                       ← 示例脆弱模型和应用
-```
+参见 [CONTRIBUTING.md](CONTRIBUTING.md) 了解贡献指南。
 
 ---
 

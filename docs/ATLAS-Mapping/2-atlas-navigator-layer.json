@@ -1,0 +1,54 @@
+{
+  "name": "MLASTG Coverage Map v0.1",
+  "version": "4.3",
+  "domain": "atlas",
+  "description": "MITRE ATLAS technique coverage by the MLSec Application Security Testing Guide (MLASTG). Green = Full coverage (MLASVS controls + MLASTG tests), Yellow = Partial (some controls mapped), Red = No coverage.",
+  "techniques": [
+    { "techniqueID": "AML.T0000", "score": 100, "enabled": true, "comment": "ML Attack Staging - PIPELINE-001 mapped" },
+    { "techniqueID": "AML.T0001", "score": 100, "enabled": true, "comment": "Search for Tainted ML Data - DATA-001 mapped" },
+    { "techniqueID": "AML.T0002", "score": 50, "enabled": true, "comment": "Obtain ML Model from Public Source - SUPPLY-002 partial" },
+    { "techniqueID": "AML.T0003", "score": 100, "enabled": true, "comment": "Compromise ML Supply Chain - SUPPLY-001, SUPPLY-002 mapped" },
+    { "techniqueID": "AML.T0005", "score": 50, "enabled": true, "comment": "Exploit ML Model for Initial Access - MODEL-001 partial" },
+    { "techniqueID": "AML.T0007", "score": 100, "enabled": true, "comment": "ML Model Inversion Attack - MODEL-003 mapped" },
+    { "techniqueID": "AML.T0010", "score": 100, "enabled": true, "comment": "Exploit ML Model - MODEL-001, MODEL-002 mapped" },
+    { "techniqueID": "AML.T0011", "score": 100, "enabled": true, "comment": "Evade ML Model - MODEL-001, MODEL-002 mapped" },
+    { "techniqueID": "AML.T0012", "score": 100, "enabled": true, "comment": "Backdoor ML Model - MODEL-004, MODEL-005 mapped" },
+    { "techniqueID": "AML.T0013", "score": 100, "enabled": true, "comment": "Extract ML Model - MODEL-002, MODEL-003 mapped" },
+    { "techniqueID": "AML.T0014", "score": 100, "enabled": true, "comment": "Invert ML Model - MODEL-003 mapped" },
+    { "techniqueID": "AML.T0018", "score": 50, "enabled": true, "comment": "Poison Training Data - DATA-001, DATA-002 partial" },
+    { "techniqueID": "AML.T0020", "score": 100, "enabled": true, "comment": "Poison Training Data - DATA-001, DATA-002 mapped" },
+    { "techniqueID": "AML.T0021", "score": 50, "enabled": true, "comment": "Clean Training Data - DATA-002 partial" },
+    { "techniqueID": "AML.T0031", "score": 50, "enabled": true, "comment": "Exfiltration via ML Inference - LLM-002 partial" },
+    { "techniqueID": "AML.T0034", "score": 50, "enabled": true, "comment": "Denial of ML Service - LLM-010 partial" },
+    { "techniqueID": "AML.T0035", "score": 100, "enabled": true, "comment": "Erode ML Model Integrity - MODEL-004, MODEL-005 mapped" },
+    { "techniqueID": "AML.T0037", "score": 100, "enabled": true, "comment": "ML Model Extraction - MODEL-002 mapped" },
+    { "techniqueID": "AML.T0040", "score": 50, "enabled": true, "comment": "Establish Adversarial ML Infrastructure - INFRA-001 partial" },
+    { "techniqueID": "AML.T0043", "score": 100, "enabled": true, "comment": "Exploit Adversarial ML Vulnerability - MODEL-001 mapped" },
+    { "techniqueID": "AML.T0051", "score": 100, "enabled": true, "comment": "LLM Prompt Injection - LLM-001, LLM-004 mapped" },
+    { "techniqueID": "AML.T0052", "score": 100, "enabled": true, "comment": "LLM Output Handling - LLM-002 mapped" },
+    { "techniqueID": "AML.T0053", "score": 50, "enabled": true, "comment": "LLM Plugin Compromise - LLM-006, LLM-007 partial" },
+    { "techniqueID": "AML.T0054", "score": 100, "enabled": true, "comment": "LLM Jailbreak - LLM-005 mapped" },
+    { "techniqueID": "AML.T0056", "score": 100, "enabled": true, "comment": "ML Model Behavioral Manipulation - MODEL-004, INFRA-012, INFRA-018 mapped" },
+    { "techniqueID": "AML.T0057", "score": 50, "enabled": true, "comment": "ML Model Data Exfiltration - MODEL-003 partial" },
+    { "techniqueID": "AML.T0058", "score": 100, "enabled": true, "comment": "ML Model Inversion Attack - MODEL-003 mapped" },
+    { "techniqueID": "AML.T0059", "score": 100, "enabled": true, "comment": "Backdoor ML Model - MODEL-004, DATA-001 mapped" }
+  ],
+  "gradient": {
+    "colors": ["#ff0000", "#ffa500", "#ffff00", "#00ff00"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Full Coverage (MLASVS + MLASTG)", "color": "#00ff00" },
+    { "label": "Partial Coverage (some controls mapped)", "color": "#ffff00" },
+    { "label": "No Coverage (gaps identified)", "color": "#ff0000" }
+  ],
+  "metadata": [
+    { "name": "source", "value": "MLASTG v0.1" },
+    { "name": "generated", "value": "2026-06-26" },
+    { "name": "total_techniques", "value": 28 },
+    { "name": "full_coverage_count", "value": 18 },
+    { "name": "partial_coverage_count", "value": 10 },
+    { "name": "coverage_url", "value": "https://mlastg.vercel.app/ATLAS-Mapping/" }
+  ]
+}

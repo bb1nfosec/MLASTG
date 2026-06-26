@@ -44,13 +44,11 @@ A common taxonomy of ML/LLM security weaknesses for consistent vulnerability cla
 
 | Section | Description |
 |---------|-------------|
-| [MLASVS Introduction](MLASVS/0x00-Introduction.md) | Overview of the verification standard |
-| [MLASVS Categories](MLASVS/0x02-MLASVS-Categories.md) | Complete control breakdown by category |
-| [Testing Methodology](MLASTG/0x00-Testing-Methodology.md) | How to conduct an ML security assessment |
-| [Testing Tools](MLASTG/0x01-Testing-Tools.md) | Tooling reference (ART, SecML, etc.) |
-| [Weakness Enumeration](MLASWE/0x00-Introduction-Weaknesses.md) | Common ML security weaknesses |
-| [Test Scripts](../tests/README.md) | Companion Python test harnesses |
-| [Checklist](checklist.md) | Track assessment progress |
+| [Testing Methodology](MLASTG/0x00-Testing-Methodology.md) | How to conduct a structured ML security assessment |
+| [Testing Tools](MLASTG/0x01-Testing-Tools.md) | Tooling reference (ART, Giskard, Guardrails AI, etc.) |
+| [Assessment Checklist](../checklist.md) | Track assessment progress against all 168 controls |
+
+> **Version 0.1 (Draft):** The MLASVS Standard, MLASWE Weakness Enumeration, and executable test scripts are in active development. See the [GitHub repository](https://github.com/bb1nfosec/MLASTG) for the latest status.
 
 ## Framework Alignment
 

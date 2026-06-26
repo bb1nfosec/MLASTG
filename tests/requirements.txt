@@ -1,7 +1,6 @@
 # MLASTG Test Script Dependencies
-# Core ML security testing
+# Core ML security testing (required)
 adversarial-robustness-toolbox>=1.16
-secml>=0.14
 numpy>=1.24
 scipy>=1.10
 scikit-learn>=1.2
@@ -12,8 +11,6 @@ torchvision>=0.15
 
 # LLM security testing
 giskard>=2.0
-rebuff>=0.2
-promptinject>=0.1
 
 # Privacy testing
 diffprivlib>=0.6
@@ -27,4 +24,10 @@ modelscan>=0.1
 
 # Reporting
 pytest>=7.0
-pytest-json>=0.4
+
+# Optional: advanced ML security (may require additional setup)
+# secml>=0.14            # ML security evaluation (may need system deps)
+# rebuff>=0.2            # Prompt injection detection
+# promptinject>=0.1      # Prompt injection framework
+# privacy-metrics>=0.1   # Privacy risk measurement
+# pytest-json>=0.4       # JSON test reporting

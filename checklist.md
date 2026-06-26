@@ -2,6 +2,8 @@
 
 > Use this checklist to track progress during an ML security assessment.
 > Mark each control as ✅ Pass, ❌ Fail, ⚠️ Partial, 🔲 Not Tested, or N/A.
+>
+> **Instructions:** Complete the Project Information section before beginning the assessment. Mark controls as 🔲 by default and update as testing progresses. Attach evidence references in the Notes column.
 
 ## Project Information
 
@@ -9,10 +11,15 @@
 |-------|-------|
 | **System Name** | |
 | **Assessment Date** | |
+| **Assessment Version / Revision** | e.g., v1.0 |
 | **Assessor** | |
+| **Organization** | |
 | **Target Level** | L1 / L2 |
-| **ML System Type** | |
-| **Model Architecture** | |
+| **ML System Type** | e.g., Image Classifier / LLM / Recommendation System |
+| **Model Architecture** | e.g., ResNet-50 / GPT-4 / XGBoost |
+| **Classification** | e.g., Internal / Confidential / Restricted |
+| **Report Review Date** | (when remediation should be re-verified) |
+| **Approved By** | (CISO or security lead) |
 
 ---
 
@@ -331,7 +338,19 @@
 
 ## Key Findings
 
-| Finding | Severity | MLASWE Ref | Status |
-|---------|----------|------------|--------|
-| | | | |
-| | | | |
+| # | Finding | Severity | MLASWE Ref | Status | Remediation Date |
+|---|---------|----------|------------|--------|------------------|
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+
+---
+
+## Assessor Attestation
+
+I certify that the above assessment was conducted in accordance with the MLASTG methodology and that the findings accurately represent the security posture of the tested system.
+
+| Role | Name | Signature | Date |
+|------|------|-----------|------|
+| Lead Assessor | | | |
+| Reviewer | | | |

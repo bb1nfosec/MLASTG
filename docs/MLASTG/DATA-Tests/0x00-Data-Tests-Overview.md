@@ -11,3 +11,4 @@ Test cases for verifying MLASVS-DATA controls covering data provenance, sanitiza
 | MLASTG-TEST-DATA-002 | Data Sanitization Validation | DATA-004, 005, 010, 011, 013-018, 024, 025, 029 | L1/L2 |
 | MLASTG-TEST-DATA-003 | Differential Privacy Audit | DATA-019, 022, 023 | L2 |
 | MLASTG-TEST-DATA-004 | Data Access Control Review | DATA-003, 007-009, 012, 021, 027, 028 | L1/L2 |
+| MLASTG-TEST-DATA-005 | Federated Learning Poisoning Detection | DATA-001, 002, 004, 006, 010, 019, 023 | L1/L2 |
