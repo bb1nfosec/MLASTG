@@ -12,3 +12,4 @@ Test cases for verifying MLASVS-MODEL controls covering adversarial robustness, 
 | MLASTG-TEST-MODEL-003 | Membership Inference Testing | MODEL-009, 011, 013, 019, 020 | L1/L2 |
 | MLASTG-TEST-MODEL-004 | Backdoor Detection Testing | MODEL-021, 022 | L2 |
 | MLASTG-TEST-MODEL-005 | Model Integrity Verification | MODEL-007, 008, 014, 015, 030 | L1/L2 |
+| MLASTG-TEST-MODEL-006 | Reward Hacking in RL | MODEL-001, 003, 004, 010, 012, 016, 024 | L1/L2 |

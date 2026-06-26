@@ -1,7 +1,9 @@
 # MLASTG Testing Tools Reference
 
 ## Overview
-This document catalogs the tools used in ML security testing, organized by testing domain. Each entry includes installation instructions, basic usage, and relevant MLASTG test references.
+This document catalogs the tools used in ML security testing, organized by testing domain. Each entry includes verified installation instructions, basic usage, and relevant MLASTG test references.
+
+> **Note:** All `pip install` commands should be run inside a dedicated virtual environment (`python -m venv mlsec-env`). Tool availability on PyPI changes over time; verify the package name before installing.
 
 ## 1. Adversarial Robustness Testing
 
@@ -76,7 +78,7 @@ pip install cleverhans
 ## 2. LLM Security Testing
 
 ### Giskard
-**Purpose:** Automated security testing for LLMs and GenAI applications
+**Purpose:** Automated security testing for LLMs and Generative AI (GenAI) applications
 **URL:** https://github.com/Giskard-AI/giskard
 
 ```bash
@@ -148,6 +150,41 @@ pip install textattack
 
 ---
 
+### Guardrails AI
+**Purpose:** Output validation and guardrailing framework for LLMs
+**URL:** https://github.com/guardrails-ai/guardrails
+
+```bash
+pip install guardrails-ai
+```
+
+**Key Features:**
+- Structured output validation with schema enforcement
+- Sensitive data detection and redaction in LLM outputs
+- Custom validators for domain-specific rules
+- Rail spec language for declarative validation pipelines
+
+**Relevant Tests:** TEST-LLM-002, TEST-LLM-003
+
+---
+
+### NVIDIA NeMo Guardrails
+**Purpose:** Programmable guardrails for LLM-based conversational AI
+**URL:** https://github.com/NVIDIA-NeMo/Guardrails
+
+```bash
+pip install nemoguardrails
+```
+
+**Key Features:**
+- Topical, safety, and security guardrail configuration
+- Dialog flow control to prevent out-of-scope conversations
+- Integration with LangChain and custom LLM backends
+
+**Relevant Tests:** TEST-LLM-001, TEST-LLM-003
+
+---
+
 ## 3. Data Security & Privacy
 
 ### Diffprivlib (IBM)
@@ -213,11 +250,21 @@ pip install privacy-metrics
 
 ### ML-SBOM Tools
 **Purpose:** Generation and verification of ML Software Bill of Materials
+
 ```bash
 # CycloneDX ML-SBOM generation
 pip install cyclonedx-bom
-# Trivy for model scanning
-brew install trivy  # or apt install trivy
+
+# Trivy for vulnerability scanning — Linux (Debian/Ubuntu)
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo "deb https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee /etc/apt/sources.list.d/trivy.list
+sudo apt-get update && sudo apt-get install trivy
+
+# Trivy — macOS
+brew install trivy
+
+# Trivy — Docker
+docker pull aquasec/trivy
 ```
 
 **Relevant Tests:** TEST-SUPPLY-001, TEST-SUPPLY-002
@@ -296,22 +343,15 @@ pip install what-if-tool
 
 ## 8. General ML Security Utilities
 
-### Counterfit (Microsoft)
+### Counterfit (Microsoft) — Archived
 **Purpose:** Automation layer for ML security testing
 **URL:** https://github.com/Azure/counterfit
 
-```bash
-pip install counterfit
-```
+> **⚠️ Archived:** This repository has been archived by Microsoft and is no longer maintained. Listed here for reference only. For active ML security testing, prefer [IBM ART](https://github.com/Trusted-AI/adversarial-robustness-toolbox) or the tools listed in the selection guide below.
 
-**Features:**
-- Wraps multiple attack libraries (ART, TextAttack, etc.)
-- CLI-based interaction
-- Attack chain composition
-
-### Adversarial ML Threat Matrix (Microsoft)
+### Adversarial ML Threat Matrix (MITRE)
 **Purpose:** Threat matrix aligned with MITRE ATLAS
-**URL:** https://github.com/microsoft/advmlthreatmatrix
+**URL:** https://github.com/mitre/advmlthreatmatrix
 
 ## Tool Selection Guide
 
@@ -320,10 +360,13 @@ pip install counterfit
 | Evasion (CV models) | ART | CleverHans, SecML |
 | Evasion (NLP models) | TextAttack | ART (text), PromptInject |
 | Prompt injection | Giskard | Rebuff, PromptInject |
-| Model extraction | ART | PrivacyRaven |
-| Membership inference | ART | PrivacyRaven, MLPrivacyMetrics |
-| Data poisoning | ART (poisoning module) | Custom detection |
-| Differential privacy | diffprivlib | PySyft, Opacus |
+| LLM output guardrailing | Guardrails AI | NeMo Guardrails, LlamaGuard |
+| Jailbreak detection | Giskard | NeMo Guardrails, custom classifiers |
+| Model extraction | ART (KnockoffNets) | PrivacyRaven |
+| Membership inference | ART | PrivacyRaven |
+| Data poisoning detection | ART (poisoning module) | Custom detection scripts |
+| Differential privacy | diffprivlib | PySyft (Opacus), TF Privacy |
 | Bias & fairness | AIF360 | What-If Tool, Fairlearn |
-| ML-SBOM | CycloneDX + ModelScan | Trivy (beta model scanning) |
+| ML-SBOM | CycloneDX + ModelScan | Trivy (model scanning) |
 | Model security scanning | ModelScan | Guarddog |
+| Pipeline secret scanning | TruffleHog | gitleaks, detect-secrets |

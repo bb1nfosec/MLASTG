@@ -49,4 +49,4 @@ We especially welcome translation contributions:
 
 ## Code of Conduct
 
-We are committed to providing a welcoming, inclusive experience for everyone.
+We are committed to providing a welcoming, inclusive experience for everyone. We follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By participating, you agree to uphold its standards of behavior.

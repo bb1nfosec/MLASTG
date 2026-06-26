@@ -1,0 +1,34 @@
+name: Validate ATLAS Navigator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/assets/atlas-navigator.html'
+      - 'docs/ATLAS-Mapping/2-atlas-navigator-layer.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/assets/atlas-navigator.html'
+      - 'docs/ATLAS-Mapping/2-atlas-navigator-layer.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Navigator HTML exists and is well-formed
+        run: |
+          if [ ! -f docs/assets/atlas-navigator.html ]; then
+            echo "ERROR: atlas-navigator.html not found"
+            exit 1
+          fi
+          if [ ! -f docs/ATLAS-Mapping/2-atlas-navigator-layer.json ]; then
+            echo "ERROR: Navigator JSON not found"
+            exit 1
+          fi
+          echo "✅ Navigator files present"
+
+      - name: Validate Navigator JSON syntax
+        run: python3 -c "import json; data = json.load(open('docs/ATLAS-Mapping/2-atlas-navigator-layer.json')); print(f'✅ Valid JSON with {len(data[\"techniques\"])} techniques')"

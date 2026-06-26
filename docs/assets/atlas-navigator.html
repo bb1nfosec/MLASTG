@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLASTG ATLAS Navigator</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --bg: #F9FAFB;
+            --surface: #FFFFFF;
+            --text: #111827;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), #7C3AED);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.9; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+
+        .controls {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .filter-group { display: flex; gap: 0.5rem; }
+
+        .filter-btn {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .stats-bar { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+        .stat-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .value { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
+        .stat-card .label { color: var(--text-muted); font-size: 0.85rem; }
+
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+
+        .technique-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .technique-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .technique-card.coverage-full { border-left-color: var(--success); }
+        .technique-card.coverage-partial { border-left-color: var(--warning); }
+        .technique-card.coverage-none { border-left-color: var(--danger); }
+
+        .technique-id { font-family: monospace; font-size: 0.8rem; color: var(--primary); margin-bottom: 0.25rem; }
+        .technique-name { font-weight: 600; margin-bottom: 0.5rem; }
+        .technique-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted); }
+
+        .coverage-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .badge-full { background: #D1FAE5; color: #065F46; }
+        .badge-partial { background: #FEF3C7; color: #92400E; }
+        .badge-none { background: #FEE2E2; color: #991B1B; }
+
+        .tooltip {
+            position: absolute; background: var(--text); color: white;
+            padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.8rem;
+            max-width: 300px; z-index: 1000; pointer-events: none; display: none;
+        }
+
+        .legend {
+            background: var(--surface); border-radius: 10px; padding: 1rem 1.5rem;
+            margin-top: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .legend h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .legend-items { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+        @media (max-width: 768px) {
+            .matrix-grid { grid-template-columns: 1fr; }
+            .controls { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ MLASTG ATLAS Navigator</h1>
+        <p>MITRE ATT&CK Coverage for ML Security Testing — Synced with 2-atlas-navigator-layer.json</p>
+    </div>
+
+    <div class="container">
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search techniques...">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="full">Full Coverage</button>
+                <button class="filter-btn" data-filter="partial">Partial</button>
+                <button class="filter-btn" data-filter="none">No Coverage</button>
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn" data-tactic="recon">Recon</button>
+                <button class="filter-btn" data-tactic="resource">Resource</button>
+                <button class="filter-btn" data-tactic="initial">Initial</button>
+                <button class="filter-btn" data-tactic="exec">Execution</button>
+                <button class="filter-btn" data-tactic="persist">Persist</button>
+                <button class="filter-btn" data-tactic="evasion">Evasion</button>
+                <button class="filter-btn" data-tactic="collection">Collection</button>
+            </div>
+        </div>
+
+        <div class="stats-bar" id="statsBar">
+            <div class="stat-card"><div class="value" id="totalTechniques">0</div><div class="label">Total Techniques</div></div>
+            <div class="stat-card"><div class="value" id="fullCoverage">0</div><div class="label">Full Coverage</div></div>
+            <div class="stat-card"><div class="value" id="partialCoverage">0</div><div class="label">Partial Coverage</div></div>
+            <div class="stat-card"><div class="value" id="noCoverage">0</div><div class="label">No Coverage</div></div>
+            <div class="stat-card"><div class="value" id="coveragePercent">0%</div><div class="label">Coverage Score</div></div>
+        </div>
+
+        <div class="matrix-grid" id="matrixGrid"></div>
+
+        <div class="legend">
+            <h3>Coverage Levels</h3>
+            <div class="legend-items">
+                <div class="legend-item"><div class="legend-dot" style="background: var(--success)"></div>Full: MLASVS controls + MLASTG test cases mapped</div>
+                <div class="legend-item"><div class="legend-dot" style="background: var(--warning)"></div>Partial: Some controls mapped, gaps identified</div>
+                <div class="legend-item"><div class="legend-dot" style="background: var(--danger)"></div>None: No MLASVS controls mapped yet</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Synced from 2-atlas-navigator-layer.json — keep this array in sync.
+        const techniques = [
+            { id: "AML.T0000", name: "ML Attack Staging", tactic: "resource", score: 100, controls: ["MLASVS-PIPELINE-001"], tests: ["TEST-PIPELINE-001"] },
+            { id: "AML.T0001", name: "Search for Tainted ML Data", tactic: "recon", score: 100, controls: ["MLASVS-DATA-001"], tests: ["TEST-DATA-001"] },
+            { id: "AML.T0002", name: "Obtain ML Model from Public Source", tactic: "recon", score: 50, controls: ["MLASVS-SUPPLY-002"], tests: ["TEST-SUPPLY-002"] },
+            { id: "AML.T0003", name: "Compromise ML Supply Chain", tactic: "initial", score: 100, controls: ["MLASVS-SUPPLY-001", "MLASVS-SUPPLY-002"], tests: ["TEST-SUPPLY-001"] },
+            { id: "AML.T0005", name: "Exploit ML Model for Initial Access", tactic: "initial", score: 50, controls: ["MLASVS-MODEL-001"], tests: ["TEST-MODEL-001"] },
+            { id: "AML.T0007", name: "ML Model Inversion Attack", tactic: "collection", score: 100, controls: ["MLASVS-MODEL-003"], tests: ["TEST-MODEL-003"] },
+            { id: "AML.T0010", name: "Exploit ML Model", tactic: "exec", score: 100, controls: ["MLASVS-MODEL-001", "MLASVS-MODEL-002"], tests: ["TEST-MODEL-001", "TEST-MODEL-002"] },
+            { id: "AML.T0011", name: "Evade ML Model", tactic: "evasion", score: 100, controls: ["MLASVS-MODEL-001", "MLASVS-MODEL-002"], tests: ["TEST-MODEL-001", "TEST-MODEL-002"] },
+            { id: "AML.T0012", name: "Backdoor ML Model", tactic: "persist", score: 100, controls: ["MLASVS-MODEL-004", "MLASVS-MODEL-005"], tests: ["TEST-MODEL-004", "TEST-MODEL-005"] },
+            { id: "AML.T0013", name: "Extract ML Model", tactic: "collection", score: 100, controls: ["MLASVS-MODEL-002", "MLASVS-MODEL-003"], tests: ["TEST-MODEL-002", "TEST-MODEL-003"] },
+            { id: "AML.T0014", name: "Invert ML Model", tactic: "collection", score: 100, controls: ["MLASVS-MODEL-003"], tests: ["TEST-MODEL-003"] },
+            { id: "AML.T0018", name: "Poison Training Data", tactic: "exec", score: 50, controls: ["MLASVS-DATA-001", "MLASVS-DATA-002"], tests: ["TEST-DATA-001", "TEST-DATA-002"] },
+            { id: "AML.T0020", name: "Poison Training Data", tactic: "exec", score: 100, controls: ["MLASVS-DATA-001", "MLASVS-DATA-002"], tests: ["TEST-DATA-001", "TEST-DATA-002", "TEST-DATA-005"] },
+            { id: "AML.T0021", name: "Clean Training Data", tactic: "exec", score: 50, controls: ["MLASVS-DATA-002"], tests: ["TEST-DATA-002"] },
+            { id: "AML.T0031", name: "Exfiltration via ML Inference", tactic: "collection", score: 50, controls: ["MLASVS-LLM-002"], tests: ["TEST-LLM-002"] },
+            { id: "AML.T0034", name: "Denial of ML Service", tactic: "exec", score: 50, controls: ["MLASVS-LLM-010"], tests: ["TEST-LLM-003"] },
+            { id: "AML.T0035", name: "Erode ML Model Integrity", tactic: "exec", score: 100, controls: ["MLASVS-MODEL-004", "MLASVS-MODEL-005"], tests: ["TEST-MODEL-004", "TEST-MODEL-005"] },
+            { id: "AML.T0037", name: "ML Model Extraction", tactic: "collection", score: 100, controls: ["MLASVS-MODEL-002"], tests: ["TEST-MODEL-002"] },
+            { id: "AML.T0040", name: "Establish Adversarial ML Infrastructure", tactic: "resource", score: 50, controls: ["MLASVS-INFRA-001"], tests: ["TEST-INFRA-001"] },
+            { id: "AML.T0043", name: "Exploit Adversarial ML Vulnerability", tactic: "exec", score: 100, controls: ["MLASVS-MODEL-001"], tests: ["TEST-MODEL-001"] },
+            { id: "AML.T0051", name: "LLM Prompt Injection", tactic: "exec", score: 100, controls: ["MLASVS-LLM-001", "MLASVS-LLM-004"], tests: ["TEST-LLM-001", "TEST-LLM-004"] },
+            { id: "AML.T0052", name: "LLM Output Handling", tactic: "exec", score: 100, controls: ["MLASVS-LLM-002"], tests: ["TEST-LLM-002"] },
+            { id: "AML.T0053", name: "LLM Plugin Compromise", tactic: "exec", score: 50, controls: ["MLASVS-LLM-006", "MLASVS-LLM-007"], tests: ["TEST-INFRA-003"] },
+            { id: "AML.T0054", name: "LLM Jailbreak", tactic: "exec", score: 100, controls: ["MLASVS-LLM-005"], tests: ["TEST-LLM-003"] },
+            { id: "AML.T0056", name: "ML Model Behavioral Manipulation", tactic: "exec", score: 100, controls: ["MLASVS-MODEL-004", "MLASVS-INFRA-012", "MLASVS-INFRA-018"], tests: ["TEST-MODEL-003", "TEST-MODEL-006", "TEST-INFRA-001"] },
+            { id: "AML.T0057", name: "ML Model Data Exfiltration", tactic: "collection", score: 50, controls: ["MLASVS-MODEL-003"], tests: ["TEST-MODEL-003"] },
+            { id: "AML.T0058", name: "ML Model Inversion Attack", tactic: "collection", score: 100, controls: ["MLASVS-MODEL-003"], tests: ["TEST-MODEL-003"] },
+            { id: "AML.T0059", name: "Backdoor ML Model", tactic: "persist", score: 100, controls: ["MLASVS-MODEL-004", "MLASVS-DATA-001"], tests: ["TEST-MODEL-004", "TEST-DATA-001", "TEST-DATA-005"] },
+        ];
+
+        const tacticNames = {
+            recon: "Reconnaissance", resource: "Resource Development", initial: "Initial Access",
+            exec: "Execution", persist: "Persistence", evasion: "Evasion", collection: "Collection",
+        };
+
+        let currentFilter = "all";
+        let currentTactic = null;
+        let searchTerm = "";
+
+        function getCoverage(score) {
+            if (score >= 80) return "full";
+            if (score > 0) return "partial";
+            return "none";
+        }
+
+        function renderStats(filtered) {
+            const total = filtered.length;
+            const full = filtered.filter(t => getCoverage(t.score) === "full").length;
+            const partial = filtered.filter(t => getCoverage(t.score) === "partial").length;
+            const none = filtered.filter(t => getCoverage(t.score) === "none").length;
+            const score = total > 0 ? Math.round(filtered.reduce((s, t) => s + t.score, 0) / total) : 0;
+
+            document.getElementById("totalTechniques").textContent = total;
+            document.getElementById("fullCoverage").textContent = full;
+            document.getElementById("partialCoverage").textContent = partial;
+            document.getElementById("noCoverage").textContent = none;
+            document.getElementById("coveragePercent").textContent = score + "%";
+        }
+
+        function renderGrid(filtered) {
+            const grid = document.getElementById("matrixGrid");
+            grid.innerHTML = "";
+
+            filtered.forEach(tech => {
+                const cov = getCoverage(tech.score);
+                const card = document.createElement("div");
+                card.className = `technique-card coverage-${cov}`;
+                card.innerHTML = `
+                    <div class="technique-id">${tech.id}</div>
+                    <div class="technique-name">${tech.name}</div>
+                    <div class="technique-meta">
+                        <span class="coverage-badge badge-${cov}">${cov.toUpperCase()} (${tech.score}%)</span>
+                        <span>${tacticNames[tech.tactic] || tech.tactic}</span>
+                    </div>
+                    ${tech.controls.length > 0 ? `<div style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">Controls: ${tech.controls.join(", ")}</div>` : ""}
+                `;
+                card.addEventListener("mouseenter", (e) => showTooltip(e, tech));
+                card.addEventListener("mouseleave", hideTooltip);
+                grid.appendChild(card);
+            });
+        }
+
+        function showTooltip(e, tech) {
+            const tooltip = document.getElementById("tooltip");
+            let html = `<strong>${tech.id}: ${tech.name}</strong><br>`;
+            html += `Tactic: ${tacticNames[tech.tactic]}<br>`;
+            html += `Score: ${tech.score}% (${getCoverage(tech.score).toUpperCase()})<br>`;
+            if (tech.controls.length > 0) html += `Controls: ${tech.controls.join(", ")}<br>`;
+            if (tech.tests.length > 0) html += `Tests: ${tech.tests.join(", ")}`;
+            tooltip.innerHTML = html;
+            tooltip.style.display = "block";
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY + 10 + "px";
+        }
+
+        function hideTooltip() { document.getElementById("tooltip").style.display = "none"; }
+
+        function filterAndRender() {
+            let filtered = techniques;
+            if (currentFilter !== "all") filtered = filtered.filter(t => getCoverage(t.score) === currentFilter);
+            if (currentTactic) filtered = filtered.filter(t => t.tactic === currentTactic);
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(t => t.id.toLowerCase().includes(term) || t.name.toLowerCase().includes(term));
+            }
+            renderStats(filtered);
+            renderGrid(filtered);
+        }
+
+        document.getElementById("searchBox").addEventListener("input", (e) => { searchTerm = e.target.value; filterAndRender(); });
+
+        document.querySelectorAll(".filter-btn[data-filter]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn[data-filter]").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilter = btn.dataset.filter;
+                filterAndRender();
+            });
+        });
+
+        document.querySelectorAll(".filter-btn[data-tactic]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (currentTactic === btn.dataset.tactic) { currentTactic = null; btn.classList.remove("active"); }
+                else { document.querySelectorAll(".filter-btn[data-tactic]").forEach(b => b.classList.remove("active")); btn.classList.add("active"); currentTactic = btn.dataset.tactic; }
+                filterAndRender();
+            });
+        });
+
+        filterAndRender();
+    </script>
+</body>
+</html>

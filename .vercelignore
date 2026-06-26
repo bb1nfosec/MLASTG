@@ -1,0 +1,31 @@
+# Vercel serves from outputDirectory (site/), so these exclusions
+# reduce build context size and prevent source files from being uploaded.
+
+# Source directories
+tests/
+demos/
+tools/
+docs/
+site/
+
+# CI/CD
+.github/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# ML artifacts
+*.pth
+*.pt
+*.h5
+*.onnx
+*.pkl
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store

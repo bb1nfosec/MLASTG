@@ -1,15 +1,15 @@
 # MLSec Application Security Testing Guide - Documentation Site
 site_name: "MLASTG — MLSec Application Security Testing Guide"
 site_description: "Enterprise & Defense-Grade Security Testing for Machine Learning Systems"
-site_url: "https://mlastg.org/"
-repo_url: "https://github.com/org/mlastg"
-repo_name: "mlastg"
+site_url: "https://mlastg.vercel.app/"
+repo_url: "https://github.com/bb1nfosec/MLASTG"
+repo_name: "MLASTG"
 edit_uri: "edit/main/docs/"
 
 theme:
   name: material
-  logo: assets/images/mlastg-icon.png
-  favicon: assets/images/favicon.png
+  logo: assets/images/mlastg-icon.svg
+  favicon: assets/images/favicon.svg
   palette:
     - scheme: default
       primary: indigo
@@ -38,11 +38,11 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/bb1nfosec/mlastg
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/
-    - icon: fontawesome/brands/language
-      link: https://github.com/bb1nfosec/mlastg
+      link: https://github.com/bb1nfosec/MLASTG
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/MLSecProject
+    - icon: material/translate
+      link: https://github.com/bb1nfosec/MLASTG
   version:
     provider: mike
   alternate:
@@ -84,14 +84,11 @@ plugins:
   - i18n:
       default_language: en
       languages:
-        en: English
-        zh: 中文
-      nav_translations:
-        zh:
-          Home: 首页
-          Introduction: 介绍
-          Testing Methodology: 测试方法论
-          Checklist: 检查清单
+        - locale: en
+          default: true
+          name: English
+        - locale: zh
+          name: 中文
   - git-revision-date-localized:
       enable_creation_date: true
   - minify:
@@ -100,112 +97,117 @@ plugins:
 nav:
   - Home: index.md
 
-  - MLASVS (Standard):
+  - "MLASVS (Standard)":
     - Introduction: MLASVS/0x00-Introduction.md
     - Using This Standard: MLASVS/0x01-Using-This-Standard.md
     - Categories Overview: MLASVS/0x02-MLASVS-Categories.md
-    - V1: Data Security & Privacy:
+    - "V1: Data Security & Privacy":
       - Overview: MLASVS/V1-DATA/0x10-Data-Security-Overview.md
-      - DATA-1: Data Provenance: MLASVS/V1-DATA/MLASVS-DATA-1-Provenance.md
-      - DATA-2: Data Sanitization: MLASVS/V1-DATA/MLASVS-DATA-2-Sanitization.md
-      - DATA-3: Differential Privacy: MLASVS/V1-DATA/MLASVS-DATA-3-Differential-Privacy.md
-      - DATA-4: Access Control: MLASVS/V1-DATA/MLASVS-DATA-4-Access-Control.md
-    - V2: Model Security:
+      - "DATA-1: Data Provenance": MLASVS/V1-DATA/MLASVS-DATA-1-Provenance.md
+      - "DATA-2: Data Sanitization": MLASVS/V1-DATA/MLASVS-DATA-2-Sanitization.md
+      - "DATA-3: Differential Privacy": MLASVS/V1-DATA/MLASVS-DATA-3-Differential-Privacy.md
+      - "DATA-4: Access Control": MLASVS/V1-DATA/MLASVS-DATA-4-Access-Control.md
+      - "DATA-3a: Differential Privacy (FL)": MLASVS/V1-DATA/MLASVS-DATA-3-Differential-Privacy-FL.md
+    - "V2: Model Security":
       - Overview: MLASVS/V2-MODEL/0x20-Model-Security-Overview.md
-      - MODEL-1: Adversarial Robustness: MLASVS/V2-MODEL/MLASVS-MODEL-1-Adversarial-Robustness.md
-      - MODEL-2: Extraction Prevention: MLASVS/V2-MODEL/MLASVS-MODEL-2-Extraction.md
-      - MODEL-3: Inversion & Privacy: MLASVS/V2-MODEL/MLASVS-MODEL-3-Inversion.md
-      - MODEL-4: Backdoor Detection: MLASVS/V2-MODEL/MLASVS-MODEL-4-Backdoor.md
-      - MODEL-5: Model Integrity: MLASVS/V2-MODEL/MLASVS-MODEL-5-Integrity.md
-    - V3: LLM Security:
+      - "MODEL-1: Adversarial Robustness": MLASVS/V2-MODEL/MLASVS-MODEL-1-Adversarial-Robustness.md
+      - "MODEL-2: Extraction Prevention": MLASVS/V2-MODEL/MLASVS-MODEL-2-Extraction.md
+      - "MODEL-3: Inversion & Privacy": MLASVS/V2-MODEL/MLASVS-MODEL-3-Inversion.md
+      - "MODEL-4: Backdoor Detection": MLASVS/V2-MODEL/MLASVS-MODEL-4-Backdoor.md
+      - "MODEL-5: Model Integrity": MLASVS/V2-MODEL/MLASVS-MODEL-5-Integrity.md
+      - "MODEL-6: RL Robustness & Safety": MLASVS/V2-MODEL/MLASVS-MODEL-6-RL-Robustness.md
+    - "V3: LLM Security":
       - Overview: MLASVS/V3-LLM/0x30-LLM-Security-Overview.md
-      - LLM-1: Prompt Injection: MLASVS/V3-LLM/MLASVS-LLM-1-Prompt-Injection.md
-      - LLM-2: Output Handling: MLASVS/V3-LLM/MLASVS-LLM-2-Output-Handling.md
-      - LLM-3: Agency Control: MLASVS/V3-LLM/MLASVS-LLM-3-Agency-Control.md
-      - LLM-4: Context Isolation: MLASVS/V3-LLM/MLASVS-LLM-4-Context-Isolation.md
-      - LLM-5: System Prompt Hardening: MLASVS/V3-LLM/MLASVS-LLM-5-System-Prompt-Hardening.md
-    - V4: Supply Chain:
+      - "LLM-1: Prompt Injection": MLASVS/V3-LLM/MLASVS-LLM-1-Prompt-Injection.md
+      - "LLM-2: Output Handling": MLASVS/V3-LLM/MLASVS-LLM-2-Output-Handling.md
+      - "LLM-3: Agency Control": MLASVS/V3-LLM/MLASVS-LLM-3-Agency-Control.md
+      - "LLM-4: Context Isolation": MLASVS/V3-LLM/MLASVS-LLM-4-Context-Isolation.md
+      - "LLM-5: System Prompt Hardening": MLASVS/V3-LLM/MLASVS-LLM-5-System-Prompt-Hardening.md
+    - "V4: Supply Chain":
       - Overview: MLASVS/V4-SUPPLY/0x40-Supply-Chain-Overview.md
-      - SUPPLY-1: ML-SBOM: MLASVS/V4-SUPPLY/MLASVS-SUPPLY-1-ML-SBOM.md
-      - SUPPLY-2: Base Model Vetting: MLASVS/V4-SUPPLY/MLASVS-SUPPLY-2-Base-Model-Vetting.md
-      - SUPPLY-3: Dependency Security: MLASVS/V4-SUPPLY/MLASVS-SUPPLY-3-Dependency-Security.md
-    - V5: Pipeline & MLOps:
+      - "SUPPLY-1: ML-SBOM": MLASVS/V4-SUPPLY/MLASVS-SUPPLY-1-ML-SBOM.md
+      - "SUPPLY-2: Base Model Vetting": MLASVS/V4-SUPPLY/MLASVS-SUPPLY-2-Base-Model-Vetting.md
+      - "SUPPLY-3: Dependency Security": MLASVS/V4-SUPPLY/MLASVS-SUPPLY-3-Dependency-Security.md
+    - "V5: Pipeline & MLOps":
       - Overview: MLASVS/V5-PIPELINE/0x50-Pipeline-Overview.md
-      - PIPELINE-1: CI/CD Security: MLASVS/V5-PIPELINE/MLASVS-PIPELINE-1-CICD.md
-      - PIPELINE-2: Model Registry: MLASVS/V5-PIPELINE/MLASVS-PIPELINE-2-Model-Registry.md
-      - PIPELINE-3: Artifact Integrity: MLASVS/V5-PIPELINE/MLASVS-PIPELINE-3-Artifact-Integrity.md
-    - V6: Runtime & Infrastructure:
+      - "PIPELINE-1: CI/CD Security": MLASVS/V5-PIPELINE/MLASVS-PIPELINE-1-CICD.md
+      - "PIPELINE-2: Model Registry": MLASVS/V5-PIPELINE/MLASVS-PIPELINE-2-Model-Registry.md
+      - "PIPELINE-3: Artifact Integrity": MLASVS/V5-PIPELINE/MLASVS-PIPELINE-3-Artifact-Integrity.md
+    - "V6: Runtime & Infrastructure":
       - Overview: MLASVS/V6-INFRA/0x60-Runtime-Overview.md
-      - INFRA-1: Model Serving: MLASVS/V6-INFRA/MLASVS-INFRA-1-Model-Serving.md
-      - INFRA-2: API Security: MLASVS/V6-INFRA/MLASVS-INFRA-2-API-Security.md
-      - INFRA-3: Monitoring & Response: MLASVS/V6-INFRA/MLASVS-INFRA-3-Monitoring.md
-    - V7: Governance & Compliance:
+      - "INFRA-1: Model Serving": MLASVS/V6-INFRA/MLASVS-INFRA-1-Model-Serving.md
+      - "INFRA-2: API Security": MLASVS/V6-INFRA/MLASVS-INFRA-2-API-Security.md
+      - "INFRA-3: Monitoring & Response": MLASVS/V6-INFRA/MLASVS-INFRA-3-Monitoring.md
+    - "V7: Governance & Compliance":
       - Overview: MLASVS/V7-GOV/0x70-Governance-Overview.md
-      - GOV-1: Risk Governance: MLASVS/V7-GOV/MLASVS-GOV-1-Risk-Governance.md
-      - GOV-2: Bias & Fairness: MLASVS/V7-GOV/MLASVS-GOV-2-Bias-Fairness.md
-      - GOV-3: Audit & Compliance: MLASVS/V7-GOV/MLASVS-GOV-3-Audit-Compliance.md
+      - "GOV-1: Risk Governance": MLASVS/V7-GOV/MLASVS-GOV-1-Risk-Governance.md
+      - "GOV-2: Bias & Fairness": MLASVS/V7-GOV/MLASVS-GOV-2-Bias-Fairness.md
+      - "GOV-3: Audit & Compliance": MLASVS/V7-GOV/MLASVS-GOV-3-Audit-Compliance.md
 
-  - MLASTG (Testing Guide):
+  - "MLASTG (Testing Guide)":
     - Testing Methodology: MLASTG/0x00-Testing-Methodology.md
     - Testing Tools: MLASTG/0x01-Testing-Tools.md
     - Data Security Tests:
       - Overview: MLASTG/DATA-Tests/0x00-Data-Tests-Overview.md
-      - TEST-DATA-001: Provenance Verification: MLASTG/DATA-Tests/MLASTG-TEST-DATA-001.md
-      - TEST-DATA-002: Sanitization Validation: MLASTG/DATA-Tests/MLASTG-TEST-DATA-002.md
-      - TEST-DATA-003: Differential Privacy Audit: MLASTG/DATA-Tests/MLASTG-TEST-DATA-003.md
+      - "TEST-DATA-001: Provenance Verification": MLASTG/DATA-Tests/MLASTG-TEST-DATA-001.md
+      - "TEST-DATA-002: Sanitization Validation": MLASTG/DATA-Tests/MLASTG-TEST-DATA-002.md
+      - "TEST-DATA-003: Differential Privacy Audit": MLASTG/DATA-Tests/MLASTG-TEST-DATA-003.md
+      - "TEST-DATA-004: Access Control Review": MLASTG/DATA-Tests/MLASTG-TEST-DATA-004.md
+      - "TEST-DATA-005: Federated Learning Poisoning": MLASTG/DATA-Tests/MLASTG-TEST-DATA-005.md
     - Model Security Tests:
       - Overview: MLASTG/MODEL-Tests/0x00-Model-Tests-Overview.md
-      - TEST-MODEL-001: Evasion Robustness: MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-001.md
-      - TEST-MODEL-002: Extraction Resistance: MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-002.md
-      - TEST-MODEL-003: Membership Inference: MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-003.md
-      - TEST-MODEL-004: Backdoor Detection: MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-004.md
+      - "TEST-MODEL-001: Evasion Robustness": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-001.md
+      - "TEST-MODEL-002: Extraction Resistance": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-002.md
+      - "TEST-MODEL-003: Membership Inference": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-003.md
+      - "TEST-MODEL-004: Backdoor Detection": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-004.md
+      - "TEST-MODEL-005: Model Integrity": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-005.md
+      - "TEST-MODEL-006: RL Reward Hacking": MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-006.md
     - LLM Security Tests:
       - Overview: MLASTG/LLM-Tests/0x00-LLM-Tests-Overview.md
-      - TEST-LLM-001: Prompt Injection: MLASTG/LLM-Tests/MLASTG-TEST-LLM-001.md
-      - TEST-LLM-002: Output Validation: MLASTG/LLM-Tests/MLASTG-TEST-LLM-002.md
-      - TEST-LLM-003: Jailbreak Testing: MLASTG/LLM-Tests/MLASTG-TEST-LLM-003.md
+      - "TEST-LLM-001: Prompt Injection": MLASTG/LLM-Tests/MLASTG-TEST-LLM-001.md
+      - "TEST-LLM-002: Output Validation": MLASTG/LLM-Tests/MLASTG-TEST-LLM-002.md
+      - "TEST-LLM-003: Jailbreak Testing": MLASTG/LLM-Tests/MLASTG-TEST-LLM-003.md
+      - "TEST-LLM-004: Multimodal Injection": MLASTG/LLM-Tests/MLASTG-TEST-LLM-004.md
     - Supply Chain Tests:
       - Overview: MLASTG/SUPPLY-Tests/0x00-Supply-Tests-Overview.md
-      - TEST-SUPPLY-001: ML-SBOM Audit: MLASTG/SUPPLY-Tests/MLASTG-TEST-SUPPLY-001.md
-      - TEST-SUPPLY-002: Model Provenance: MLASTG/SUPPLY-Tests/MLASTG-TEST-SUPPLY-002.md
+      - "TEST-SUPPLY-001: ML-SBOM Audit": MLASTG/SUPPLY-Tests/MLASTG-TEST-SUPPLY-001.md
+      - "TEST-SUPPLY-002: Model Provenance": MLASTG/SUPPLY-Tests/MLASTG-TEST-SUPPLY-002.md
     - Pipeline Tests:
       - Overview: MLASTG/PIPELINE-Tests/0x00-Pipeline-Tests-Overview.md
-      - TEST-PIPELINE-001: CI/CD Audit: MLASTG/PIPELINE-Tests/MLASTG-TEST-PIPELINE-001.md
+      - "TEST-PIPELINE-001: CI/CD Audit": MLASTG/PIPELINE-Tests/MLASTG-TEST-PIPELINE-001.md
     - Infrastructure Tests:
       - Overview: MLASTG/INFRA-Tests/0x00-Infra-Tests-Overview.md
-      - TEST-INFRA-001: Model Serving Review: MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-001.md
-      - TEST-INFRA-002: API Security Review: MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-002.md
+      - "TEST-INFRA-001: Model Serving Review": MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-001.md
+      - "TEST-INFRA-002: API Security Review": MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-002.md
+      - "TEST-INFRA-003: Agentic Workflow Security": MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-003.md
+      - "TEST-INFRA-004: Confidential Computing & TEE": MLASTG/INFRA-Tests/MLASTG-TEST-INFRA-004.md
     - Governance Tests:
       - Overview: MLASTG/GOV-Tests/0x00-Gov-Tests-Overview.md
-      - TEST-GOV-001: Governance Audit: MLASTG/GOV-Tests/MLASTG-TEST-GOV-001.md
+      - "TEST-GOV-001: Governance Audit": MLASTG/GOV-Tests/MLASTG-TEST-GOV-001.md
+      - "TEST-GOV-002: Ethics Board & HITL": MLASTG/GOV-Tests/MLASTG-TEST-GOV-002.md
 
-  - MLASWE (Weaknesses):
+  - "MLASWE (Weaknesses)":
     - Introduction: MLASWE/0x00-Introduction-Weaknesses.md
-    - MLASWE-0001: Adversarial Perturbation: MLASWE/MLASWE-0001-Adversarial-Perturbation.md
-    - MLASWE-0002: Data Poisoning: MLASWE/MLASWE-0002-Data-Poisoning.md
-    - MLASWE-0003: Model Extraction: MLASWE/MLASWE-0003-Model-Extraction.md
-    - MLASWE-0004: Model Inversion: MLASWE/MLASWE-0004-Model-Inversion.md
-    - MLASWE-0005: Membership Inference: MLASWE/MLASWE-0005-Membership-Inference.md
-    - MLASWE-0006: Prompt Injection: MLASWE/MLASWE-0006-Prompt-Injection.md
-    - MLASWE-0007: Backdoor/Trojan: MLASWE/MLASWE-0007-Backdoor-Trojan.md
-    - MLASWE-0008: Model Denial of Service: MLASWE/MLASWE-0008-Model-DoS.md
-    - MLASWE-0009: Supply Chain Compromise: MLASWE/MLASWE-0009-Supply-Chain-Compromise.md
-    - MLASWE-0010: Insecure Output Handling: MLASWE/MLASWE-0010-Insecure-Output-Handling.md
-    - MLASWE-0011: Excessive Agency: MLASWE/MLASWE-0011-Excessive-Agency.md
-    - MLASWE-0012: Training Data Leakage: MLASWE/MLASWE-0012-Training-Data-Leakage.md
+    - "MLASWE-0001: Adversarial Perturbation": MLASWE/MLASWE-0001-Adversarial-Perturbation.md
+    - "MLASWE-0002: Data Poisoning": MLASWE/MLASWE-0002-Data-Poisoning.md
+    - "MLASWE-0003: Model Extraction": MLASWE/MLASWE-0003-Model-Extraction.md
+    - "MLASWE-0004: Model Inversion": MLASWE/MLASWE-0004-Model-Inversion.md
+    - "MLASWE-0005: Membership Inference": MLASWE/MLASWE-0005-Membership-Inference.md
+    - "MLASWE-0006: Prompt Injection": MLASWE/MLASWE-0006-Prompt-Injection.md
+    - "MLASWE-0007: Backdoor/Trojan": MLASWE/MLASWE-0007-Backdoor-Trojan.md
+    - "MLASWE-0008: Model Denial of Service": MLASWE/MLASWE-0008-Model-DoS.md
+    - "MLASWE-0009: Supply Chain Compromise": MLASWE/MLASWE-0009-Supply-Chain-Compromise.md
+    - "MLASWE-0010: Insecure Output Handling": MLASWE/MLASWE-0010-Insecure-Output-Handling.md
+    - "MLASWE-0011: Excessive Agency": MLASWE/MLASWE-0011-Excessive-Agency.md
+    - "MLASWE-0012: Training Data Leakage": MLASWE/MLASWE-0012-Training-Data-Leakage.md
 
-  - Test Scripts:
-    - Overview: tests/README.md
-    - Data Tests: tests/data/README.md
-    - Model Tests: tests/model/README.md
-    - LLM Tests: tests/llm/README.md
-    - Supply Chain Tests: tests/supply/README.md
-    - Pipeline Tests: tests/pipeline/README.md
-    - Infrastructure Tests: tests/infra/README.md
-    - Governance Tools: tests/gov/README.md
-
-  - Demos:
-    - Overview: demos/README.md
+  - "ATLAS Mapping":
+    - Overview: ATLAS-Mapping/0x00-Overview.md
+    - Coverage Matrix: ATLAS-Mapping/1-Coverage-Matrix.md
+    - Gap Analysis: ATLAS-Mapping/3-Gap-Analysis.md
+    - Coverage Dashboard: ATLAS-Mapping/4-Coverage-Dashboard.md
+    - Navigator: assets/atlas-navigator.html
+    - Coverage Statistics: ATLAS-Mapping/5-Coverage-Statistics.md
 
   - Checklist:
     - MLASTG Checklist: checklist.md

@@ -4,7 +4,8 @@
 
 > **Status:** Active Development — Version 0.1 (Draft)
 > 
-> **License:** CC BY-SA 4.0
+> [![Version](https://img.shields.io/badge/version-0.1--draft-orange)](https://github.com/bb1nfosec/MLASTG)
+> [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
 
 ---
 
@@ -17,9 +18,9 @@
 
 ## Overview
 
-The **MLSec Application Security Testing Guide (MLASTG)** is a comprehensive, open-source framework for security testing machine learning (ML) systems across the full threat landscape — from traditional ML classifiers to deep neural networks and large language models (LLMs). 
+The **MLSec Application Security Testing Guide (MLASTG)** is a comprehensive, open-source framework for security testing machine learning (ML) systems across the full threat landscape — from traditional ML classifiers to deep neural networks and large language models (LLMs).
 
-Inspired by the **[OWASP Mobile Application Security Testing Guide (MASTG)](https://github.com/OWASP/MASTG)** and aligned with **[MITRE ATLAS](https://atlas.mitre.org/)** , **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)** , and **[OWASP AI Exchange](https://owaspai.org/)** , the MLASTG provides:
+Inspired by the **[OWASP Mobile Application Security Testing Guide (MASTG)](https://github.com/OWASP/MASTG)** and aligned with **[MITRE ATLAS](https://atlas.mitre.org/)**, **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)**, and **[OWASP AI Exchange](https://owaspai.org/)**, the MLASTG provides:
 
 - **A Verification Standard (MLASVS)** — What to verify, organized by control category with L1 (Standard) and L2 (Defense-in-Depth) levels
 - **A Testing Guide (MLASTG)** — How to test, with detailed step-by-step test cases mapped to controls
@@ -128,12 +129,20 @@ Enhanced controls for high-risk, enterprise/defense, and regulated environments.
 | NSA/CISA AI Security Guidance | Controls aligned with secure deployment guidance |
 | EU AI Act | MLASVS-GOV controls mapped to regulatory requirements |
 
+### ATLAS Navigator
+
+Visualize MLASTG coverage in the [MITRE ATLAS Navigator](https://mitre-attack.github.io/atlas-navigator/):
+
+1. Download the [Navigator Layer JSON](docs/ATLAS-Mapping/2-atlas-navigator-layer.json)
+2. Open ATLAS Navigator → **Layer Controls** → **Import Layer**
+3. Coverage appears as a heat map: 🟢 Full, 🟡 Partial, 🔴 None
+
 ---
 
 ## Project Structure
 
 ```
-mlastg/
+MLASTG/
 ├── README.md                    ← This file
 ├── mkdocs.yml                   ← Documentation site config
 ├── docs/
@@ -176,11 +185,14 @@ mlastg/
 ## Contributing
 
 This project is in active development. Contributions are welcome across:
-- New test cases and procedures
-- Python test script implementations
-- LLM-specific testing methodologies
+- New test cases and step-by-step procedures
+- Python test script implementations (see `tests/` directory)
+- LLM-specific testing methodologies and datasets
 - Case studies and real-world attack demonstrations
-- Translations and internationalization
+- Translations and internationalization (see `docs/zh/` for Chinese)
+- Coverage for additional MLASVS control categories
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 

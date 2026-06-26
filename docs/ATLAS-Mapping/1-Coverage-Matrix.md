@@ -31,7 +31,7 @@
 
 | ATLAS ID | Technique | Coverage | MLASVS Controls | MLASTG Tests | MLASWE |
 |----------|-----------|----------|-----------------|--------------|--------|
-| AML.TA0005 | ML Model Execution | 🟢 Full | PIPELINE-005, INFRA-012, PIPELINE-011, PIPELINE-012 | TEST-PIPELINE-001, TEST-INFRA-001 | — |
+| AML.TA0005 | ML Model Execution | 🟢 Full | PIPELINE-005, INFRA-012, INFRA-017, PIPELINE-011, PIPELINE-012 | TEST-PIPELINE-001, TEST-INFRA-001, TEST-INFRA-004 | — |
 | AML.TA0005 | Malicious Code in ML Pipeline | 🟢 Full | PIPELINE-014, PIPELINE-020 | TEST-PIPELINE-001 | — |
 
 ### Persistence (AML.TA0006)
@@ -39,7 +39,7 @@
 | ATLAS ID | Technique | Coverage | MLASVS Controls | MLASTG Tests | MLASWE |
 |----------|-----------|----------|-----------------|--------------|--------|
 | AML.TA0006 | ML Registry Manipulation | 🟢 Full | PIPELINE-008, PIPELINE-009, PIPELINE-010, PIPELINE-013 | TEST-PIPELINE-001 | — |
-| AML.TA0006 | ML Artifact Tampering | 🟢 Full | PIPELINE-002, MODEL-007, MODEL-008, MODEL-015 | TEST-PIPELINE-001, TEST-MODEL-005 | — |
+| AML.TA0006 | ML Artifact Tampering | 🟢 Full | PIPELINE-002, MODEL-007, MODEL-008, MODEL-015, MODEL-005, INFRA-022 | TEST-PIPELINE-001, TEST-MODEL-005, TEST-INFRA-004 | — |
 
 ### Defense Evasion (AML.TA0008)
 
@@ -72,7 +72,7 @@
 | ATLAS ID | Technique | Coverage | MLASVS Controls | MLASTG Tests | MLASWE |
 |----------|-----------|----------|-----------------|--------------|--------|
 | **AML.T0007** | Input Manipulation | 🟢 Full | MODEL-003, DATA-004 | TEST-MODEL-001, TEST-DATA-002 | MLASWE-0001 |
-| **AML.T0010** | Adversarial Perturbation | 🟢 Full | MODEL-001, MODEL-002, MODEL-010, MODEL-016, MODEL-017, MODEL-024, MODEL-025, MODEL-027, MODEL-029, INFRA-013 | TEST-MODEL-001, TEST-INFRA-001 | MLASWE-0001 |
+| **AML.T0010** | Adversarial Perturbation | 🟢 Full | MODEL-001, MODEL-002, MODEL-010, MODEL-016, MODEL-017, MODEL-024, MODEL-025, MODEL-027, MODEL-029, INFRA-005, INFRA-013, INFRA-017 | TEST-MODEL-001, TEST-INFRA-001, TEST-INFRA-004 | MLASWE-0001 |
 | **AML.T0018** | Model Inversion / Inference | 🟡 Partial | MODEL-019, MODEL-020, INFRA-016 | TEST-MODEL-003, TEST-INFRA-001 | MLASWE-0004, MLASWE-0005 |
 | **AML.T0020** | Data Poisoning | 🟡 Partial | DATA-011, DATA-024, DATA-025, DATA-026, DATA-029 | TEST-DATA-002 | MLASWE-0002 |
 | AML.T0020.001 | Label Poisoning | 🟡 Partial | DATA-011, DATA-013 | TEST-DATA-002 | MLASWE-0002 |
@@ -82,7 +82,7 @@
 | **AML.T0051** | LLM Prompt Injection | 🟢 Full | LLM-001, LLM-002, LLM-004, LLM-015, LLM-016, LLM-018, LLM-019, LLM-024 | TEST-LLM-001 | MLASWE-0006 |
 | **AML.T0052** | LLM Data Leakage | 🟢 Full | LLM-003, LLM-008, LLM-009, LLM-014 | TEST-LLM-002 | MLASWE-0010 |
 | **AML.T0053** | LLM Plugin Compromise | 🟢 Full | LLM-006, LLM-007, LLM-020, LLM-021, LLM-023 | TEST-LLM-001, TEST-LLM-003 | MLASWE-0011 |
-| **AML.T0056** | ML Model Behavioral Manipulation | 🟢 Full | MODEL-013, INFRA-014, INFRA-018, MON-001 | TEST-MODEL-003, TEST-INFRA-001 | — |
+| **AML.T0056** | ML Model Behavioral Manipulation | 🟢 Full | MODEL-013, INFRA-012, INFRA-014, INFRA-016, INFRA-017, INFRA-018, INFRA-022 | TEST-MODEL-003, TEST-INFRA-001, TEST-INFRA-004 | — |
 
 ## Coverage Statistics
 
@@ -92,8 +92,8 @@
 | 🟢 Full coverage | 13 (72%) |
 | 🟡 Partial coverage | 4 (22%) |
 | 🔴 No coverage | 1 (6%) |
-| **Unique MLASVS controls referenced** | 64 of 168 (38%) |
-| **Unique MLASTG test cases referenced** | 12 of 14 (86%) |
+| **Unique MLASVS controls referenced** | 68 of 168 (40%) |
+| **Unique MLASTG test cases referenced** | 16 of 16 (100%) |
 | **MLASWE weaknesses connected** | 9 of 12 (75%) |
 
 ## Notes on Methodology

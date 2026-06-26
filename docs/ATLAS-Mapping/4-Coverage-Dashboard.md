@@ -17,7 +17,7 @@
 | **Partial coverage** | 4 (22.2%) |
 | **No coverage** | 1 (5.6%) |
 | **MLASVS controls mapped** | 64 unique controls |
-| **MLASTG test cases mapped** | 12 test cases |
+| **MLASTG test cases mapped** | 16 test cases (all covered) |
 | **MLASWE weaknesses connected** | 9 weaknesses |
 
 ## Coverage by Tactic
@@ -72,11 +72,17 @@
 
 ## Recommendations
 
-### Next release (v0.2)
-1. Add **Reconnaissance detection** control — currently the only zero-coverage area
-2. Upgrade **Data Poisoning** to Full coverage with L1 automated detection tests
+### v0.2 (Next Release)
+1. Add **Reconnaissance detection** control (GOV-016a) — currently the only zero-coverage area
+2. Upgrade **Data Poisoning** to Full coverage with L1 automated detection tests (TEST-DATA-002)
+3. Add L1 **Model Inversion** prevention control (output confidence clipping)
 
-### Medium-term
-1. Add L1 controls for **Model Inversion** (e.g., output confidence rounding)
-2. Extend coverage to multimodal ML attacks (vision-language models)
-3. Add **Reinforcement Learning** controls (reward poisoning scenarios)
+### v0.3
+1. Strengthen **Backdoor** prevention with automated training-time detection
+2. Add continuous **base model monitoring** control for supply chain
+3. Extend coverage to non-LLM output handling (AML.T0043)
+
+### v0.4+
+1. Extend to multimodal ML attacks (vision-language models)
+2. Add **Reinforcement Learning** controls (reward poisoning scenarios)
+3. Add **Federated Learning** security controls

@@ -31,6 +31,14 @@ This directory contains the complete mapping between the **MLASTG framework** (M
 | **Unique MLASVS controls** | 64 of 168 (38% coverage density) |
 | **ATLAS Navigator techniques** | 10 technique IDs with scores |
 
+## ATLAS Navigator Import
+
+To visualize coverage in the MITRE ATLAS Navigator:
+1. Download [`2-atlas-navigator-layer.json`](2-atlas-navigator-layer.json)
+2. Open [MITRE ATLAS Navigator](https://mitre-attack.github.io/atlas-navigator/)
+3. Click **Layer Controls** → **Import Layer** → select the JSON file
+4. Coverage will appear as a heat map (green = full, yellow = partial, red = none)
+
 ## Notes
 - Only **official MITRE ATLAS technique IDs** are included. Attack paths without official IDs use "—" and are tracked in the Gap Analysis.
 - Tactic-level mappings (AML.TA####) indicate general coverage across techniques under that tactic.

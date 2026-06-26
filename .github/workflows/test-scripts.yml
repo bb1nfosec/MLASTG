@@ -1,4 +1,5 @@
 name: Run MLASTG Test Scripts
+
 on:
   push:
     branches: [main]
@@ -22,7 +23,7 @@ jobs:
 
       - name: Install core dependencies
         run: |
-          pip install scikit-learn numpy requests
+          pip install scikit-learn numpy requests pytest
 
       - name: Install ART (for adversarial robustness tests)
         run: |
@@ -49,5 +50,20 @@ jobs:
       - name: Run API security demo
         run: python tests/infra/test_api_security.py --demo
 
+      - name: Run pipeline security demo
+        run: python tests/pipeline/test_pipeline_security.py --demo
+
+      - name: Run TEE security demo
+        run: python tests/infra/test_tee_security.py --demo
+
       - name: Run prompt injection demo (requires requests)
         run: python tests/llm/test_prompt_injection.py --help
+
+      # NOTE: These are demo/smoke runs using synthetic data.
+      # Full assessments require actual models and datasets.
+      - name: Run pytest on all testable scripts
+        run: |
+          python -m pytest tests/model/test_adversarial_robustness.py --demo -v
+          python -m pytest tests/data/test_data_sanitization.py --demo -v
+          python -m pytest tests/pipeline/test_pipeline_security.py --demo -v
+          python -m pytest tests/infra/test_tee_security.py -v
