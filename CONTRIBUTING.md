@@ -47,6 +47,21 @@ We especially welcome translation contributions:
 - MLASWE entries must follow the structured template with all sections
 - Translations must preserve technical accuracy of security terminology
 
+## Developer Tools
+
+The project includes automation tools for maintainers:
+
+```bash
+# Sync ATLAS Navigator HTML from JSON
+python tools/sync_navigator.py --update
+
+# Auto-generate Coverage Statistics page
+python tools/generate_coverage_stats.py
+
+# Verify Navigator sync status
+python tools/sync_navigator.py --check
+```
+
 ## Code of Conduct
 
 We are committed to providing a welcoming, inclusive experience for everyone. We follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By participating, you agree to uphold its standards of behavior.
