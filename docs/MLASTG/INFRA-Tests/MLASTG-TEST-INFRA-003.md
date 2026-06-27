@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-LLM-006 (Plugin Permission Scoping), MLASVS-LLM-007 (Tool Call Authorization), MLASVS-LLM-010 (Human-in-the-Loop for Critical Actions), MLASVS-LLM-020 (Agentic Workflow Authorization — L2), MLASVS-LLM-021 (Tool/Plugin Isolation Sandbox — L2), MLASVS-LLM-023 (Human Override Mechanisms — L2)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview

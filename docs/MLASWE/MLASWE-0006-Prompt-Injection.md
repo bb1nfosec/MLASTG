@@ -1,34 +1,32 @@
 # MLASWE-0006: Prompt Injection
 
 ## Description
-Prompt injection is the exploitation of LLM applications through crafted inputs that override or manipulate the model's system instructions. Attackers can force the model to perform unauthorized actions, reveal sensitive information, bypass content restrictions, or execute harmful tool calls.
+Prompt injection is a critical vulnerability wherein an adversary exploits Large Language Model (LLM) interfaces by supplying crafted inputs that override, subvert, or manipulate the model's foundational system instructions. This weakness allows attackers to hijack the LLM's execution flow, potentially forcing the system to exfiltrate sensitive data, execute unauthorized tool calls, bypass content filters, or generate malicious payloads. 
 
 ## Risk
-- **Severity:** Critical
-- **Exploitability:** Easy (requires only text input)
-- **Prevalence:** Common (affects all LLM applications to varying degrees)
+- **Severity:** Critical (can lead to full system compromise depending on agentic capabilities)
+- **Exploitability:** High (requires only text-based interaction; low barrier to entry)
+- **Prevalence:** Widespread (systemically affects all foundational LLMs to varying degrees)
 
 ## Affected Components
-- LLM chat/completion endpoints
-- RAG applications (indirect injection through retrieved documents)
-- LLM-powered agents with tool/plugin access
-- Multi-turn conversational systems
-- Systems with function calling capabilities
+- LLM-driven chat and completion API endpoints.
+- Retrieval-Augmented Generation (RAG) pipelines processing untrusted external data.
+- Autonomous LLM agents possessing tool, API, or execution environment access.
+- Multi-turn conversational interfaces maintaining persistent context.
 
 ## Sub-types
 | Type | Description | Difficulty |
 |------|-------------|------------|
-| **Direct injection** | User input directly overrides system prompt | Easy |
-| **Indirect injection** | Malicious content in retrieved documents/context | Medium |
-| **Multi-turn injection** | Gradual instruction bending across conversation turns | Medium |
-| **Latent injection** | Injection hidden in embeddings or encoded form | Hard |
+| **Direct Injection (Jailbreaking)** | User input directly contradicts or overrides system instructions. | Low |
+| **Indirect Injection** | Malicious payloads are embedded in third-party data retrieved by RAG systems. | Medium |
+| **Multi-turn Injection** | The attacker progressively manipulates model state across a prolonged session. | Medium |
+| **Latent/Encoded Injection** | Payloads are obfuscated (e.g., Base64, token-smuggling) to evade basic filters. | High |
 
 ## Detection Methods
-- **Input Pattern Analysis:** Detect known injection patterns and delimiters
-- **LLM-based Detection:** Use a secondary LLM to classify prompt intent
-- **Embedding Analysis:** Detect anomalous embedding patterns
-- **Output Monitoring:** Flag responses that deviate from expected behavior
-- **Canary Tokens:** Insert trap tokens that should never appear in output
+- **Input Pattern Analysis:** Security gateways MUST employ pattern matching to detect known injection signatures, control characters, and bypass techniques.
+- **Semantic Intent Monitoring:** Organizations SHOULD deploy secondary LLM-based classifiers to evaluate the malicious intent of incoming prompts.
+- **Embedding Anomaly Detection:** Systems SHOULD analyze input embeddings to detect adversarial or out-of-distribution structures.
+- **Canary Tokens:** Developers MAY insert hidden tokens in the system prompt; if the LLM outputs the token, a prompt injection attack is highly probable.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-LLM-001:** Prompt injection prevention
@@ -37,7 +35,6 @@ Prompt injection is the exploitation of LLM applications through crafted inputs 
 - **MLASVS-LLM-015:** Prompt firewall deployment (L2)
 - **MLASVS-LLM-016:** Semantic prompt filtering (L2)
 - **MLASVS-LLM-018:** RAG security controls (L2)
-- **MLASVS-LLM-019:** Embedding-level anomaly detection (L2)
 
 ## Attack Techniques (MITRE ATLAS)
 - **AML.T0051:** LLM Prompt Injection (primary)
@@ -45,21 +42,18 @@ Prompt injection is the exploitation of LLM applications through crafted inputs 
 - **AML.T0053:** LLM Plugin Compromise
 
 ## Remediation
-1. **Input Sanitization:** Filter known injection patterns
-2. **Prompt Engineering:** Use robust system prompts with clear boundaries
-3. **Prompt Firewall:** Deploy dedicated injection detection middleware
-4. **Output Validation:** Filter responses for policy violations
-5. **Least Privilege:** Grant LLMs minimal necessary permissions
-6. **Human-in-the-Loop:** Require human approval for sensitive operations
+1. **Prompt Isolation:** Developers MUST logically separate system instructions from user inputs using robust delimiters (e.g., ChatML formats).
+2. **AI Firewalls:** Organizations MUST deploy dedicated LLM firewalls (e.g., NeMo Guardrails) to perform semantic inspection of all inputs and outputs.
+3. **Privilege Separation:** LLM agents MUST operate under the Principle of Least Privilege, explicitly lacking the authority to perform high-impact actions without human authorization.
+4. **Data Sanitization:** All data retrieved by RAG pipelines MUST be sanitized and explicitly marked as untrusted prior to model ingestion.
+5. **Instruction Defense:** System prompts SHOULD incorporate state-of-the-art defensive framing, explicitly instructing the model to disregard conflicting user directives.
 
 ## Real-World Examples
-- **Samsung ChatGPT leak (2023):** Engineer pasted proprietary code into ChatGPT
-- **Remote code execution via plugin:** Injection that exploited browser automation plugins
-- **Indirect injection via web scraping:** RAG system compromised by malicious web content
-- **Jailbreak prompt marketplaces:** Publicly traded jailbreak templates (DAN, etc.)
+- **Corporate Data Exfiltration:** Employees inadvertently leaked proprietary source code and PII by bypassing ChatGPT's corporate data guardrails.
+- **RAG Poisoning:** Attackers embedded invisible text in websites, hijacking web-crawling LLMs to return attacker-controlled summaries.
+- **Plugin Exploitation:** Attackers utilized prompt injection to force LLM agents into executing unauthorized HTTP requests via connected plugins.
 
 ## References
 - OWASP LLM Top 10: LLM01
 - MITRE ATLAS: AML.T0051
 - Greshake et al., "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection" (2023)
-- Kang et al., "Exploiting Programmatic Behavior of LLMs: Dual-Use Through Prompt Injection" (2023)

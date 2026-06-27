@@ -1,29 +1,30 @@
 # MLASWE-0004: Model Inversion
 
 ## Description
-Model inversion attacks attempt to reconstruct the original training data from model outputs. By exploiting the model's confidence scores and gradients, attackers can generate class-representative samples that reveal sensitive training data. For example, a facial recognition model can be inverted to generate images that resemble individuals in the training set.
+Model inversion attacks are designed to reconstruct the original, sensitive training data from a model's outputs. By systematically exploiting the model's confidence scores, gradients, or latent space representations, adversaries can reverse-engineer class-representative samples or exact training artifacts. This vulnerability poses a severe privacy risk, particularly when models are trained on highly sensitive datasets such as biometric identifiers, medical records, or proprietary financial data.
 
 ## Risk
-- **Severity:** Medium (surface general features) to High (reconstruct specific records)
-- **Exploitability:** Medium (requires white-box access or high-confidence API)
-- **Prevalence:** Uncommon (more computationally intensive than other attacks)
+- **Severity:** Medium (Recovery of generalized class features) to High (Deterministic reconstruction of specific, sensitive training records)
+- **Exploitability:** Medium (Typically requires white-box access, federated learning gradients, or high-confidence black-box API access)
+- **Prevalence:** Uncommon in production, as it demands significant computational overhead and specific model architectures.
 
 ## Affected Components
-- Generative and discriminative models with high-dimensional outputs
-- Facial recognition, medical diagnosis, and biometric models
-- Any model trained on sensitive personal data
+- Generative models, Autoencoders, and Discriminative models yielding high-dimensional outputs
+- Biometric authentication systems (e.g., facial or voice recognition)
+- Federated learning environments (gradient leakage)
+- Any architecture trained on Personally Identifiable Information (PII) or Protected Health Information (PHI)
 
 ## Sub-types
 | Type | Description | Data Leakage |
 |------|-------------|--------------|
-| **Class-based inversion** | Generate representative sample for a class label | Class features |
-| **Registration-based inversion** | Reconstruct specific training record | Individual data |
-| **Gradient-based inversion** | Recover data from model gradients (federated learning) | Precise records |
+| **Class-Based Inversion** | Generating a synthetic sample that maximizes the likelihood for a specific class label. | Generalized class features |
+| **Registration-Based Inversion** | Reconstructing specific, individual records from the training corpus. | Exact individual data |
+| **Gradient-Based Inversion** | Reconstructing training artifacts by intercepting model updates or gradients (primarily in Federated Learning). | Precise data records |
 
 ## Detection Methods
-- **Reconstruction Attack Simulation:** Attempt inversion and measure similarity to training data
-- **Differential Privacy Auditing:** Verify that DP guarantees bound inversion risk
-- **Overfitting Analysis:** Check for memorization indicators
+- **Reconstruction Attack Simulation:** Organizations MUST routinely simulate inversion attacks during the validation phase to quantify the similarity (e.g., Structural Similarity Index, L2 distance) between generated samples and the original training data.
+- **Differential Privacy Auditing:** Continuously monitor and audit empirical privacy leakage against the theoretical epsilon ($\epsilon$) and delta ($\delta$) guarantees provided by DP frameworks.
+- **Overfitting and Memorization Analysis:** Utilize hold-out sets to identify models exhibiting catastrophic memorization, which is a strong precursor to successful inversion.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-MODEL-019:** Differential privacy in model (L2)
@@ -31,13 +32,14 @@ Model inversion attacks attempt to reconstruct the original training data from m
 - **MLASVS-DATA-019:** Differential privacy guarantees
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.T0018:** Model Inversion (primary)
+- **AML.T0018:** Model Inversion (Primary)
 
 ## Remediation
-1. **Differential Privacy:** Train with DP-SGD to limit per-sample influence
-2. **Confidence Limiting:** Reduce output precision, apply temperature scaling
-3. **Regularization:** Apply strong regularization to prevent overfitting
-4. **Output Filtering:** Suppress high-confidence predictions that enable inversion
+1. **Differential Privacy Implementation:** Training pipelines MUST implement Differential Privacy (e.g., DP-SGD) to mathematically bound the influence of any single training record, effectively neutralizing inversion capabilities.
+2. **Output Confidence Truncation:** Inference APIs MUST truncate, obfuscate, or apply temperature scaling to output probabilities, denying the attacker the high-precision gradient estimations required for inversion.
+3. **Rigorous Regularization:** The model SHOULD employ aggressive regularization strategies (e.g., heavy Dropout, L2 weight decay, Early Stopping) to prevent the memorization of training data artifacts.
+4. **Gradient Obfuscation (Federated Learning):** In distributed architectures, the system MUST utilize Secure Multi-Party Computation (SMPC), Homomorphic Encryption, or gradient clipping/noising to prevent gradient-based inversion attacks.
+5. **Output Filtering Circuit Breakers:** Implement dynamic filtering to suppress abnormally high-confidence predictions that exceed a predefined safety threshold, mitigating precise feature recovery.
 
 ## References
 - Fredrikson et al., "Model Inversion Attacks that Exploit Confidence Information" (2015)

@@ -114,6 +114,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - Quick Start: Quick-Start.md
 
   - "MLASVS (Standard)":
     - Introduction: MLASVS/0x00-Introduction.md
@@ -218,6 +219,7 @@ nav:
     - "MLASWE-0010: Insecure Output Handling": MLASWE/MLASWE-0010-Insecure-Output-Handling.md
     - "MLASWE-0011: Excessive Agency": MLASWE/MLASWE-0011-Excessive-Agency.md
     - "MLASWE-0012: Training Data Leakage": MLASWE/MLASWE-0012-Training-Data-Leakage.md
+    - "MLASWE-0013: Systemic Overreliance": MLASWE/MLASWE-0013-Systemic-Overreliance.md
 
   - "ATLAS Mapping":
     - Overview: ATLAS-Mapping/0x00-Overview.md

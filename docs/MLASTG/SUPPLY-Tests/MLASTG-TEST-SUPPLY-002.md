@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-SUPPLY-002 (Pre-trained Model Origin Verification), MLASVS-SUPPLY-006 (Model Hash Verification at Load), MLASVS-SUPPLY-007 (Transfer Learning Source Validation), MLASVS-SUPPLY-009 (Base Model Vulnerability Scanning), MLASVS-SUPPLY-011 (Secure Model Distribution Channels), MLASVS-SUPPLY-012 (Third-Party Model Evaluation Report), MLASVS-SUPPLY-015 (Cryptographic Model Provenance — L2), MLASVS-SUPPLY-016 (Model Signing and Attestation — L2), MLASVS-SUPPLY-018 (Adversarial Robustness of Base Model — L2), MLASVS-SUPPLY-019 (Backdoor Scanning of Pre-Trained Models — L2), MLASVS-SUPPLY-020 (Vendor Security Assessment Program — L2), MLASVS-SUPPLY-022 (Reproducible Build Verification — L2)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview

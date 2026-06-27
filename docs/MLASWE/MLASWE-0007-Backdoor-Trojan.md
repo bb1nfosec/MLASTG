@@ -1,32 +1,32 @@
 # MLASWE-0007: Backdoor/Trojan
 
 ## Description
-A backdoor or trojan attack embeds a hidden trigger pattern into a model during training such that the model behaves normally on benign inputs but produces attacker-controlled outputs when the trigger is present. These attacks are extremely difficult to detect because the model passes standard validation and testing — the backdoor only activates on inputs containing the specific trigger.
+A machine learning backdoor (or trojan) is a stealthy vulnerability where a model is intentionally compromised during training or fine-tuning to exhibit malicious behavior only when presented with a specific, attacker-defined trigger. In the absence of the trigger, the model MUST perform nominally, allowing it to evade standard quality assurance and validation testing. This constitutes a severe supply chain and integrity risk.
 
 ## Risk
-- **Severity:** Critical (stealthy, persistent, attacker-controlled behavior)
-- **Exploitability:** Hard (requires poisoning the training process or supply chain)
-- **Prevalence:** Rare but extremely dangerous
+- **Severity:** Critical (enables persistent, targeted, and attacker-controlled outcomes)
+- **Exploitability:** High (if the adversary has supply chain access); Low (post-deployment)
+- **Prevalence:** Rare in the wild, but represents a catastrophic systemic risk for enterprise ML.
 
 ## Affected Components
-- Models from third-party or pre-trained sources
-- Transfer learning pipelines (fine-tuning compromised base models)
-- Systems using public model zoos (Hugging Face, TorchHub, TF Hub)
+- Pre-trained foundational models sourced from public repositories (e.g., Hugging Face, TorchHub).
+- Transfer learning and fine-tuning pipelines utilizing third-party weights.
+- Federated learning environments lacking robust aggregation defenses.
+- Outsourced Model-as-a-Service (MaaS) training environments.
 
 ## Sub-types
-| Type | Description | Trigger |
-|------|-------------|---------|
-| **Patch-based backdoor** | Small visual patch triggers misclassification | Spatial (e.g., corner sticker) |
-| **Blended backdoor** | Trigger blended into training images at low opacity | Visual blending |
-| **Weight poisoning** | Direct manipulation of model weights post-training | None (always present) |
-| **Input-independent backdoor** | Any input with a particular feature triggers misclassification | Semantic (e.g., specific color) |
+| Type | Description | Trigger Nature |
+|------|-------------|----------------|
+| **Patch-based** | A localized visual anomaly (e.g., a specific pixel pattern or sticker) forces misclassification. | Spatial / Visual |
+| **Blended** | The trigger is subtly blended into inputs globally (e.g., specific image noise). | Latent |
+| **Semantic** | The model triggers upon a specific contextual concept (e.g., a specific word or phrase in NLP). | Contextual |
+| **Weight Poisoning** | Direct surgical modification of model weights post-training to embed the backdoor. | Structural |
 
 ## Detection Methods
-- **Activation Clustering:** Analyze neuron activations for poisoned clusters
-- **Trigger Inversion:** Reverse-engineer potential trigger patterns
-- **Pruning-based Detection:** Remove or disable neurons that activate only on triggers
-- **Spectral Signatures:** Analyze covariance of feature representations
-- **Fine-tuning Analysis:** Check if fine-tuning removes backdoor behavior
+- **Activation Clustering:** Security teams SHOULD analyze neural activation patterns to identify anomalous clusters indicating trojaned neurons.
+- **Trigger Inversion:** Analysts MUST attempt to mathematically reverse-engineer potential triggers using optimization techniques (e.g., Neural Cleanse).
+- **Spectral Signatures:** Data pipelines SHOULD evaluate the covariance of latent feature representations to detect poisoned training samples.
+- **Robustness Auditing:** QA teams MUST test models against out-of-distribution and adversarial inputs prior to production deployment.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-MODEL-021:** Backdoor detection validation (L2)
@@ -38,18 +38,17 @@ A backdoor or trojan attack embeds a hidden trigger pattern into a model during 
 - **AML.T0020.002:** Data Poisoning - Backdoor
 
 ## Remediation
-1. **Model Sanitization:** Apply pruning-based defenses to remove potential backdoor neurons
-2. **Fine-tuning:** Fine-tune models on clean data to overwrite backdoor behavior
-3. **Input Preprocessing:** Detect and neutralize trigger patterns in inputs
-4. **Provenance:** Only use models from trusted, verifiable sources
-5. **Robust Training:** Use training methods resistant to poisoning
+1. **Provenance Verification:** Organizations MUST strictly source models and datasets from trusted, cryptographically verifiable vendors.
+2. **Model Sanitization:** Engineering teams SHOULD employ model pruning to surgically excise dormant neurons that may harbor backdoor logic.
+3. **Robust Aggregation:** Federated learning systems MUST utilize robust aggregation protocols (e.g., Krum, Trimmed Mean) to neutralize malicious updates.
+4. **Adversarial Fine-Tuning:** Teams SHOULD subject third-party models to rigorous fine-tuning on highly curated, clean datasets to overwrite potential trojan behaviors.
+5. **Input Anomaly Detection:** Systems MUST deploy runtime input sanitization to detect and strip potential physical or digital triggers.
 
 ## Real-World Examples
-- **BadNets (2017):** First systematic demonstration of backdoor attacks on neural networks
-- **Hugging Face poisoned models:** Researchers found backdoored models on public model hubs
-- **Supply chain backdoor via pre-trained weight:** Trojan inserted into pre-trained ImageNet model
+- **BadNets (2017):** Demonstrated the feasibility of backdooring deep neural networks by poisoning a small fraction of training data, causing targeted misclassification.
+- **Public Model Hubs:** Security researchers have routinely identified backdoored or maliciously modified models hosted on public platforms, waiting for enterprise integration.
 
 ## References
 - Gu et al., "BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain" (2017)
-- Chen et al., "Targeted Backdoor Attacks on Deep Learning Systems Using Data Poisoning" (2017)
-- MITRE ATLAS: AML.T0020 (Data Poisoning), AML.T0020.000 (Backdoor Poisoning sub-technique)
+- Wang et al., "Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks" (2019)
+- MITRE ATLAS: AML.T0020.002

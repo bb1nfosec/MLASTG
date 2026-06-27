@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-INFRA-001 (Model Serving Network Segmentation), MLASVS-INFRA-005 (GPU/Compute Isolation), MLASVS-INFRA-006 (Model Cache Security), MLASVS-INFRA-007 (Inference Request Logging), MLASVS-INFRA-008 (Batch Inference Security), MLASVS-INFRA-012 (Model Health Monitoring), MLASVS-INFRA-013 (Adversarial Input Detection at Inference — L2), MLASVS-INFRA-014 (Runtime Model Behavior Monitoring — L2), MLASVS-INFRA-015 (Automated Model Rollback on Anomaly — L2), MLASVS-INFRA-016 (Side-Channel Attack Prevention — L2), MLASVS-INFRA-017 (Confidential Computing for Inference — L2), MLASVS-INFRA-018 (Real-time Drift Monitoring — L2), MLASVS-INFRA-019 (ML-Specific SIEM Integration — L2), MLASVS-INFRA-020 (Dedicated ML Incident Response Playbook — L2), MLASVS-INFRA-022 (Hardware-Rooted Model Attestation — L2)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview

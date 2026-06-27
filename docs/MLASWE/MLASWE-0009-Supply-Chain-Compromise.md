@@ -1,49 +1,48 @@
 # MLASWE-0009: Supply Chain Compromise
 
 ## Description
-Supply chain compromise occurs when third-party ML components — pre-trained models, training datasets, ML libraries, or training infrastructure — contain security vulnerabilities, malicious code, or hidden backdoors that compromise the final ML system. This is especially dangerous in ML because compromised models can pass standard validation while containing hidden malicious behaviors.
+Supply chain compromise in machine learning occurs when an adversary infiltrates an organization's ML pipeline via compromised third-party dependencies, including pre-trained models, datasets, ML frameworks, or infrastructure. Because ML models are opaque binary blobs (e.g., Pickle files, PyTorch weights) and datasets are massive, they serve as ideal vectors for embedding malicious code or backdoors. This represents a critical systemic risk to enterprise ML integrity.
 
 ## Risk
-- **Severity:** Critical (stealthy, high-impact, difficult to detect)
-- **Exploitability:** Hard (requires compromising upstream ML component)
-- **Prevalence:** Uncommon but growing rapidly with ML adoption
+- **Severity:** Critical (can lead to RCE, data theft, or systemic model backdoors)
+- **Exploitability:** Medium (requires compromise of a popular upstream repository or typosquatting)
+- **Prevalence:** Rapidly increasing alongside the reliance on public model hubs (e.g., Hugging Face, GitHub).
 
 ## Affected Components
-- Pre-trained models from public hubs (Hugging Face, PyTorch Hub, TF Hub)
-- Third-party training datasets (Kaggle, academic datasets, web-scraped data)
-- ML libraries and frameworks with vulnerabilities
-- Cloud/third-party training infrastructure
-- Transfer learning and fine-tuning pipelines
+- Public model repositories and pre-trained foundation models.
+- Third-party open-source datasets and web-scraped corpora.
+- Core ML frameworks (PyTorch, TensorFlow) and Python dependencies.
+- Cloud-based training environments and MLOps orchestration pipelines.
 
 ## Detection Methods
-- **ML-SBOM Verification:** Inventory and scan all ML components
-- **Model Scanning:** Detect unsafe code in model files (Pickle deserialization)
-- **Dataset Integrity Verification:** Check cryptographic hashes and provenance
-- **Dependency Scanning:** Identify known CVEs in ML libraries
-- **Behavioral Analysis:** Test model behavior against expected ranges
+- **Cryptographic Provenance:** Systems MUST verify digital signatures and cryptographic hashes of all incoming models and datasets.
+- **Static Artifact Analysis:** Security tools MUST scan model artifacts for unsafe serialization formats (e.g., identifying arbitrary code execution in Pickle files).
+- **Software Composition Analysis (SCA):** Pipelines MUST scan all Python dependencies and ML frameworks for known CVEs.
+- **Behavioral Sandboxing:** Models SHOULD be instantiated and tested within strict, network-isolated sandboxes to detect anomalous system calls.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-SUPPLY-001 through 022:** Full supply chain controls
-- **MLASVS-DATA-001, 002:** Data provenance and integrity
-- **MLASVS-MODEL-021, 022:** Backdoor and trojan detection (L2)
+- **MLASVS-DATA-001:** Data provenance documentation
+- **MLASVS-DATA-002:** Data integrity verification
+- **MLASVS-MODEL-021:** Backdoor detection validation (L2)
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.TA0003:** Resource Development (supply chain compromise)
+- **AML.TA0003:** Resource Development (Supply Chain)
+- **AML.T0010:** ML Supply Chain Compromise
 
 ## Remediation
-1. **ML-SBOM:** Generate and maintain complete Software Bill of Materials for all ML components
-2. **Provenance Verification:** Use cryptographic signatures for models and datasets
-3. **Model Scanning:** Scan model files for unsafe serialization code
-4. **Dependency Scanning:** Use standard vulnerability scanners (Trivy, Snyk) for ML libraries
-5. **Trusted Sources:** Restrict model/data sourcing to curated, vetted repositories
-6. **Vendor Assessment:** Evaluate third-party AI vendors for security posture
+1. **Machine Learning SBOM (ML-SBOM):** Organizations MUST maintain an exhaustive Machine Learning Bill of Materials detailing the provenance of all data, weights, and software dependencies.
+2. **Safe Serialization:** Teams MUST strictly prohibit the use of insecure serialization formats (e.g., Python `pickle`). Models MUST be saved in secure formats (e.g., `safetensors`, ONNX).
+3. **Artifact Scanning:** CI/CD pipelines MUST integrate specialized scanners (e.g., ModelScan, ProtectAI) to evaluate model weights for embedded malicious payloads prior to deployment.
+4. **Network Isolation:** Training and inference environments MUST operate in strictly isolated networks with no egress internet access to prevent payload staging or data exfiltration.
+5. **Private Registries:** Enterprises SHOULD utilize internal, curated, and hardened registries for approved ML models and datasets, prohibiting direct developer downloads from public hubs.
 
 ## Real-World Examples
-- **Hugging Face pickle exploits:** Malicious PyTorch models executing arbitrary code on load
-- **Poisoned academic datasets:** Deliberately corrupted labels in public research datasets
-- **PyPI typosquatting for ML packages:** Malicious packages with misspelled names of popular ML libraries
+- **Hugging Face Malicious Models:** Security analysts routinely discover models on public hubs utilizing PyTorch's `pickle` format to execute reverse shells upon instantiation.
+- **PyPI Typosquatting:** Attackers deployed malicious Python packages mimicking popular ML libraries, resulting in credential theft from developer environments.
+- **Poisoned Datasets:** Adversaries have compromised public academic datasets by altering labels, subsequently poisoning downstream corporate models.
 
 ## References
-- MITRE ATLAS: AML.TA0003
-- OWASP LLM Top 10: LLM05
+- OWASP LLM Top 10: LLM05 (Supply Chain Vulnerabilities)
+- MITRE ATLAS: AML.T0010
 - Bagdasaryan et al., "How To Backdoor Federated Learning" (2020)

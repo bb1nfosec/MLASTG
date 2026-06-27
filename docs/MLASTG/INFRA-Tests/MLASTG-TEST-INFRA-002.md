@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-INFRA-002 (Inference Endpoint Authentication), MLASVS-INFRA-003 (Inference Endpoint Authorization), MLASVS-INFRA-004 (TLS for Model Endpoints), MLASVS-INFRA-009 (API Rate Limiting), MLASVS-INFRA-010 (Input Size Validation), MLASVS-INFRA-011 (API Versioning), MLASVS-INFRA-021 (Continuous Penetration Testing — L2)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview

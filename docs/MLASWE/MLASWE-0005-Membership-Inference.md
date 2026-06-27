@@ -1,30 +1,31 @@
 # MLASWE-0005: Membership Inference
 
 ## Description
-Membership inference attacks determine whether a specific data point was part of the model's training set. This privacy breach can reveal sensitive information about individuals whose data was used in training — for example, determining that a particular patient's records were used to train a medical diagnosis model, implying that individual has that medical condition.
+Membership inference attacks occur when an adversary can ascertain whether a specific data record was included in a model's training dataset. In enterprise environments processing PII, PHI, or proprietary intellectual property, this vulnerability constitutes a critical privacy breach. An attacker MAY exploit the model's confidence scores or decision boundaries to infer the presence of sensitive records, thereby violating confidentiality guarantees and regulatory requirements (e.g., GDPR, HIPAA).
 
 ## Risk
-- **Severity:** Medium (privacy breach) to High (when used to infer sensitive attributes)
-- **Exploitability:** Medium (requires model API access and some baseline data)
-- **Prevalence:** Common (most overfitted models are vulnerable)
+- **Severity:** Medium (general privacy breach) to Critical (when inferring highly sensitive or regulated attributes)
+- **Exploitability:** Medium (requires API access, target baseline data, and statistical analysis capabilities)
+- **Prevalence:** Common (frequently observed in overfitted models or models trained on sparse datasets)
 
 ## Affected Components
-- Classification models with confidence outputs
-- Models with significant overfitting
-- Medical, financial, and other sensitive-data models
+- Classification models exposing high-precision confidence scores or logits.
+- Models exhibiting significant overfitting to training data.
+- Generative models capable of emitting exact memorized training artifacts.
+- ML pipelines processing medical, financial, or other highly regulated data.
 
 ## Sub-types
 | Type | Description | Information Leakage |
 |------|-------------|---------------------|
-| **Confidence-based** | Attack uses output confidence scores to distinguish training vs. non-training data | High leakage |
-| **Label-only** | Attack uses only hard labels without confidence scores | Lower leakage, more queries needed |
-| **Black-box** | No access to model internals, only API | Medium |
-| **White-box** | Full access to model parameters and gradients | Maximum leakage |
+| **Confidence-based** | The attacker utilizes output confidence scores to differentiate training vs. non-training data. | High |
+| **Label-only** | The attacker infers membership solely from hard classification labels (requires a higher volume of queries). | Medium |
+| **Black-box** | The attacker possesses only API access to the model, without knowledge of its internal parameters. | Medium |
+| **White-box** | The attacker possesses full access to the model architecture, parameters, and gradients. | Critical |
 
 ## Detection Methods
-- **Shadow Model Training:** Train attack models to distinguish training vs. non-training data
-- **Confidence Distribution Analysis:** Compare confidence scores on known vs. unknown data
-- **Differential Privacy Auditing:** Measure empirical privacy leakage against DP guarantees
+- **Shadow Model Training:** Organizations SHOULD train shadow models mimicking the target to evaluate empirical membership inference vulnerability.
+- **Confidence Distribution Analysis:** Security teams MUST monitor and compare confidence score distributions on known vs. unknown data.
+- **Privacy Leakage Auditing:** Auditors MUST empirically measure privacy leakage against theoretical Differential Privacy (DP) bounds.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-MODEL-019:** Differential privacy in model (L2)
@@ -35,14 +36,15 @@ Membership inference attacks determine whether a specific data point was part of
 - **AML.T0018:** Model Inversion (related technique)
 
 ## Remediation
-1. **Differential Privacy:** Train with DP-SGD (provable membership inference resistance)
-2. **Regularization:** Reduce overfitting through L1/L2 regularization, dropout
-3. **Model Stacking:** Use ensemble methods that reduce overfitting
-4. **Output Obfuscation:** Limit prediction vector precision, round or clip outputs
+1. **Differential Privacy:** Organizations MUST implement Differential Privacy (e.g., DP-SGD) during training to provide mathematical bounds on membership leakage.
+2. **Regularization:** Engineers SHOULD employ robust regularization techniques (e.g., L1/L2 penalties, dropout, early stopping) to strictly mitigate overfitting.
+3. **Output Obfuscation:** The system MUST restrict output granularity by clipping, rounding, or masking high-precision confidence vectors exposed to end users.
+4. **Ensemble Methods:** Architecture SHOULD utilize model stacking or ensemble learning to reduce individual model memorization capacity.
+5. **Data Minimization:** Teams MUST rigorously apply data minimization principles, ensuring only essential data is utilized for model training.
 
 ## Real-World Examples
-- **Hospital readmission model:** Attackers determined which patients' records were used to train a readmission prediction model, inferring those patients had higher readmission risk
-- **Genome-wide association studies:** Membership inference on genomic data models revealed individual participation in sensitive studies
+- **Healthcare Data Leakage:** Attackers inferred patient participation in sensitive medical cohorts by analyzing the predictive confidence of clinical diagnostic models.
+- **Genomic Privacy Breaches:** Membership inference attacks successfully identified individuals within genome-wide association study (GWAS) datasets.
 
 ## References
 - Shokri et al., "Membership Inference Attacks Against Machine Learning Models" (IEEE S&P 2017)

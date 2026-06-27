@@ -1,22 +1,22 @@
 # MLASWE-0001: Adversarial Perturbation
 
 ## Description
-Adversarial perturbation involves crafting inputs with small, often imperceptible modifications that cause an ML model to produce incorrect outputs. These perturbations exploit the model's decision boundaries and are a fundamental weakness of most ML architectures.
+Adversarial perturbation involves the deliberate crafting of inputs with subtle, often imperceptible modifications designed to force a machine learning (ML) model to produce incorrect or targeted outputs. These perturbations exploit the highly non-linear decision boundaries of ML architectures. This vulnerability is fundamental to most contemporary deep learning models, representing a critical threat to system integrity.
 
 ## Risk
 - **Severity:** High
-- **Exploitability:** Medium (requires technical expertise)
-- **Prevalence:** Common (almost all models are susceptible to some degree)
+- **Exploitability:** Medium (Requires moderate technical expertise and an understanding of the model's feature space)
+- **Prevalence:** Pervasive (Virtually all continuous-input ML models are susceptible to some degree)
 
 ## Affected Components
-- ML model inference endpoints
-- Image classification, object detection, NLP models
-- Any model receiving untrusted inputs
+- ML model inference endpoints (API and edge deployments)
+- Image classification, object detection, and Natural Language Processing (NLP) models
+- Any predictive model ingesting untrusted or externally-sourced inputs
 
 ## Detection Methods
-- **Adversarial Robustness Testing:** Generate adversarial examples using FGSM, PGD, DeepFool, CW attacks (see MLASTG-TEST-MODEL-001)
-- **Input Validation Review:** Check for input bounds enforcement (see MLASVS-MODEL-003)
-- **Anomaly Detection:** Monitor for inputs with unusual feature distributions
+- **Adversarial Robustness Testing:** Organizations MUST generate and evaluate adversarial examples using algorithms such as Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), DeepFool, and Carlini-Wagner (CW) (refer to MLASTG-TEST-MODEL-001).
+- **Input Validation Review:** Implement continuous auditing of input bounds enforcement (refer to MLASVS-MODEL-003).
+- **Anomaly Detection:** Monitor feature activations for inputs exhibiting statistically improbable distributions.
 
 ## Preventive Controls (MLASVS)
 - **MLASVS-MODEL-001:** Adversarial robustness testing
@@ -28,20 +28,20 @@ Adversarial perturbation involves crafting inputs with small, often imperceptibl
 - **MLASVS-MODEL-025:** Feature squeezing validation (L2)
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.T0010:** Adversarial Perturbation (primary)
+- **AML.T0010:** Adversarial Perturbation (Primary)
 - **AML.T0007:** Input Manipulation
 
 ## Remediation
-1. **Adversarial Training:** Retrain with adversarial examples
-2. **Input Preprocessing:** Apply feature squeezing, input sanitization
-3. **Certified Defenses:** Implement randomized smoothing for provable robustness
-4. **Input Validation:** Enforce input bounds and reject out-of-distribution samples
-5. **Ensemble Methods:** Use diverse models to reduce transferability
+1. **Adversarial Training:** The training pipeline MUST incorporate adversarial training by continuously augmenting the training corpus with adversarial examples (e.g., PGD, CW) to harden the model's decision boundaries.
+2. **Input Preprocessing and Squeezing:** The inference architecture SHOULD apply strict input sanitization and feature squeezing (e.g., bit-depth reduction, spatial smoothing) to neutralize high-frequency perturbations prior to model ingestion.
+3. **Certified Defenses:** High-assurance models MUST implement randomized smoothing or equivalent certified robustness techniques to provide mathematically provable guarantees against bounded perturbations (e.g., $L_2$ or $L_\infty$ norms).
+4. **Input Validation Guardrails:** The system MUST enforce strict input bounding and employ state-of-the-art Out-of-Distribution (OOD) detection models as circuit breakers to drop anomalous or out-of-bounds samples before they reach the inference engine.
+5. **Ensemble Architectures:** Deployments SHOULD utilize ensemble methods combining architecturally diverse models, significantly reducing the transferability of adversarial perturbations.
 
 ## Real-World Examples
-- **Image classifier evasion:** Stop sign misclassification via small sticker perturbations
-- **NLP toxicity bypass:** Adversarial text that evades content filters
-- **Speech recognition:** Audio perturbations imperceptible to humans that cause mis-transcription
+- **Image Classifier Evasion:** Stop sign misclassification manipulated via strategically placed, low-visibility stickers.
+- **NLP Toxicity Bypass:** Adversarial text structures containing homoglyphs or semantic perturbations that successfully evade content moderation filters.
+- **Speech Recognition Anomalies:** Audio perturbations, imperceptible to the human ear, forcing forced mis-transcriptions or unauthorized command execution.
 
 ## References
 - Goodfellow et al., "Explaining and Harnessing Adversarial Examples" (2014)

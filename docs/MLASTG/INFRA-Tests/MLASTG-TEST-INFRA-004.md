@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-INFRA-017 (Confidential Computing for Inference — L2), MLASVS-INFRA-022 (Hardware-Rooted Model Attestation — L2), MLASVS-INFRA-016 (Side-Channel Attack Prevention — L2), MLASVS-INFRA-005 (GPU/Compute Isolation), MLASVS-PIPELINE-003 (Artifact Integrity Verification), MLASVS-MODEL-005 (Model Integrity Verification)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview
@@ -204,10 +204,6 @@ print(f"Timing CV: {result['cv']:.4f} — {'⚠️ Investigate' if result['suspi
 1. Instrument the attestation flow with structured logging
 2. Forward attestation events to SIEM with dedicated dashboards
 3. Create alerts for attestation failures with severity based on context
-
-## Cross-Domain Rationale
-
-This test is placed in `INFRA-Tests/` because confidential computing and TEE-based inference are fundamentally infrastructure controls. However, the controls tested span multiple MLASVS categories (INFRA, PIPELINE, MODEL) because TEE-based security requires end-to-end integrity — from artifact verification (PIPELINE-003) through model integrity (MODEL-005) to runtime isolation (INFRA-017, INFRA-022).
 
 ## References
 - **MITRE ATLAS:**

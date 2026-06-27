@@ -3,7 +3,7 @@
 ## Control Reference
 **Controls Tested:** MLASVS-SUPPLY-001 (ML-SBOM Generation), MLASVS-SUPPLY-003 (Training Dataset Provenance), MLASVS-SUPPLY-004 (ML Library Version Tracking), MLASVS-SUPPLY-005 (License Compliance Check), MLASVS-SUPPLY-008 (Dataset License Verification), MLASVS-SUPPLY-010 (ML Dependency Scanning), MLASVS-SUPPLY-013 (Automated ML-SBOM Generation in CI/CD — L2), MLASVS-SUPPLY-014 (Continuous Dependency Monitoring — L2), MLASVS-SUPPLY-017 (Fine-tuning Data Provenance Chain — L2), MLASVS-SUPPLY-021 (ML Supply Chain Incident Response — L2)
 
-## Severity
+## Severity (L1/L2)
 **High** (L1) / **Critical** (L2)
 
 ## Overview
