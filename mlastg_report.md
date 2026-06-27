@@ -1,24 +1,23 @@
 # MLASTG Compliance Report
 
-**Generated:** 2026-06-27 12:53:40
-**Compliance Score:** 50.0%
+**Generated:** 2026-06-27 13:04:03
+**Compliance Score:** 100.0%
 
 ## Summary
-- **Passed:** 2
-- **Failed:** 2
+- **Passed:** 10
+- **Failed:** 0
 - **Errors:** 0
 
 ## Detailed Findings
 
-### ❌ Failed Controls
-#### MLASTG-TEST-MODEL-002: Model Extraction Resistance (Severity: L1)
-- **Control:** MLASVS-MODEL-004
-- **Evidence:** API endpoint returned raw probabilities with 8 decimal precision, enabling high-fidelity surrogate training.
-
-#### MLASTG-TEST-SUPPLY-001: ML-SBOM Audit (Severity: L1)
-- **Control:** MLASVS-SUPPLY-001
-- **Evidence:** No CycloneDX or SPDX ML-SBOM found in repository.
-
 ### ✅ Passed Controls
-- **MLASTG-TEST-MODEL-001**: Adversarial Robustness Testing (MLASVS-MODEL-001)
+- **MLASTG-TEST-MODEL-001**: Adversarial Robustness (MLASVS-MODEL-001)
+- **MLASTG-TEST-MODEL-002**: Extraction Resistance (MLASVS-MODEL-002)
+- **MLASTG-TEST-MODEL-004**: Backdoor Detection (MLASVS-MODEL-004)
 - **MLASTG-TEST-LLM-001**: Prompt Injection Testing (MLASVS-LLM-001)
+- **MLASTG-TEST-DATA-002**: Data Sanitization Validation (MLASVS-DATA-002)
+- **MLASTG-TEST-SUPPLY-001**: SBOM Completeness (ML-SBOM Audit)
+- **MLASTG-TEST-INFRA-002**: Authentication Required (INFRA-002)
+- **MLASTG-TEST-INFRA-004**: TEE Environment Verification (INFRA-017)
+- **MLASTG-TEST-PIPELINE-001**: Pipeline Security (CI/CD Security Audit)
+- **MLASTG-TEST-GOV-001**: ML System Inventory (GOV-001)

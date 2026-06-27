@@ -80,11 +80,31 @@ def demo():
     logger.info(f"Coverage: {results['coverage']}%")
 
 
+def run_test(target: str, demo: bool = False) -> list:
+    if demo:
+        return [{
+            "test_id": "MLASTG-TEST-GOV-001",
+            "control": "GOV-001",
+            "name": "ML System Inventory",
+            "status": "pass",
+            "severity": "L1",
+            "evidence": ["Mock"]
+        }]
+    
+    auditor = GovernanceAuditor(level="L1")
+    results = auditor.run()
+    
+    formatted_results = []
+    for c in results.get("controls", []):
+        formatted_results.append({
+            "test_id": results.get("test_id", "MLASTG-TEST-GOV-001"),
+            "control": c.get("control"),
+            "name": c.get("name"),
+            "status": c.get("status", "NOT_TESTED").lower(),
+            "severity": c.get("level", "L1"),
+            "evidence": []
+        })
+    return formatted_results
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Governance Audit")
-    parser.add_argument("--policy-dir", help="Directory containing governance policies")
-    parser.add_argument("--level", default="L1", choices=["L1", "L2"])
-    parser.add_argument("--demo", action="store_true")
-    args = parser.parse_args()
-    if args.demo:
-        demo()
+    pass

@@ -214,22 +214,19 @@ def demo():
     logger.info(f"Overall: {results['overall']['status']}")
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="MLASTG-TEST-PIPELINE-001: CI/CD Security Audit"
-    )
-    parser.add_argument("--repo-url", help="GitHub repository URL")
-    parser.add_argument("--repo-path", default=".", help="Local repo path")
-    parser.add_argument("--level", default="L1", choices=["L1", "L2"])
-    parser.add_argument("--report", default="pipeline_report.json")
-    parser.add_argument("--demo", action="store_true")
-    args = parser.parse_args()
+def run_test(target: str, demo: bool = False) -> list:
+    """Orchestrate the test logic."""
+    if demo:
+        return [{"test_id": "MLASTG-TEST-PIPELINE-001", "control": "CI/CD Security Audit", "name": "Pipeline Security", "status": "pass", "severity": "L1", "evidence": ["Mock"]}]
 
-    if args.demo:
-        demo()
-    else:
-        tester = PipelineSecurityTester(
-            repo_path=args.repo_path, level=args.level
-        )
-        results = tester.run()
-        tester.export_report(args.report)
+    tester = PipelineSecurityTester(repo_path=target if target else ".", level="L1")
+    results = tester.run()
+    
+    return [{
+        "test_id": "MLASTG-TEST-PIPELINE-001",
+        "control": "CI/CD Security Audit",
+        "name": "Pipeline Security",
+        "status": "pass" if results.get("overall", {}).get("status") == "PASS" else "fail",
+        "severity": "L1",
+        "evidence": [results]
+    }]

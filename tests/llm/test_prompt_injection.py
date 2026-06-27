@@ -252,45 +252,21 @@ class PromptInjectionTester:
         logger.info(f"Report exported to {path}")
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="MLASTG-TEST-LLM-001: Prompt Injection Testing"
-    )
-    parser.add_argument(
-        "--api-endpoint", required=True, help="LLM API endpoint URL"
-    )
-    parser.add_argument(
-        "--api-key", help="API key for authentication"
-    )
-    parser.add_argument(
-        "--level",
-        default="L1",
-        choices=["L1", "L2"],
-        help="Security testing level",
-    )
-    parser.add_argument(
-        "--report",
-        default="injection_report.json",
-        help="Output report path",
-    )
-    args = parser.parse_args()
-
+def run_test(target: str, demo: bool = False) -> list:
+    if demo:
+        return [{"test_id": "MLASTG-TEST-LLM-001", "control": "MLASVS-LLM-001", "name": "Prompt Injection Testing", "status": "pass", "severity": "L1", "evidence": ["Mock"]}]
+    
     tester = PromptInjectionTester(
-        api_endpoint=args.api_endpoint,
-        api_key=args.api_key,
-        level=args.level,
+        api_endpoint=target,
+        level="L1",
     )
-
-    results = tester.run_all_tests()
-    tester.export_report(args.report)
-
-    if results["overall"]["status"] == "PASS":
-        logger.info("✅ Prompt injection tests PASSED")
-        sys.exit(0)
-    else:
-        logger.error("❌ Prompt injection tests FAILED")
-        sys.exit(1)
+    try:
+        results = tester.run_all_tests()
+        status = "pass" if results["overall"]["status"] == "PASS" else "fail"
+        return [{"test_id": "MLASTG-TEST-LLM-001", "control": "MLASVS-LLM-001", "name": "Prompt Injection Testing", "status": status, "severity": "L1", "evidence": [f"Injection rate: {results['overall']['overall_injection_rate']}"]}]
+    except Exception as e:
+        return [{"test_id": "MLASTG-TEST-LLM-001", "control": "MLASVS-LLM-001", "name": "Prompt Injection Testing", "status": "error", "severity": "L1", "evidence": [str(e)]}]
 
 
 if __name__ == "__main__":
-    main()
+    pass

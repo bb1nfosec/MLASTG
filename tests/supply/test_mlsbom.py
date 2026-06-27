@@ -97,10 +97,25 @@ def demo():
     logger.info(f"Status: {results['overall']['status']}")
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="ML-SBOM Audit")
-    parser.add_argument("--sbom", help="Path to SBOM JSON file")
-    parser.add_argument("--demo", action="store_true")
-    args = parser.parse_args()
-    if args.demo:
-        demo()
+def run_test(target: str, demo: bool = False) -> list:
+    """Orchestrate the test logic."""
+    if demo:
+        return [{"test_id": "MLASTG-TEST-SUPPLY-001", "control": "ML-SBOM Audit", "name": "SBOM Completeness", "status": "pass", "severity": "L1", "evidence": ["Mock"]}]
+
+    try:
+        with open(target, 'r') as f:
+            sbom = json.load(f)
+    except Exception as e:
+        return [{"test_id": "MLASTG-TEST-SUPPLY-001", "control": "ML-SBOM Audit", "name": "SBOM Completeness", "status": "fail", "severity": "L1", "evidence": [f"Error reading SBOM: {e}"]}]
+
+    validator = MLSBOMValidator()
+    results = validator.run(sbom)
+    
+    return [{
+        "test_id": "MLASTG-TEST-SUPPLY-001",
+        "control": "ML-SBOM Audit",
+        "name": "SBOM Completeness",
+        "status": "pass" if results["overall"]["status"] == "PASS" else "fail",
+        "severity": "L1",
+        "evidence": [results]
+    }]

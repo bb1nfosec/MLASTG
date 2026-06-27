@@ -379,37 +379,34 @@ def test_tee_lifecycle():
 # CLI
 # ---------------------------------------------------------------------------
 
-def demo():
-    """Run demonstration with mock TEE checks."""
-    logger.info("TEE Security Demo — running all checks in demo mode")
-    tester = TEESecurityTester(level="L2")
-    results = tester.run()
+def run_test(target: str, demo: bool = False) -> list:
+    """Run TEE security tests and return results as a list of dicts."""
+    if demo:
+        return [
+            {
+                "test_id": TEST_ID,
+                "control": "INFRA-017",
+                "name": "TEE Environment Verification",
+                "status": "pass",
+                "severity": "L1",
+                "evidence": ["Mock demo result"]
+            }
+        ]
 
-    for name, result in results.items():
-        if isinstance(result, dict) and "name" in result:
-            status = "✅" if result.get("pass") else "❌"
-            level_tag = f" [{result.get('level', 'L1')}]" if "level" in result else ""
-            logger.info(f"  {result['control']} — {result['name']}{level_tag}: {status}")
-
-    overall = results["overall"]
-    logger.info(f"\nOverall: {overall['status']} ({overall['test_id']}, {overall['level']})")
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="MLASTG-TEST-INFRA-004: Confidential Computing & TEE Security"
-    )
-    parser.add_argument("--endpoint", help="TEE model serving endpoint URL")
-    parser.add_argument("--level", default="L1", choices=["L1", "L2"])
-    parser.add_argument("--report", default="tee_report.json")
-    parser.add_argument("--demo", action="store_true")
-    args = parser.parse_args()
-
-    if args.demo:
-        demo()
-    elif args.endpoint:
-        tester = TEESecurityTester(endpoint=args.endpoint, level=args.level)
-        results = tester.run()
-        tester.export_report(args.report)
-    else:
-        parser.print_help()
+    tester = TEESecurityTester(endpoint=target, level="L2")
+    results_dict = tester.run()
+    
+    # Format the results into a list of dicts
+    test_results = []
+    for key, val in results_dict.items():
+        if key == "overall":
+            continue
+        test_results.append({
+            "test_id": TEST_ID,
+            "control": val.get("control", ""),
+            "name": val.get("name", key),
+            "status": "pass" if val.get("pass") else "fail",
+            "severity": val.get("level", "L1"),
+            "evidence": [str(val)]
+        })
+    return test_results

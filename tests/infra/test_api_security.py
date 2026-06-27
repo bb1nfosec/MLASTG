@@ -84,25 +84,33 @@ class APISecurityTester:
         return self.results
 
 
-def demo():
-    # Test against local or public endpoint
-    import requests
-    logger.info("API Security Demo - testing against httpbin.org")
-    tester = APISecurityTester(endpoint="https://httpbin.org/get")
-    results = tester.run()
-    for test, result in results.items():
-        if isinstance(result, dict) and "test" in result:
-            logger.info(f"  {result['test']}: {'✅' if result.get('pass') else '❌'}")
+def run_test(target: str, demo: bool = False) -> list:
+    """Run API security tests and return results as a list of dicts."""
+    if demo:
+        return [
+            {
+                "test_id": "MLASTG-TEST-INFRA-002",
+                "control": "INFRA-002",
+                "name": "Authentication Required",
+                "status": "pass",
+                "severity": "L1",
+                "evidence": ["Mock demo result"]
+            }
+        ]
 
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="API Security Testing")
-    parser.add_argument("--endpoint", help="Model API endpoint URL")
-    parser.add_argument("--api-key", help="API key for authenticated testing")
-    parser.add_argument("--demo", action="store_true")
-    args = parser.parse_args()
-    if args.demo:
-        demo()
-    elif args.endpoint:
-        tester = APISecurityTester(args.endpoint, args.api_key)
-        tester.run()
+    tester = APISecurityTester(endpoint=target)
+    results_dict = tester.run()
+    
+    test_results = []
+    for key, val in results_dict.items():
+        if key == "overall":
+            continue
+        test_results.append({
+            "test_id": "MLASTG-TEST-INFRA-002",
+            "control": "INFRA-002",
+            "name": val.get("test", key),
+            "status": "pass" if val.get("pass") else "fail",
+            "severity": "L1",
+            "evidence": [str(val)]
+        })
+    return test_results
