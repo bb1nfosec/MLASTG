@@ -35,6 +35,13 @@ theme:
     - content.tabs.link
     - content.code.annotate
     - content.code.copy
+  font:
+    text: Plus Jakarta Sans
+    code: Fira Code
+
+extra_css:
+  - stylesheets/extra.css
+
 
 extra:
   social:
