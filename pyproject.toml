@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlastg"
+version = "0.1.0"
+authors = [
+  { name="MLASTG Framework", email="security@example.com" },
+]
+description = "Automated Security Testing CLI for the MLSec Application Security Testing Guide (MLASTG)."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "click>=8.1.3",
+    "rich>=13.4.2"
+]
+
+[project.optional-dependencies]
+tests = [
+    "adversarial-robustness-toolbox",
+    "scikit-learn",
+    "torch",
+    "torchvision",
+    "giskard",
+    "requests"
+]
+
+[tool.setuptools]
+packages = ["mlastg_cli"]
+
+[project.scripts]
+mlastg = "mlastg_cli.main:cli"

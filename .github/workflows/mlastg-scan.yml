@@ -1,0 +1,48 @@
+name: MLASTG Security Scan
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 0 * * 1' # Run weekly on Mondays
+
+jobs:
+  mlastg-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install MLASTG CLI
+        run: |
+          pip install mlastg
+
+      - name: Run MLASTG Full Scan (Demo Mode)
+        run: |
+          mlastg scan --target ./ --category all --demo --output mlastg-report.json --format both
+
+      - name: Check Compliance Score
+        run: |
+          # Custom script to fail the CI build if compliance < 80%
+          SCORE=$(grep -oP 'Compliance Score: \K[0-9.]+' mlastg_report.md)
+          echo "Current MLASTG Compliance Score: $SCORE%"
+          if (( $(echo "$SCORE < 80.0" | bc -l) )); then
+            echo "::error::MLASTG Compliance Score ($SCORE%) is below the required 80.0% threshold."
+            exit 1
+          fi
+
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mlastg-security-report
+          path: |
+            mlastg-report.json
+            mlastg_report.md
