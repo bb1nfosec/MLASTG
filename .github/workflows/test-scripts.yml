@@ -29,6 +29,8 @@ jobs:
         run: |
           pip install adversarial-robustness-toolbox
 
+      # --- Demo runs: scripts with --demo flag via argparse (run as Python, NOT pytest) ---
+
       - name: Run adversarial robustness demo
         run: python tests/model/test_adversarial_robustness.py --demo
 
@@ -56,14 +58,15 @@ jobs:
       - name: Run TEE security demo
         run: python tests/infra/test_tee_security.py --demo
 
-      - name: Run prompt injection demo (requires requests)
+      - name: Run prompt injection help (network-dependent, dry-run only)
         run: python tests/llm/test_prompt_injection.py --help
+
+      # --- pytest runs: only files that contain pytest-compatible test_ functions ---
+      # NOTE: Do NOT pass --demo to pytest — that is an argparse flag, not a pytest option.
+
+      - name: Run pytest on all compatible tests
+        run: python -m pytest -v
 
       # NOTE: These are demo/smoke runs using synthetic data.
       # Full assessments require actual models and datasets.
-      - name: Run pytest on all testable scripts
-        run: |
-          python -m pytest tests/model/test_adversarial_robustness.py --demo -v
-          python -m pytest tests/data/test_data_sanitization.py --demo -v
-          python -m pytest tests/pipeline/test_pipeline_security.py --demo -v
-          python -m pytest tests/infra/test_tee_security.py -v
+
