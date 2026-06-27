@@ -84,13 +84,21 @@ markdown_extensions:
 plugins:
   - search
   - i18n:
-      default_language: en
+      docs_structure: suffix
       languages:
         - locale: en
           default: true
           name: English
+          build: true
         - locale: zh
           name: 中文
+          build: true
+          nav_translations:
+            Home: "首页"
+            Introduction: "介绍"
+            Testing Methodology: "测试方法论"
+            Checklist: "检查清单"
+            Overview: "概览"
   - git-revision-date-localized:
       enable_creation_date: true
   - minify:

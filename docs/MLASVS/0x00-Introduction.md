@@ -27,7 +27,7 @@ Each control is:
 
 | ID | Category | Focus Area | Control Count |
 |----|----------|------------|---------------|
-| [MLASVS-DATA](V1-DATA/0x10-Data-Security-Overview.md) | **Data Security & Privacy** | Data provenance, sanitization, differential privacy, access control | 18 L1 / 12 L2 |
+| [MLASVS-DATA](V1-DATA/0x10-Data-Security-Overview.md) | **Data Security & Privacy** | Data provenance, sanitization, differential privacy (standard + federated), access control | 18 L1 / 12 L2 |
 | [MLASVS-MODEL](V2-MODEL/0x20-Model-Security-Overview.md) | **Model Security** | Adversarial robustness, extraction prevention, inversion, backdoors | 15 L1 / 15 L2 |
 | [MLASVS-LLM](V3-LLM/0x30-LLM-Security-Overview.md) | **LLM Security** | Prompt injection, output handling, agency control, context isolation | 14 L1 / 10 L2 |
 | [MLASVS-SUPPLY](V4-SUPPLY/0x40-Supply-Chain-Overview.md) | **Supply Chain Security** | ML-SBOM, base model vetting, dependency security | 12 L1 / 10 L2 |
@@ -145,4 +145,4 @@ MLASWE                 ─── Weaknesses (vulnerability classification)
 
 | Version | Date | Notes |
 |---------|------|-------|
-| 0.1 (Draft) | 2025-Q2 | Initial framework structure and control definitions |
+| 0.1 (Draft) | 2026-Q2 | Initial framework structure, control definitions, test cases, ATLAS mapping |

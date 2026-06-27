@@ -4,6 +4,8 @@
 
 ### V1: Data Security & Privacy — 30 Controls (18 L1 + 12 L2)
 
+> **Note (DATA-3 numbering):** Two files cover DATA-3 differential privacy — `MLASVS-DATA-3-Differential-Privacy.md` (standard ε-DP) and `MLASVS-DATA-3-Differential-Privacy-FL.md` (federated learning variant, referred to as DATA-3a). Both are counted under the existing 30-control total. See DATA-019 (standard DP) and DATA-021 (federated data governance) in the table below.
+
 | ID | Control | Level | MITRE ATLAS | Test Reference |
 |----|---------|-------|-------------|----------------|
 | DATA-001 | Data provenance tracking | L1 | AML.TA0009 | TEST-DATA-001 |
