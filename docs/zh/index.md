@@ -23,11 +23,11 @@ MLASTG 采用三层架构，与 OWASP MASTG/MASVS/MASWE 模型保持一致：
 
 | 章节 | 描述 |
 |---------|-------------|
-| [MLASVS 介绍](MLASVS/0x00-Introduction.md) | 验证标准概述 |
-| [测试方法论](MLASTG/0x00-Testing-Methodology.md) | 如何开展机器学习安全评估 |
-| [测试工具](MLASTG/0x01-Testing-Tools.md) | 工具参考（ART、SecML 等） |
-| [弱点枚举](MLASWE/0x00-Introduction-Weaknesses.md) | 常见机器学习安全弱点 |
-| [检查清单](../../checklist.md) | 跟踪评估进度 |
+| [MLASVS 介绍](../MLASVS/0x00-Introduction.md) | 验证标准概述 |
+| [测试方法论](../MLASTG/0x00-Testing-Methodology.md) | 如何开展机器学习安全评估 |
+| [测试工具](../MLASTG/0x01-Testing-Tools.md) | 工具参考（ART、Giskard 等） |
+| [弱点枚举](../MLASWE/0x00-Introduction-Weaknesses.md) | 常见机器学习安全弱点 |
+| [检查清单](../checklist.md) | 跟踪评估进度 |
 
 ## 框架对齐
 
@@ -40,4 +40,4 @@ MLASTG 与以下行业框架交叉引用：
 
 ## 参与翻译
 
-欢迎中文社区成员参与文档翻译和审校！请查阅 [贡献指南](../CONTRIBUTING.md) 了解详情。
+欢迎中文社区成员参与文档翻译和审校！请查阅 [贡献指南](https://github.com/bb1nfosec/MLASTG/blob/main/CONTRIBUTING.md) 了解详情。

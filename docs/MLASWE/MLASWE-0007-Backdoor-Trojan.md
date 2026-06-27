@@ -52,4 +52,4 @@ A backdoor or trojan attack embeds a hidden trigger pattern into a model during 
 ## References
 - Gu et al., "BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain" (2017)
 - Chen et al., "Targeted Backdoor Attacks on Deep Learning Systems Using Data Poisoning" (2017)
-- MITRE ATLAS: AML.T0020
+- MITRE ATLAS: AML.T0020 (Data Poisoning), AML.T0020.000 (Backdoor Poisoning sub-technique)

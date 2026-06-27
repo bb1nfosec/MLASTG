@@ -15,7 +15,7 @@ Adversarial perturbation involves crafting inputs with small, often imperceptibl
 
 ## Detection Methods
 - **Adversarial Robustness Testing:** Generate adversarial examples using FGSM, PGD, DeepFool, CW attacks (see MLASTG-TEST-MODEL-001)
-- **Input Validation Review:** Check for input bounds enforcement (see MOD-003)
+- **Input Validation Review:** Check for input bounds enforcement (see MLASVS-MODEL-003)
 - **Anomaly Detection:** Monitor for inputs with unusual feature distributions
 
 ## Preventive Controls (MLASVS)

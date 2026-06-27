@@ -126,18 +126,18 @@ This document identifies MITRE ATLAS techniques that have **no or insufficient c
 | P3 | All | Reinforcement Learning | Add RL-specific controls (reward poisoning) | High | New ML paradigm coverage |
 | P3 | All | Federated Learning | Add federated learning security controls | High | Cross-organizational ML |
 
-## Complete Unmapped ATLAS Techniques
+## Future Coverage Areas
 
-The following ATLAS techniques/sub-techniques fall outside current MLASTG scope but should be evaluated for future coverage:
+The following attack scenarios fall outside current MLASTG scope but should be evaluated for future coverage. **Note:** These attack patterns do not yet have official MITRE ATLAS technique IDs — they are tracked here as planning items only.
 
-| ATLAS ID | Technique | Current Status | Recommended Action | Priority |
-|----------|-----------|---------------|-------------------|----------|
-| AML.T0040 | ML Supply Chain (AI Bill of Materials) | Partially covered by ML-SBOM (SUPPLY-001) | Dedicated NTIA-compliant SBOM control | P1 |
-| AML.T0041 | ML Supply Chain (External ML Services) | Covered by SUPPLY-020 (vendor assessment) | Enhance with API-specific controls | P2 |
-| AML.T0042 | ML Attack Staging | Not covered | Add staging environment security controls | P2 |
-| AML.T0043 | ML Output Handling | Covered by LLM-003/008/009 (LLM-specific) | Extend to non-LLM ML output handling | P2 |
-| AML.T0057 | LLM Data Disclosure | Covered by LLM-008/009 | Verify comprehensive coverage | P1 |
-| AML.T0058 | LLM DoS / Resource Exhaustion | Covered by LLM-005/011/012/013 | Verify comprehensive coverage | P1 |
+| Attack Pattern | Current Status | Recommended Action | Priority |
+|---------------|---------------|-------------------|----------|
+| AI Bill of Materials / ML-SBOM gaps | Partially covered by ML-SBOM (SUPPLY-001); no dedicated NTIA-compliant control | Add explicit SBOM completeness control | P1 |
+| External ML Services risk | Covered by vendor assessment controls (SUPPLY) | Enhance with API-specific third-party ML controls | P2 |
+| ML Attack Staging environment | Not covered | Add staging environment security controls for ML CI/CD | P2 |
+| Non-LLM ML Output Handling | LLM output covered by LLM-003/008/009; classic ML output not covered | Extend output handling controls beyond LLM scope | P2 |
+| LLM Data Disclosure (training data) | Covered by LLM-008/009 | Verify comprehensive coverage in TEST-LLM-002 | P1 |
+| LLM Resource Exhaustion | Covered by LLM-005/011/012/013 | Verify comprehensive coverage in TEST-LLM-003 | P1 |
 
 ## Coverage Statistics (v0.1)
 

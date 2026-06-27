@@ -46,7 +46,7 @@ A common taxonomy of ML/LLM security weaknesses for consistent vulnerability cla
 |---------|-------------|
 | [Testing Methodology](MLASTG/0x00-Testing-Methodology.md) | How to conduct a structured ML security assessment |
 | [Testing Tools](MLASTG/0x01-Testing-Tools.md) | Tooling reference (ART, Giskard, Guardrails AI, etc.) |
-| [Assessment Checklist](../checklist.md) | Track assessment progress against all 168 controls |
+| [Assessment Checklist](checklist.md) | Track assessment progress against all 168 controls |
 
 > **Version 0.1 (Draft):** The MLASVS Standard, MLASWE Weakness Enumeration, and executable test scripts are in active development. See the [GitHub repository](https://github.com/bb1nfosec/MLASTG) for the latest status.
 

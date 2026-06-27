@@ -1,0 +1,20 @@
+# MLASTG CODEOWNERS
+# These owners are automatically requested for review when PRs touch these paths.
+# Syntax: path @github-username
+
+# Default owner for everything
+* @bb1nfosec
+
+# Core framework documents
+docs/MLASTG/0x00-Testing-Methodology.md @bb1nfosec
+docs/MLASVS/0x00-Introduction.md @bb1nfosec
+docs/MLASVS/0x02-MLASVS-Categories.md @bb1nfosec
+
+# ATLAS Mapping — requires verification of ATLAS IDs
+docs/ATLAS-Mapping/ @bb1nfosec
+
+# CI/CD workflows — requires security review
+.github/workflows/ @bb1nfosec
+
+# Checklist — requires control count verification
+checklist.md @bb1nfosec

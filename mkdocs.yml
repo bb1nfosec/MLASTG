@@ -1,6 +1,6 @@
 # MLSec Application Security Testing Guide - Documentation Site
 site_name: "MLASTG — MLSec Application Security Testing Guide"
-site_description: "Enterprise & Defense-Grade Security Testing for Machine Learning Systems"
+site_description: "Enterprise & Defense-Grade Security Testing for Machine Learning Systems — 168 verifiable controls mapped to MITRE ATLAS, NIST AI RMF, OWASP"
 site_url: "https://mlastg.vercel.app/"
 repo_url: "https://github.com/bb1nfosec/MLASTG"
 repo_name: "MLASTG"
@@ -8,6 +8,7 @@ edit_uri: "edit/main/docs/"
 
 theme:
   name: material
+  custom_dir: docs/overrides
   logo: assets/images/mlastg-icon.svg
   favicon: assets/images/favicon.svg
   palette:
@@ -45,6 +46,7 @@ extra:
       link: https://github.com/bb1nfosec/MLASTG
   version:
     provider: mike
+  generator: false
   alternate:
     - name: English
       link: /
@@ -82,13 +84,21 @@ markdown_extensions:
 plugins:
   - search
   - i18n:
-      default_language: en
+      docs_structure: suffix
       languages:
         - locale: en
           default: true
           name: English
+          build: true
         - locale: zh
           name: 中文
+          build: true
+          nav_translations:
+            Home: "首页"
+            Introduction: "介绍"
+            Testing Methodology: "测试方法论"
+            Checklist: "检查清单"
+            Overview: "概览"
   - git-revision-date-localized:
       enable_creation_date: true
   - minify:

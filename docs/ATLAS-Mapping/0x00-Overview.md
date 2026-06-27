@@ -24,22 +24,22 @@ This directory contains the complete mapping between the **MLASTG framework** (M
 
 | Metric | Value |
 |--------|-------|
-| **Total ATLAS techniques mapped** | 18 (12 technique IDs + 6 tactic-level) |
-| 🟢 Full coverage | 13 (72%) |
-| 🟡 Partial coverage | 4 (22%) |
-| 🔴 No coverage | 1 (6%) |
+| **Total ATLAS techniques mapped** | 27 technique IDs in Navigator layer |
+| 🟢 Full coverage | 17 (63%) |
+| 🟡 Partial coverage | 10 (37%) |
+| 🔴 No coverage | 1 (ML Model Inventory Discovery — no official ATLAS ID) |
 | **Unique MLASVS controls** | 64 of 168 (38% coverage density) |
-| **ATLAS Navigator techniques** | 10 technique IDs with scores |
+| **ATLAS Navigator techniques** | 27 technique IDs with scores |
 
 ## ATLAS Navigator Import
 
 To visualize coverage in the MITRE ATLAS Navigator:
 1. Download [`2-atlas-navigator-layer.json`](2-atlas-navigator-layer.json)
-2. Open [MITRE ATLAS Navigator](https://mitre-attack.github.io/atlas-navigator/)
-3. Click **Layer Controls** → **Import Layer** → select the JSON file
+2. Open the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/) (use the ATLAS-specific tool, **not** the ATT&CK Navigator)
+3. Click **Open Existing Layer** → **Upload from local** → select the downloaded JSON file
 4. Coverage will appear as a heat map (green = full, yellow = partial, red = none)
 
 ## Notes
 - Only **official MITRE ATLAS technique IDs** are included. Attack paths without official IDs use "—" and are tracked in the Gap Analysis.
 - Tactic-level mappings (AML.TA####) indicate general coverage across techniques under that tactic.
-- Sub-techniques (AML.T0020.001, .002) are counted separately.
+- Sub-techniques (e.g., `AML.T0020.000` for Label Poisoning) are counted separately.

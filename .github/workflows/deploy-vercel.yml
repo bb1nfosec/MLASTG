@@ -38,8 +38,7 @@ jobs:
 
       - name: Verify Vercel token
         if: ${{ env.VERCEL_TOKEN != '' }}
-        run: |
-          echo "Vercel token verified"
+        run: vercel whoami --token=$VERCEL_TOKEN
 
       - name: Deploy to Vercel
         id: deploy
