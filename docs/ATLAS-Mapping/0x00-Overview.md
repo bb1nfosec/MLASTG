@@ -42,4 +42,4 @@ To visualize coverage in the MITRE ATLAS Navigator:
 ## Notes
 - Only **official MITRE ATLAS technique IDs** are included. Attack paths without official IDs use "—" and are tracked in the Gap Analysis.
 - Tactic-level mappings (AML.TA####) indicate general coverage across techniques under that tactic.
-- Sub-techniques (e.g., `AML.T0020.000` for Label Poisoning) are counted separately.
+- Sub-techniques (e.g., `AML.T0020.001` for Label Poisoning) are counted separately.

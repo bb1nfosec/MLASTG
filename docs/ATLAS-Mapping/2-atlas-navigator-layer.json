@@ -21,7 +21,7 @@
     { "techniqueID": "AML.T0014", "score": 100, "enabled": true, "comment": "Invert ML Model - MODEL-003, MODEL-019, MODEL-020 mapped" },
     { "techniqueID": "AML.T0018", "score": 50, "enabled": true, "comment": "Backdoor ML Model (supply chain variant) - MODEL-021 partial at L2" },
     { "techniqueID": "AML.T0020", "score": 100, "enabled": true, "comment": "Poison Training Data - DATA-011, DATA-024, DATA-025 mapped" },
-    { "techniqueID": "AML.T0020.000", "score": 50, "enabled": true, "comment": "Label Poisoning (sub-technique) - DATA-011, DATA-013 partial" },
+    { "techniqueID": "AML.T0020.001", "score": 50, "enabled": true, "comment": "Label Poisoning (sub-technique) - DATA-011, DATA-013 partial" },
     { "techniqueID": "AML.T0021", "score": 50, "enabled": true, "comment": "Publish Poisoned Datasets - DATA-002 integrity controls partial" },
     { "techniqueID": "AML.T0031", "score": 50, "enabled": true, "comment": "Exfiltration via ML Inference API - LLM-008, MODEL-009 partial" },
     { "techniqueID": "AML.T0034", "score": 100, "enabled": true, "comment": "ML Model Extraction - MODEL-004, MODEL-005, MODEL-006, MODEL-018, MODEL-023 fully covered" },
