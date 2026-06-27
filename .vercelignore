@@ -5,7 +5,6 @@
 tests/
 demos/
 tools/
-docs/
 site/
 
 # CI/CD

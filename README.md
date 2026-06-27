@@ -6,13 +6,14 @@
 > 
 > [![Version](https://img.shields.io/badge/version-0.1--draft-orange)](https://github.com/bb1nfosec/MLASTG)
 > [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
+> [![Documentation](https://img.shields.io/badge/docs-live-green)](https://helloworld-three-blush.vercel.app/)
 
 ---
 
 [![English](https://img.shields.io/badge/lang-en-blue.svg)](README.md)
 [![中文](https://img.shields.io/badge/lang-zh-red.svg)](README.zh-CN.md)
 
-**🌐 We welcome international contributors! Translations in progress.**
+🌐 We welcome international contributors! Translations in progress.
 
 ---
 
@@ -131,11 +132,12 @@ Enhanced controls for high-risk, enterprise/defense, and regulated environments.
 
 ### ATLAS Navigator
 
-Visualize MLASTG coverage in the [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/):
+Visualize MLASTG coverage in the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/):
 
 1. Download the [Navigator Layer JSON](docs/ATLAS-Mapping/2-atlas-navigator-layer.json)
-2. Open ATLAS Navigator → **Layer Controls** → **Import Layer**
-3. Coverage appears as a heat map: 🟢 Full, 🟡 Partial, 🔴 None
+2. Open the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/)
+3. Click **Open Existing Layer** → **Upload from local** and select the downloaded JSON file
+4. Coverage will be visualized as a heat map: 🟢 Full, 🟡 Partial, 🔴 None
 
 ---
 

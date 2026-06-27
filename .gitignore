@@ -66,3 +66,4 @@ service-account.json
 *.report.json
 htmlcov/
 .coverage
+.vercel
