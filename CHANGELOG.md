@@ -20,6 +20,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
   and licensing detail.
 
 ### Changed
+- **Reconciled MITRE ATLAS mappings against the official ATLAS taxonomy**
+  (mitre-atlas/atlas-data). Corrected wrong technique IDs/names across the
+  coverage map, Navigator layer, all MLASVS control pages, MLASTG test pages,
+  ATLAS-Mapping narrative pages, and `controls.json`. The Navigator layer now
+  exports valid IDs (26 techniques, 18 full / 8 partial). zh translations
+  pending.
 - Corrected the live documentation URL across `README.md` and `README.zh-CN.md`.
 - Removed placeholder author contact from `pyproject.toml`.
 

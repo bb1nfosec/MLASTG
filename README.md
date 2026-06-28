@@ -142,9 +142,12 @@ Every MLASVS control is mapped to the **[MITRE ATLAS](https://atlas.mitre.org/)*
 
 | Coverage | Techniques | Meaning |
 |----------|:---------:|---------|
-| 🟢 Full | 17 | MLASVS controls **and** MLASTG test cases exist |
-| 🟡 Partial | 10 | Some controls mapped; gaps remain |
-| **Total mapped** | **27** | **≈63% fully covered** |
+| 🟢 Full | 18 | MLASVS controls **and** MLASTG test cases exist |
+| 🟡 Partial | 8 | Some controls mapped; gaps remain |
+| **Total mapped** | **26** | **≈69% fully covered** |
+
+> Technique IDs and names are reconciled against the official
+> [MITRE ATLAS data](https://github.com/mitre-atlas/atlas-data).
 
 See the [Coverage Matrix](docs/ATLAS-Mapping/1-Coverage-Matrix.md) and [Gap Analysis](docs/ATLAS-Mapping/3-Gap-Analysis.md) for the narrative breakdown.
 
@@ -300,7 +303,8 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | MLASVS standard (168 controls, 7 categories) | ✅ Implemented | Documented with L1/L2 levels |
 | MLASTG test procedures | ✅ Implemented | Step-by-step, pass/fail criteria |
 | `mlastg` CLI + Python harnesses | ✅ Implemented | Real ART-based harnesses; `--demo` stubs for safe CI |
-| MITRE ATLAS coverage map | 🟡 In progress | 27 techniques mapped; IDs being reconciled against the official ATLAS taxonomy, and coverage expanded |
+| MITRE ATLAS coverage map | ✅ Reconciled | 26 techniques; IDs/names verified against official ATLAS data across the coverage map, Navigator layer, control docs, and register. zh translations pending |
+| Expanded ATLAS coverage (beyond 26 techniques) | 🟡 In progress | Mapping additional ATLAS techniques to controls |
 | Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
 | End-to-end reference run (sample model + fixtures) | ⬜ Planned | A reproducible green-path example |
 | Independent review / release tags | ⬜ Planned | Versioned releases and external review |
