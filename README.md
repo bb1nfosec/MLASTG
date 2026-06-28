@@ -6,7 +6,7 @@
 > 
 > [![Version](https://img.shields.io/badge/version-0.1--draft-orange)](https://github.com/bb1nfosec/MLASTG)
 > [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-> [![Documentation](https://img.shields.io/badge/docs-live-green)](https://helloworld-three-blush.vercel.app/)
+> [![Documentation](https://img.shields.io/badge/docs-live-green)](https://mlastg.vercel.app/)
 
 ---
 
