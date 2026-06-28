@@ -311,7 +311,8 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | Control → ATLAS → test → weakness traceability | ✅ Implemented | The register now maps each control to the MLASWE weaknesses it mitigates |
 | Conformance self-assessment + scoring | ✅ Implemented | Interactive [self-assessment](https://mlastg.vercel.app/MLASVS/Conformance/) with live L1/L2 scoring and JSON evidence export |
 | Worked ML-SBOM example | ✅ Implemented | [`demos/ml-sbom/`](demos/ml-sbom/) — native + CycloneDX 1.6, CI-validated |
-| Independent review / release tags | ⬜ Planned | Versioned releases and external review |
+| Versioned releases (SemVer + tags) | ✅ Implemented | [v0.2.0](https://github.com/bb1nfosec/MLASTG/releases/tag/v0.2.0) tagged; CHANGELOG + GOVERNANCE release process |
+| Independent / external review | ⬜ Planned | Peer review and recognition (e.g., OWASP/MITRE) |
 
 > **Adoption guidance:** today MLASTG is best used as a **reference standard,
 > checklist, and automation accelerator** to structure an ML security program.
