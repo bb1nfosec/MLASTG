@@ -44,6 +44,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/landing.js
+  - javascripts/atlas-matrix.js
 
 
 extra:
@@ -226,6 +227,7 @@ nav:
 
   - "ATLAS Mapping":
     - Overview: ATLAS-Mapping/0x00-Overview.md
+    - "Coverage Map (Interactive)": ATLAS-Mapping/2-Coverage-Map.md
     - Coverage Matrix: ATLAS-Mapping/1-Coverage-Matrix.md
     - Gap Analysis: ATLAS-Mapping/3-Gap-Analysis.md
     - Coverage Dashboard: ATLAS-Mapping/4-Coverage-Dashboard.md

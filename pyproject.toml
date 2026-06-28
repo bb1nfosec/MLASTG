@@ -6,8 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "mlastg"
 version = "0.1.0"
 authors = [
-  { name="MLASTG Framework", email="security@example.com" },
+  { name="MLASTG Contributors" },
 ]
+urls.Homepage = "https://mlastg.vercel.app/"
+urls.Repository = "https://github.com/bb1nfosec/MLASTG"
 description = "Automated Security Testing CLI for the MLSec Application Security Testing Guide (MLASTG)."
 readme = "README.md"
 requires-python = ">=3.8"

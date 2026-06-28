@@ -3,10 +3,13 @@
 **Enterprise & Defense-Grade Security Testing for Machine Learning Systems**
 
 > **Status:** Active Development — Version 0.1 (Draft)
-> 
+>
 > [![Version](https://img.shields.io/badge/version-0.1--draft-orange)](https://github.com/bb1nfosec/MLASTG)
-> [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
+> [![Docs License: CC BY-SA 4.0](https://img.shields.io/badge/docs-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
+> [![Code License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](#license)
 > [![Documentation](https://img.shields.io/badge/docs-live-green)](https://mlastg.vercel.app/)
+> [![Docs Build](https://github.com/bb1nfosec/MLASTG/actions/workflows/mkdocs-publish.yml/badge.svg)](https://github.com/bb1nfosec/MLASTG/actions/workflows/mkdocs-publish.yml)
+> [![Test Scripts](https://github.com/bb1nfosec/MLASTG/actions/workflows/test-scripts.yml/badge.svg)](https://github.com/bb1nfosec/MLASTG/actions/workflows/test-scripts.yml)
 
 ---
 
@@ -15,18 +18,41 @@
 
 🌐 We welcome international contributors! Translations in progress.
 
+**📖 Live documentation: [mlastg.vercel.app](https://mlastg.vercel.app/) — including the interactive [ATLAS Coverage Map](https://mlastg.vercel.app/ATLAS-Mapping/2-Coverage-Map/).**
+
+---
+
+## Contents
+
+- [Overview](#overview)
+- [Why MLASTG?](#why-mlastg)
+- [Architecture](#architecture)
+- [Control Categories](#control-categories)
+- [Assurance Levels](#assurance-levels)
+- [Threat Coverage — MITRE ATLAS](#threat-coverage--mitre-atlas)
+- [Automated Testing — the `mlastg` CLI](#automated-testing--the-mlastg-cli)
+- [Continuous Assurance (CI/CD)](#continuous-assurance-cicd)
+- [Reporting & Compliance](#reporting--compliance)
+- [Quick Start](#quick-start)
+- [Framework Alignment](#framework-alignment)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
 ---
 
 ## Overview
 
 The **MLSec Application Security Testing Guide (MLASTG)** is a comprehensive, open-source framework for security testing machine learning (ML) systems across the full threat landscape — from traditional ML classifiers to deep neural networks and large language models (LLMs).
 
-Inspired by the **[OWASP Mobile Application Security Testing Guide (MASTG)](https://github.com/OWASP/MASTG)** and aligned with **[MITRE ATLAS](https://atlas.mitre.org/)**, **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)**, and **[OWASP AI Exchange](https://owaspai.org/)**, the MLASTG provides:
+Inspired by the **[OWASP Mobile Application Security Testing Guide (MASTG)](https://github.com/OWASP/MASTG)** and aligned with **[MITRE ATLAS](https://atlas.mitre.org/)**, **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)**, and **[OWASP AI Exchange](https://owaspai.org/)**, MLASTG provides four tightly-coupled layers:
 
-- **A Verification Standard (MLASVS)** — What to verify, organized by control category with L1 (Standard) and L2 (Defense-in-Depth) levels
-- **A Testing Guide (MLASTG)** — How to test, with detailed step-by-step test cases mapped to controls
-- **A Weakness Enumeration (MLASWE)** — Common security weaknesses specific to ML/LLM systems
-- **Executable Test Scripts** — Python-based test harnesses using industry-standard tools (ART, SecML, etc.)
+- **A Verification Standard (MLASVS)** — *What to verify*, organized by control category with L1 (Standard) and L2 (Defense-in-Depth) assurance levels.
+- **A Testing Guide (MLASTG)** — *How to test*, with detailed step-by-step test cases mapped to controls.
+- **A Weakness Enumeration (MLASWE)** — *What can go wrong*, a common taxonomy of ML/LLM weaknesses for classifying findings.
+- **Executable Test Scripts + CLI** — *Automated validation*, Python harnesses orchestrated by the `mlastg` command-line scanner.
+
+Designed for **enterprise and defense-grade** environments: every control is testable, mapped to recognized frameworks, and assignable to an assurance tier so security programs can demonstrate measurable, audit-ready coverage of the ML attack surface.
 
 ---
 
@@ -35,10 +61,11 @@ Inspired by the **[OWASP Mobile Application Security Testing Guide (MASTG)](http
 | Problem | MLASTG Solution |
 |---------|----------------|
 | ML security lacks a standardized, testable verification framework | MLASVS provides clear, verifiable controls mapped to MITRE ATLAS tactics |
-| Existing guides are fragmented across OWASP, NIST, and vendor documents | Unified reference integrating all major frameworks with cross-references |
+| Existing guidance is fragmented across OWASP, NIST, and vendor documents | A unified reference integrating all major frameworks with cross-references |
 | Testing procedures for adversarial ML are poorly documented | Detailed step-by-step test cases with companion Python scripts |
 | Enterprise/defense environments require defense-in-depth | Two-tier verification (L1 Standard / L2 Defense-in-Depth) |
-| No SBOM/SCA standard exists for ML supply chains | ML-SBOM requirements and supply chain verification controls |
+| No SBOM/SCA standard exists for ML supply chains | ML-SBOM requirements and supply-chain verification controls |
+| Coverage is hard to prove to auditors and leadership | A MITRE ATLAS coverage map and exportable JSON/Markdown assessment reports |
 
 ---
 
@@ -56,7 +83,12 @@ MLASTG (The Testing Guide)     ─── How to test
     │
     ├── Test Cases ──► MLASTG-TEST-XXXX (step-by-step procedures)
     ├── Techniques ──► MLASTG-TECH-XXXX (tools & methods)
-    └── Companion Scripts ──► tests/*.py (executable test harnesses)
+    └── Companion Scripts ──► tests/*.py (executable harnesses)
+            │
+            ▼
+mlastg CLI (Automation)        ─── Run, score, and report
+    │
+    └── mlastg scan ──► orchestrates harnesses ──► JSON + Markdown reports
             │
             ▼
 MLASWE (Weakness Enumeration)  ─── What can go wrong
@@ -82,16 +114,16 @@ MLASWE (Weakness Enumeration)  ─── What can go wrong
 
 ---
 
-## Testing Levels
+## Assurance Levels
 
 ### L1 — Standard Security
-Baseline controls for all ML applications in production. Covers:
+Baseline controls for all ML applications in production:
 - Fundamental data protection and access controls
 - Basic adversarial robustness validation
 - Standard supply chain hygiene
 - Essential monitoring and logging
 
-### L2 — Defense-in-Depth  
+### L2 — Defense-in-Depth
 Enhanced controls for high-risk, enterprise/defense, and regulated environments. Adds:
 - Rigorous adversarial robustness certification
 - Differential privacy guarantees
@@ -101,43 +133,122 @@ Enhanced controls for high-risk, enterprise/defense, and regulated environments.
 
 ---
 
-## Quick Start
+## Threat Coverage — MITRE ATLAS
 
-### For Security Testers
-1. Review the **MLASVS** to identify applicable controls
-2. Use the **MLASTG Testing Methodology** to plan your assessment
-3. Execute test cases mapped to your target controls
-4. Reference **MLASWE** for weakness classification in findings
-5. Run companion **test scripts** for automated validation
+Every MLASVS control is mapped to the **[MITRE ATLAS](https://atlas.mitre.org/)** adversarial-threat taxonomy. The mapping is published two ways:
 
-### For Organizations
-1. Adopt **MLASVS** as your internal ML security standard
-2. Map existing controls to MLASVS categories
-3. Conduct gap analysis using the **MLASTG Checklist**
-4. Implement missing controls with L1 as minimum
+- **Interactive [ATLAS Coverage Map](https://mlastg.vercel.app/ATLAS-Mapping/2-Coverage-Map/)** — a periodic-table view of ML/LLM attack techniques, arranged by the MLASVS control family that covers them, with per-technique control mappings.
+- **Importable Navigator layer** — load [`2-atlas-navigator-layer.json`](docs/ATLAS-Mapping/2-atlas-navigator-layer.json) into the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/) (**Open Existing Layer → Upload from local**) to view coverage as a heat map.
+
+| Coverage | Techniques | Meaning |
+|----------|:---------:|---------|
+| 🟢 Full | 17 | MLASVS controls **and** MLASTG test cases exist |
+| 🟡 Partial | 10 | Some controls mapped; gaps remain |
+| **Total mapped** | **27** | **≈63% fully covered** |
+
+See the [Coverage Matrix](docs/ATLAS-Mapping/1-Coverage-Matrix.md) and [Gap Analysis](docs/ATLAS-Mapping/3-Gap-Analysis.md) for the narrative breakdown.
 
 ---
 
-## Mapping to Industry Frameworks
+## Automated Testing — the `mlastg` CLI
+
+`mlastg` is a [Click](https://click.palletsprojects.com/)-based command-line scanner (with [Rich](https://rich.readthedocs.io/) output) that orchestrates the category test harnesses and produces assessment reports.
+
+### Install
+
+```bash
+# Core CLI
+pip install -e .
+
+# Optional: testing harness dependencies (ART, scikit-learn, torch, giskard, …)
+pip install -e ".[tests]"
+```
+
+### Run a scan
+
+```bash
+# Scan a live LLM endpoint for LLM-category weaknesses
+mlastg scan --target https://api.example.com/v1/chat --category llm
+
+# Scan a local model artifact for model-category weaknesses
+mlastg scan --target ./models/classifier.pkl --category model
+
+# Dry-run everything with local stubs (no external calls)
+mlastg scan --target demo --category all --demo
+```
+
+| Option | Values | Default | Purpose |
+|--------|--------|---------|---------|
+| `--target` | URL · API endpoint · local path | *(required)* | System under test |
+| `--category` | `model` · `llm` · `data` · `supply` · `infra` · `pipeline` · `gov` · `all` | `all` | Test category to execute |
+| `--demo` | flag | off | Use local stubs instead of real calls |
+| `--output` | path | `mlastg_report.json` | Raw JSON results |
+| `--format` | `json` · `markdown` · `both` | `both` | Report format(s) |
+
+### Generate a report from existing results
+
+```bash
+mlastg report --input mlastg_report.json --output mlastg_report.md
+```
+
+> **Safe by default:** `--demo` runs against local stubs so you can validate the pipeline without touching production systems. Only scan targets you are authorized to test.
+
+---
+
+## Continuous Assurance (CI/CD)
+
+MLASTG ships GitHub Actions workflows so assurance runs on every change:
+
+| Workflow | Purpose |
+|----------|---------|
+| `mlastg-scan.yml` | Runs the `mlastg` scanner (demo mode) as a CI gate |
+| `test-scripts.yml` | Executes the Python test harnesses |
+| `mkdocs-publish.yml` | Builds and publishes the documentation site |
+| `deploy-vercel.yml` | Deploys the docs to Vercel |
+| `deploy-navigator.yml` | Validates and publishes the ATLAS Navigator layer |
+
+---
+
+## Reporting & Compliance
+
+The CLI emits both machine- and human-readable artifacts:
+
+- **`mlastg_report.json`** — structured results for pipelines, dashboards, and ticketing.
+- **`mlastg_report.md`** — a Markdown compliance report suitable for audit evidence.
+
+Findings reference **MLASWE** weakness IDs and the **MLASVS** controls they violate, so results map cleanly back to MITRE ATLAS, NIST AI RMF, the OWASP AI/LLM/ML Top 10s, and the EU AI Act for governance reporting.
+
+---
+
+## Quick Start
+
+### For Security Testers
+1. Review the **MLASVS** to identify applicable controls.
+2. Use the **MLASTG Testing Methodology** to plan your assessment.
+3. Execute test cases mapped to your target controls (manually or via `mlastg scan`).
+4. Reference **MLASWE** for weakness classification in findings.
+5. Export JSON/Markdown reports for evidence.
+
+### For Organizations
+1. Adopt **MLASVS** as your internal ML security standard.
+2. Map existing controls to MLASVS categories.
+3. Conduct gap analysis using the **MLASTG Checklist** and the **ATLAS Coverage Map**.
+4. Implement missing controls with L1 as a minimum and L2 for high-risk systems.
+5. Wire `mlastg scan` into CI to keep coverage from regressing.
+
+---
+
+## Framework Alignment
 
 | Framework | MLASTG Alignment |
 |-----------|-----------------|
-| MITRE ATLAS | Each MLASVS control maps to relevant MITRE ATLAS tactics/techniques |
-| NIST AI RMF 1.0 | MLASVS controls support all four RMF functions (Govern, Map, Measure, Manage) |
+| MITRE ATLAS | Each MLASVS control maps to relevant ATLAS tactics/techniques |
+| NIST AI RMF 1.0 | Controls support all four RMF functions (Govern, Map, Measure, Manage) |
 | OWASP AI Exchange | Cross-referenced to OWASP AI threat/control matrices |
 | OWASP LLM Top 10 | Full coverage of all 10 LLM risks as MLASVS-LLM controls |
 | OWASP ML Top 10 | Coverage of all 10 ML security vulnerabilities |
 | NSA/CISA AI Security Guidance | Controls aligned with secure deployment guidance |
 | EU AI Act | MLASVS-GOV controls mapped to regulatory requirements |
-
-### ATLAS Navigator
-
-Visualize MLASTG coverage in the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/):
-
-1. Download the [Navigator Layer JSON](docs/ATLAS-Mapping/2-atlas-navigator-layer.json)
-2. Open the [MITRE ATLAS Navigator](https://mitre-atlas.github.io/atlas-navigator/)
-3. Click **Open Existing Layer** → **Upload from local** and select the downloaded JSON file
-4. Coverage will be visualized as a heat map: 🟢 Full, 🟡 Partial, 🔴 None
 
 ---
 
@@ -147,40 +258,47 @@ Visualize MLASTG coverage in the [MITRE ATLAS Navigator](https://mitre-atlas.git
 MLASTG/
 ├── README.md                    ← This file
 ├── mkdocs.yml                   ← Documentation site config
+├── pyproject.toml               ← mlastg CLI package definition
+├── mlastg_cli/                  ← Automated testing CLI
+│   ├── main.py                  ← Click entrypoint (scan, report)
+│   ├── orchestrator.py          ← Runs the category test suites
+│   └── reporter.py              ← JSON / Markdown report generation
 ├── docs/
-│   ├── index.md                 ← Home / Overview
-│   ├── MLASVS/                  ← Verification Standard
-│   │   ├── 0x00-Introduction.md
-│   │   ├── 0x01-Using-This-Standard.md
-│   │   ├── V1-DATA/             ← Data Security controls
-│   │   ├── V2-MODEL/            ← Model Security controls
-│   │   ├── V3-LLM/              ← LLM Security controls
-│   │   ├── V4-SUPPLY/           ← Supply Chain controls
-│   │   ├── V5-PIPELINE/         ← Pipeline controls
-│   │   ├── V6-INFRA/            ← Runtime & Infra controls
-│   │   └── V7-GOV/              ← Governance controls
-│   ├── MLASTG/                  ← Testing Guide
-│   │   ├── 0x00-Testing-Methodology.md
-│   │   ├── 0x01-Testing-Tools.md
-│   │   ├── DATA-Tests/          ← Data security tests
-│   │   ├── MODEL-Tests/         ← Model security tests
-│   │   ├── LLM-Tests/           ← LLM security tests
-│   │   ├── SUPPLY-Tests/        ← Supply chain tests
-│   │   ├── PIPELINE-Tests/      ← Pipeline tests
-│   │   ├── INFRA-Tests/         ← Infra tests
-│   │   └── GOV-Tests/           ← Governance tests
+│   ├── index.md                 ← Home / landing page
+│   ├── MLASVS/                  ← Verification Standard (V1–V7)
+│   ├── MLASTG/                  ← Testing Guide (per-category tests)
 │   ├── MLASWE/                  ← Weakness Enumeration
+│   ├── ATLAS-Mapping/           ← Coverage map, matrix, gap analysis, Navigator layer
+│   ├── stylesheets/ javascripts/← Custom theme + interactive UI
 │   └── assets/                  ← Images, diagrams
-├── tests/                       ← Python test scripts
-│   ├── data/                    ← Data security test harnesses
-│   ├── model/                   ← Model security test harnesses
-│   ├── llm/                     ← LLM security test harnesses
-│   ├── supply/                  ← Supply chain test harnesses
-│   ├── pipeline/                ← Pipeline test harnesses
-│   ├── infra/                   ← Runtime test harnesses
-│   └── gov/                     ← Governance assessment tools
-└── demos/                       ← Example vulnerable models & apps
+├── tests/                       ← Python test harnesses (data, model, llm, supply, pipeline, infra, gov)
+├── demos/                       ← Example vulnerable models & apps
+└── .github/workflows/           ← CI: scan, tests, docs, deploy, navigator
 ```
+
+---
+
+## Maturity & Roadmap
+
+MLASTG is at **v0.1** and honest about what that means. The framework skeleton,
+control catalog, test procedures, automation CLI, and ATLAS coverage map are
+implemented and usable today; the items below are tracked for production
+hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+| Area | Status | Notes |
+|------|:------:|-------|
+| MLASVS standard (168 controls, 7 categories) | ✅ Implemented | Documented with L1/L2 levels |
+| MLASTG test procedures | ✅ Implemented | Step-by-step, pass/fail criteria |
+| `mlastg` CLI + Python harnesses | ✅ Implemented | Real ART-based harnesses; `--demo` stubs for safe CI |
+| MITRE ATLAS coverage map | 🟡 In progress | 27 techniques mapped; IDs being reconciled against the official ATLAS taxonomy, and coverage expanded |
+| Machine-readable control register (JSON/YAML) | ⬜ Planned | A GRC-consumable catalog + traceability matrix (control → ATLAS → test → MLASWE) |
+| End-to-end reference run (sample model + fixtures) | ⬜ Planned | A reproducible green-path example |
+| Independent review / release tags | ⬜ Planned | Versioned releases and external review |
+
+> **Adoption guidance:** today MLASTG is best used as a **reference standard,
+> checklist, and automation accelerator** to structure an ML security program.
+> Treat the ATLAS technique IDs as v0.1 mappings pending reconciliation, and
+> validate controls against your own threat model before certification.
 
 ---
 
@@ -188,19 +306,22 @@ MLASTG/
 
 This project is in active development. Contributions are welcome across:
 - New test cases and step-by-step procedures
-- Python test script implementations (see `tests/` directory)
+- Python test-script implementations (see `tests/`) and CLI orchestrator coverage
 - LLM-specific testing methodologies and datasets
 - Case studies and real-world attack demonstrations
 - Translations and internationalization (see `docs/zh/` for Chinese)
-- Coverage for additional MLASVS control categories
+- Additional MLASVS control categories and ATLAS mappings
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md) for guidelines, and [SECURITY.md](SECURITY.md) for responsible disclosure.
 
 ---
 
 ## License
 
-This work is licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
+MLASTG is **dual-licensed** so it fits cleanly into both documentation and engineering pipelines:
+
+- **Documentation, standard, and guidance content** — [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](LICENSE).
+- **Code** (the `mlastg` CLI, test harnesses, and tooling) — **MIT License**.
 
 ---
 
