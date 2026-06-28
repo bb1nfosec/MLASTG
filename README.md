@@ -148,6 +148,16 @@ Every MLASVS control is mapped to the **[MITRE ATLAS](https://atlas.mitre.org/)*
 
 See the [Coverage Matrix](docs/ATLAS-Mapping/1-Coverage-Matrix.md) and [Gap Analysis](docs/ATLAS-Mapping/3-Gap-Analysis.md) for the narrative breakdown.
 
+### Control Register (traceability)
+
+All 168 controls are also published as a machine-readable register —
+[`controls.json`](docs/MLASVS/controls.json) — with an interactive
+[Control Register](https://mlastg.vercel.app/MLASVS/Control-Register/) that maps
+each control to its assurance level, MITRE ATLAS reference, and companion test
+case. It is regenerated from the documentation by
+[`tools/generate_controls_register.py`](tools/generate_controls_register.py),
+so the catalog never drifts from the standard.
+
 ---
 
 ## Automated Testing — the `mlastg` CLI
@@ -291,7 +301,7 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | MLASTG test procedures | ✅ Implemented | Step-by-step, pass/fail criteria |
 | `mlastg` CLI + Python harnesses | ✅ Implemented | Real ART-based harnesses; `--demo` stubs for safe CI |
 | MITRE ATLAS coverage map | 🟡 In progress | 27 techniques mapped; IDs being reconciled against the official ATLAS taxonomy, and coverage expanded |
-| Machine-readable control register (JSON/YAML) | ⬜ Planned | A GRC-consumable catalog + traceability matrix (control → ATLAS → test → MLASWE) |
+| Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
 | End-to-end reference run (sample model + fixtures) | ⬜ Planned | A reproducible green-path example |
 | Independent review / release tags | ⬜ Planned | Versioned releases and external review |
 

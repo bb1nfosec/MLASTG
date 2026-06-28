@@ -7,6 +7,11 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Machine-readable control register** — `tools/generate_controls_register.py`
+  extracts all 168 controls (from both block- and table-format pages) into
+  [`docs/MLASVS/controls.json`](docs/MLASVS/controls.json), surfaced through a
+  filterable, searchable interactive Control Register page with control →
+  level → ATLAS → test traceability.
 - Interactive **ATLAS Coverage Map** — a periodic-table view of ML/LLM attack
   techniques grouped by MLASVS control family, with per-technique control
   mappings, coverage filtering, and search.

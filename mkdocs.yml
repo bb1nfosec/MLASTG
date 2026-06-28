@@ -45,6 +45,7 @@ extra_css:
 extra_javascript:
   - javascripts/landing.js
   - javascripts/atlas-matrix.js
+  - javascripts/controls-register.js
 
 
 extra:
@@ -124,6 +125,7 @@ nav:
     - Introduction: MLASVS/0x00-Introduction.md
     - Using This Standard: MLASVS/0x01-Using-This-Standard.md
     - Categories Overview: MLASVS/0x02-MLASVS-Categories.md
+    - "Control Register (Interactive)": MLASVS/Control-Register.md
     - "V1: Data Security & Privacy":
       - Overview: MLASVS/V1-DATA/0x10-Data-Security-Overview.md
       - "DATA-1: Data Provenance": MLASVS/V1-DATA/MLASVS-DATA-1-Provenance.md
