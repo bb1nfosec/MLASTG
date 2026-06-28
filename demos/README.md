@@ -3,6 +3,12 @@
 ## Overview
 This directory contains example vulnerable ML models and applications for educational security testing. Each demo includes a security weakness, instructions for exploitation, and guidance for remediation.
 
+## Available
+
+| Demo | Covers | Status |
+|------|--------|--------|
+| [ML-SBOM worked example](ml-sbom/) | SUPPLY-001…008, MLASTG-TEST-SUPPLY-001 | ✅ Ready — validatable, CI-checked |
+
 ## Planned Demos
 
 | Demo | Weakness | Tool | Status |

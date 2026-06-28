@@ -1,0 +1,121 @@
+{
+  "$comment": "Industry-standard CycloneDX 1.6 ML-BOM for the same 'fraud-detector' model. Importable into CycloneDX-aware SCA/GRC tooling. See README.md for the field-by-field mapping to the MLASTG-native SBOM.",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3e2a9b6c-1f4d-4a8b-9c0d-7e1f2a3b4c5d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-28T00:00:00Z",
+    "tools": {
+      "components": [
+        { "type": "application", "name": "mlastg", "version": "0.1.0" }
+      ]
+    },
+    "component": {
+      "type": "machine-learning-model",
+      "bom-ref": "model:acme-fraud-detector@2.3.1",
+      "name": "acme-fraud-detector",
+      "version": "2.3.1",
+      "hashes": [
+        { "alg": "SHA-256", "content": "9f2c1b7a4e6d8c0f3a5b9e1d7c4f2a8b6e0d9c3f1a7b5e2d8c4f0a6b9e1d7c4f" }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "task": "binary-classification",
+          "architectureFamily": "transformer",
+          "modelArchitecture": "DistilBERT + classifier head",
+          "datasets": [
+            { "ref": "data:transactions-2025q4" },
+            { "ref": "data:public-fraud-benchmark-v3" }
+          ]
+        },
+        "considerations": {
+          "ethicalConsiderations": [
+            { "name": "fairness", "mitigationStrategy": "Bias/fairness evaluation per MLASVS-GOV controls" }
+          ]
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model:base:distilbert-base-uncased",
+      "name": "distilbert-base-uncased",
+      "version": "1.0",
+      "licenses": [ { "license": { "id": "Apache-2.0" } } ],
+      "externalReferences": [
+        { "type": "distribution", "url": "https://huggingface.co/distilbert-base-uncased" }
+      ],
+      "hashes": [
+        { "alg": "SHA-256", "content": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b" }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "data:transactions-2025q4",
+      "name": "transactions-2025q4",
+      "licenses": [ { "license": { "name": "Proprietary-Internal" } } ],
+      "hashes": [
+        { "alg": "SHA-256", "content": "def4560000000000000000000000000000000000000000000000000000000000" }
+      ],
+      "externalReferences": [
+        { "type": "distribution", "url": "s3://acme-ml-data/fraud/transactions-2025q4.parquet" }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "data:public-fraud-benchmark-v3",
+      "name": "public-fraud-benchmark-v3",
+      "licenses": [ { "license": { "id": "CC-BY-4.0" } } ],
+      "hashes": [
+        { "alg": "SHA-256", "content": "abc1230000000000000000000000000000000000000000000000000000000000" }
+      ],
+      "externalReferences": [
+        { "type": "distribution", "url": "https://datasets.example.org/public-fraud-benchmark/v3" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/torch@2.3.0",
+      "name": "torch",
+      "version": "2.3.0",
+      "purl": "pkg:pypi/torch@2.3.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/transformers@4.41.2",
+      "name": "transformers",
+      "version": "4.41.2",
+      "purl": "pkg:pypi/transformers@4.41.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/scikit-learn@1.5.0",
+      "name": "scikit-learn",
+      "version": "1.5.0",
+      "purl": "pkg:pypi/scikit-learn@1.5.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/numpy@1.26.4",
+      "name": "numpy",
+      "version": "1.26.4",
+      "purl": "pkg:pypi/numpy@1.26.4"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "model:acme-fraud-detector@2.3.1",
+      "dependsOn": [
+        "model:base:distilbert-base-uncased",
+        "data:transactions-2025q4",
+        "data:public-fraud-benchmark-v3",
+        "pkg:pypi/torch@2.3.0",
+        "pkg:pypi/transformers@4.41.2",
+        "pkg:pypi/scikit-learn@1.5.0",
+        "pkg:pypi/numpy@1.26.4"
+      ]
+    }
+  ]
+}

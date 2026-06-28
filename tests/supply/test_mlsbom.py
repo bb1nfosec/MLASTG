@@ -119,3 +119,16 @@ def run_test(target: str, demo: bool = False) -> list:
         "severity": "L1",
         "evidence": [results]
     }]
+
+
+if __name__ == "__main__":
+    import argparse, json as _json
+    _ap = argparse.ArgumentParser(description="MLASTG ML-SBOM validator (MLASTG-TEST-SUPPLY-001)")
+    _ap.add_argument("--demo", action="store_true", help="Validate a synthetic SBOM")
+    _ap.add_argument("--sbom", help="Path to an ML-SBOM JSON file to validate")
+    _ap.add_argument("--target", default=".", help="Alias for --sbom")
+    _args = _ap.parse_args()
+    _target = _args.sbom or _args.target
+    _results = run_test(_target, demo=_args.demo)
+    print(_json.dumps(_results, indent=2, default=str))
+    raise SystemExit(0 if all(r.get("status") == "pass" for r in _results) else 1)

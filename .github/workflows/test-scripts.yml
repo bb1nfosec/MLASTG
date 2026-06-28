@@ -46,6 +46,18 @@ jobs:
       - name: Run ML-SBOM demo
         run: python tests/supply/test_mlsbom.py --demo
 
+      - name: Validate worked ML-SBOM example (must PASS)
+        run: python tests/supply/test_mlsbom.py --sbom demos/ml-sbom/fraud-detector.mlsbom.json
+
+      - name: ML-SBOM negative check (incomplete SBOM must FAIL)
+        run: |
+          echo '{"model_name":"x"}' > /tmp/incomplete-sbom.json
+          if python tests/supply/test_mlsbom.py --sbom /tmp/incomplete-sbom.json; then
+            echo "::error::Incomplete SBOM unexpectedly passed validation"; exit 1
+          else
+            echo "Incomplete SBOM correctly rejected."
+          fi
+
       - name: Run governance audit demo
         run: python tests/gov/test_governance.py --demo
 

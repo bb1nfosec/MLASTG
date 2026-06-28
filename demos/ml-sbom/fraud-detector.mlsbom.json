@@ -1,0 +1,51 @@
+{
+  "$comment": "MLASTG-native ML-SBOM for the example 'fraud-detector' model. Validates against MLASTG-TEST-SUPPLY-001 (SUPPLY-001..008). Run: python tests/supply/test_mlsbom.py --sbom demos/ml-sbom/fraud-detector.mlsbom.json",
+  "model_name": "acme-fraud-detector",
+  "model_version": "2.3.1",
+  "model_hash": "sha256:9f2c1b7a4e6d8c0f3a5b9e1d7c4f2a8b6e0d9c3f1a7b5e2d8c4f0a6b9e1d7c4f",
+  "base_model": {
+    "source": "huggingface:distilbert-base-uncased",
+    "version": "1.0",
+    "hash": "sha256:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+    "license": "Apache-2.0",
+    "provenance": "https://huggingface.co/distilbert-base-uncased"
+  },
+  "training_dataset": [
+    {
+      "source": "s3://acme-ml-data/fraud/transactions-2025q4.parquet",
+      "hash": "sha256:def4560000000000000000000000000000000000000000000000000000000000",
+      "license": "Proprietary-Internal",
+      "records": 4200000,
+      "pii": "tokenized",
+      "provenance": "internal-data-platform/run/8821"
+    },
+    {
+      "source": "https://datasets.example.org/public-fraud-benchmark/v3",
+      "hash": "sha256:abc1230000000000000000000000000000000000000000000000000000000000",
+      "license": "CC-BY-4.0",
+      "records": 180000,
+      "pii": "none",
+      "provenance": "https://datasets.example.org/public-fraud-benchmark/v3"
+    }
+  ],
+  "framework_dependencies": [
+    { "name": "pytorch", "version": "2.3.0", "purl": "pkg:pypi/torch@2.3.0" },
+    { "name": "transformers", "version": "4.41.2", "purl": "pkg:pypi/transformers@4.41.2" },
+    { "name": "scikit-learn", "version": "1.5.0", "purl": "pkg:pypi/scikit-learn@1.5.0" },
+    { "name": "numpy", "version": "1.26.4", "purl": "pkg:pypi/numpy@1.26.4" }
+  ],
+  "training_environment": {
+    "gpu": "NVIDIA A100 80GB",
+    "os": "Ubuntu 22.04",
+    "cuda": "12.1",
+    "container_image": "ghcr.io/acme/ml-train@sha256:7c4f0a6b9e1d7c4f2a8b6e0d9c3f1a7b5e2d8c4f0a6b9e1d7c4f2a8b6e0d9c3f",
+    "pipeline_run": "github.com/acme/fraud-model/actions/runs/1029384"
+  },
+  "provenance": {
+    "build_system": "GitHub Actions",
+    "signed": true,
+    "signature": "sigstore:cosign",
+    "attestation": "in-toto/slsa-provenance-v1",
+    "sbom_generated_at": "2026-06-28T00:00:00Z"
+  }
+}

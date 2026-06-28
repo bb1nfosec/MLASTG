@@ -114,3 +114,14 @@ def run_test(target: str, demo: bool = False) -> list:
             "evidence": [str(val)]
         })
     return test_results
+
+
+if __name__ == "__main__":
+    import argparse, json as _json
+    _ap = argparse.ArgumentParser(description="MLASTG test harness")
+    _ap.add_argument("--demo", action="store_true", help="Run with synthetic data (no live target)")
+    _ap.add_argument("--target", default=".", help="Target endpoint or path to assess")
+    _args = _ap.parse_args()
+    _results = run_test(_args.target, demo=_args.demo)
+    print(_json.dumps(_results, indent=2, default=str))
+    raise SystemExit(0 if all(r.get("status") == "pass" for r in _results) else 1)
