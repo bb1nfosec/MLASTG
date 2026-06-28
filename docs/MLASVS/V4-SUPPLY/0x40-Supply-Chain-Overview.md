@@ -54,7 +54,7 @@ Security of ML libraries, frameworks, and runtime dependencies.
 | SUPPLY-015 | Cryptographic model provenance | AML.TA0006 | TEST-SUPPLY-002 |
 | SUPPLY-016 | Model signing and attestation | AML.TA0006 | TEST-SUPPLY-002 |
 | SUPPLY-017 | Fine-tuning data provenance chain | AML.T0020 | TEST-SUPPLY-001 |
-| SUPPLY-018 | Adversarial robustness of base model | AML.T0010 | TEST-SUPPLY-002 |
+| SUPPLY-018 | Adversarial robustness of base model | AML.T0015 | TEST-SUPPLY-002 |
 | SUPPLY-019 | Backdoor scanning of pre-trained models | AML.T0020 | TEST-SUPPLY-002 |
 | SUPPLY-020 | Vendor security assessment program | AML.TA0003 | TEST-SUPPLY-002 |
 | SUPPLY-021 | ML supply chain incident response | AML.TA0003 | TEST-SUPPLY-001 |

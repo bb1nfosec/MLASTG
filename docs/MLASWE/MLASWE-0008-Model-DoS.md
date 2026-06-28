@@ -37,7 +37,7 @@ Model Denial of Service (DoS) attacks exploit the inherently resource-intensive 
 - **MLASVS-INFRA-010:** Input size validation
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.T0037:** Model Denial of Service
+- **AML.T0029:** Model Denial of Service
 
 ## Remediation
 1. **Strict Rate Limiting:** API gateways MUST enforce rigorous, multi-tiered rate limiting (per IP, per user, per API key) on all inference endpoints.
@@ -53,4 +53,4 @@ Model Denial of Service (DoS) attacks exploit the inherently resource-intensive 
 ## References
 - Shumailov et al., "Sponge Examples: Energy-Latency Attacks on Neural Networks" (2021)
 - OWASP LLM Top 10: LLM04
-- MITRE ATLAS: AML.T0037
+- MITRE ATLAS: AML.T0029

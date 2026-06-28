@@ -115,7 +115,7 @@ Base model vetting ensures that pre-trained models sourced from third parties ar
 ### SUPPLY-018: Adversarial Robustness of Base Model (L2)
 **Description:** Base models must undergo adversarial robustness evaluation.
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-SUPPLY-002
 
 **Verification:**

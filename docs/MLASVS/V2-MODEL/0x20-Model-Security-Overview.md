@@ -9,11 +9,11 @@ Model security addresses attacks that target the trained model itself. These inc
 | Threat | MITRE ATLAS | MLASWE Reference |
 |--------|-------------|------------------|
 | Adversarial evasion | AML.T0010 | MLASWE-0001 |
-| Model extraction | AML.T0034 | MLASWE-0003 |
+| Model extraction | AML.T0024.002 | MLASWE-0003 |
 | Model inversion | AML.T0018 | MLASWE-0004 |
 | Membership inference | AML.T0018 | MLASWE-0005 |
 | Backdoor/trojan attack | AML.T0020 | MLASWE-0007 |
-| Model denial of service | AML.T0037 | MLASWE-0008 |
+| Model denial of service | AML.T0029 | MLASWE-0008 |
 
 ## Subcategories
 
@@ -38,19 +38,19 @@ Ensuring models are authentic, untampered, and properly versioned.
 
 | ID | Control | MITRE ATLAS | Test Ref |
 |----|---------|-------------|----------|
-| MODEL-001 | Adversarial robustness testing | AML.T0010 | TEST-MODEL-001 |
-| MODEL-002 | Input perturbation limits | AML.T0010 | TEST-MODEL-001 |
-| MODEL-003 | Model input validation | AML.T0007 | TEST-MODEL-001 |
-| MODEL-004 | Output confidence calibration | AML.T0018 | TEST-MODEL-002 |
-| MODEL-005 | API rate limiting | AML.T0034 | TEST-MODEL-002 |
+| MODEL-001 | Adversarial robustness testing | AML.T0015 | TEST-MODEL-001 |
+| MODEL-002 | Input perturbation limits | AML.T0015 | TEST-MODEL-001 |
+| MODEL-003 | Model input validation | AML.T0043 | TEST-MODEL-001 |
+| MODEL-004 | Output confidence calibration | AML.T0024.001 | TEST-MODEL-002 |
+| MODEL-005 | API rate limiting | AML.T0024.002 | TEST-MODEL-002 |
 | MODEL-006 | Access control on model endpoints | AML.TA0002 | TEST-MODEL-002 |
 | MODEL-007 | Model versioning | AML.TA0006 | TEST-MODEL-005 |
 | MODEL-008 | Model signing | AML.TA0006 | TEST-MODEL-005 |
 | MODEL-009 | Inference logging | AML.TA0009 | TEST-MODEL-003 |
-| MODEL-010 | Anomalous input detection | AML.T0010 | TEST-MODEL-001 |
-| MODEL-011 | Output sanitization | AML.T0018 | TEST-MODEL-003 |
-| MODEL-012 | Resource limits on inference | AML.T0037 | TEST-MODEL-001 |
-| MODEL-013 | Model behavior monitoring | AML.T0056 | TEST-MODEL-003 |
+| MODEL-010 | Anomalous input detection | AML.T0015 | TEST-MODEL-001 |
+| MODEL-011 | Output sanitization | AML.T0024.001 | TEST-MODEL-003 |
+| MODEL-012 | Resource limits on inference | AML.T0029 | TEST-MODEL-001 |
+| MODEL-013 | Model behavior monitoring | AML.T0018 | TEST-MODEL-003 |
 | MODEL-014 | Secure model serialization | AML.TA0002 | TEST-MODEL-005 |
 | MODEL-015 | Model rollback capability | AML.TA0006 | TEST-MODEL-005 |
 
@@ -58,20 +58,20 @@ Ensuring models are authentic, untampered, and properly versioned.
 
 | ID | Control | MITRE ATLAS | Test Ref |
 |----|---------|-------------|----------|
-| MODEL-016 | Certified adversarial robustness | AML.T0010 | TEST-MODEL-001 |
-| MODEL-017 | Robustness certification (provable bounds) | AML.T0010 | TEST-MODEL-001 |
-| MODEL-018 | Extraction resistance validation | AML.T0034 | TEST-MODEL-002 |
-| MODEL-019 | Differential privacy in model | AML.T0018 | TEST-MODEL-003 |
-| MODEL-020 | Membership inference prevention | AML.T0018 | TEST-MODEL-003 |
+| MODEL-016 | Certified adversarial robustness | AML.T0015 | TEST-MODEL-001 |
+| MODEL-017 | Robustness certification (provable bounds) | AML.T0015 | TEST-MODEL-001 |
+| MODEL-018 | Extraction resistance validation | AML.T0024.002 | TEST-MODEL-002 |
+| MODEL-019 | Differential privacy in model | AML.T0024.000 | TEST-MODEL-003 |
+| MODEL-020 | Membership inference prevention | AML.T0024.000 | TEST-MODEL-003 |
 | MODEL-021 | Backdoor detection validation | AML.T0020 | TEST-MODEL-004 |
 | MODEL-022 | Trojan detection | AML.T0020 | TEST-MODEL-004 |
-| MODEL-023 | Model watermarking | AML.T0034 | TEST-MODEL-002 |
-| MODEL-024 | Adversarial training validation | AML.T0010 | TEST-MODEL-001 |
-| MODEL-025 | Feature squeezing validation | AML.T0010 | TEST-MODEL-001 |
-| MODEL-026 | Model ensemble diversity | AML.T0010 | TEST-MODEL-001 |
-| MODEL-027 | Certified defense mechanisms | AML.T0010 | TEST-MODEL-001 |
+| MODEL-023 | Model watermarking | AML.T0024.002 | TEST-MODEL-002 |
+| MODEL-024 | Adversarial training validation | AML.T0015 | TEST-MODEL-001 |
+| MODEL-025 | Feature squeezing validation | AML.T0015 | TEST-MODEL-001 |
+| MODEL-026 | Model ensemble diversity | AML.T0015 | TEST-MODEL-001 |
+| MODEL-027 | Certified defense mechanisms | AML.T0015 | TEST-MODEL-001 |
 | MODEL-028 | Red team exercise completion | AML.TA0001 | TEST-MODEL-001 |
-| MODEL-029 | Continuous adversarial retesting | AML.T0010 | TEST-MODEL-001 |
+| MODEL-029 | Continuous adversarial retesting | AML.T0015 | TEST-MODEL-001 |
 | MODEL-030 | Model provenance attestation | AML.TA0006 | TEST-MODEL-005 |
 
 ## Related EW Links

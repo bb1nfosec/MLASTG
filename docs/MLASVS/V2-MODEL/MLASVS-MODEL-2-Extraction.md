@@ -11,11 +11,11 @@ Model extraction prevention ensures that adversaries cannot steal a deployed ML 
 
 | ID | Control | Level | MITRE ATLAS | Test Reference | Description |
 |----|---------|-------|-------------|----------------|-------------|
-| MODEL-004 | Output confidence calibration | L1 | AML.T0018 | TEST-MODEL-002 | Limit precision of output confidence scores to reduce information leakage |
-| MODEL-005 | API rate limiting | L1 | AML.T0034 | TEST-MODEL-002 | Enforce per-user query quotas to prevent bulk extraction |
+| MODEL-004 | Output confidence calibration | L1 | AML.T0024.001 | TEST-MODEL-002 | Limit precision of output confidence scores to reduce information leakage |
+| MODEL-005 | API rate limiting | L1 | AML.T0024.002 | TEST-MODEL-002 | Enforce per-user query quotas to prevent bulk extraction |
 | MODEL-006 | Access control on model endpoints | L1 | AML.TA0002 | TEST-MODEL-002 | Require authentication for all model inference endpoints |
-| MODEL-018 | Extraction resistance validation | L2 | AML.T0034 | TEST-MODEL-002 | Verify that surrogate models cannot achieve high fidelity through API queries |
-| MODEL-023 | Model watermarking | L2 | AML.T0034 | TEST-MODEL-002 | Embed unique fingerprints in model outputs for forensic tracing |
+| MODEL-018 | Extraction resistance validation | L2 | AML.T0024.002 | TEST-MODEL-002 | Verify that surrogate models cannot achieve high fidelity through API queries |
+| MODEL-023 | Model watermarking | L2 | AML.T0024.002 | TEST-MODEL-002 | Embed unique fingerprints in model outputs for forensic tracing |
 
 ## Implementation Guidance
 
@@ -38,4 +38,4 @@ Model extraction prevention ensures that adversaries cannot steal a deployed ML 
 
 - [MLASTG-TEST-MODEL-002: Extraction Resistance Testing](../../MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-002.md)
 - [MLASWE-0003: Model Extraction](../../MLASWE/MLASWE-0003-Model-Extraction.md)
-- **MITRE ATLAS:** AML.T0034 (Model Extraction)
+- **MITRE ATLAS:** AML.T0024.002 (Extract AI Model)

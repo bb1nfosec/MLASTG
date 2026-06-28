@@ -11,11 +11,11 @@ Agency control limits the autonomy and resource consumption of LLM-based systems
 
 | ID | Control | Level | MITRE ATLAS | Test Reference | Description |
 |----|---------|-------|-------------|----------------|-------------|
-| LLM-005 | Context window limits | L1 | AML.T0037 | TEST-LLM-003 | Enforce maximum context window size |
+| LLM-005 | Context window limits | L1 | AML.T0029 | TEST-LLM-003 | Enforce maximum context window size |
 | LLM-010 | Human-in-the-loop for critical actions | L1 | AML.T0053 | TEST-LLM-003 | Require human approval for destructive or irreversible LLM actions |
-| LLM-011 | Rate limiting on LLM endpoints | L1 | AML.T0037 | TEST-LLM-003 | Enforce per-user request rate limits on LLM APIs |
-| LLM-012 | Token usage monitoring | L1 | AML.T0037 | TEST-LLM-003 | Monitor and alert on abnormal token consumption patterns |
-| LLM-013 | Input token limits | L1 | AML.T0037 | TEST-LLM-003 | Enforce maximum input token count per request |
+| LLM-011 | Rate limiting on LLM endpoints | L1 | AML.T0029 | TEST-LLM-003 | Enforce per-user request rate limits on LLM APIs |
+| LLM-012 | Token usage monitoring | L1 | AML.T0029 | TEST-LLM-003 | Monitor and alert on abnormal token consumption patterns |
+| LLM-013 | Input token limits | L1 | AML.T0029 | TEST-LLM-003 | Enforce maximum input token count per request |
 | LLM-017 | Jailbreak detection system | L2 | AML.T0051 | TEST-LLM-003 | Deploy automated detection of jailbreak attempts |
 | LLM-020 | Agentic workflow authorization | L2 | AML.T0053 | TEST-LLM-003 | Gate all tool/API invocations behind explicit authorization checks |
 | LLM-022 | Continuous red teaming pipeline | L2 | AML.T0051 | TEST-LLM-003 | Maintain automated red team testing for LLM vulnerabilities |
@@ -45,4 +45,4 @@ Agency control limits the autonomy and resource consumption of LLM-based systems
 - [MLASWE-0011: Excessive Agency](../../MLASWE/MLASWE-0011-Excessive-Agency.md)
 - [MLASWE-0008: Model DoS](../../MLASWE/MLASWE-0008-Model-DoS.md)
 - **OWASP LLM Top 10:** LLM04 (Model DoS), LLM08 (Excessive Agency)
-- **MITRE ATLAS:** AML.T0037 (ML Model DoS), AML.T0053 (LLM Plugin Compromise)
+- **MITRE ATLAS:** AML.T0029 (Denial of AI Service), AML.T0053 (LLM Plugin Compromise)

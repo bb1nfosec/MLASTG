@@ -41,4 +41,4 @@ Backdoor detection ensures that deployed models do not contain hidden malicious 
 
 - [MLASTG-TEST-MODEL-004: Backdoor & Trojan Detection Testing](../../MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-004.md)
 - [MLASWE-0007: Backdoor/Trojan](../../MLASWE/MLASWE-0007-Backdoor-Trojan.md)
-- **MITRE ATLAS:** AML.T0020 (Data Poisoning), AML.T0018 (Backdoor ML Model)
+- **MITRE ATLAS:** AML.T0020 (Data Poisoning), AML.T0018.000 (Poison AI Model)

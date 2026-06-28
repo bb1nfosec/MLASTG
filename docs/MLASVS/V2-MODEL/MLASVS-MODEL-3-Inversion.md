@@ -12,10 +12,10 @@ Model inversion and privacy controls prevent adversaries from reconstructing tra
 | ID | Control | Level | MITRE ATLAS | Test Reference | Description |
 |----|---------|-------|-------------|----------------|-------------|
 | MODEL-009 | Inference logging | L1 | AML.TA0009 | TEST-MODEL-003 | Log inference requests with anonymized identifiers for audit |
-| MODEL-011 | Output sanitization | L1 | AML.T0018 | TEST-MODEL-003 | Sanitize model outputs to prevent training data reconstruction |
-| MODEL-013 | Model behavior monitoring | L1 | AML.T0056 | TEST-MODEL-003 | Monitor model behavior for anomalous patterns indicating attacks |
-| MODEL-019 | Differential privacy in model | L2 | AML.T0018 | TEST-MODEL-003 | Implement differential privacy guarantees in model training |
-| MODEL-020 | Membership inference prevention | L2 | AML.T0018 | TEST-MODEL-003 | Prevent adversaries from determining if specific records were in training data |
+| MODEL-011 | Output sanitization | L1 | AML.T0024.001 | TEST-MODEL-003 | Sanitize model outputs to prevent training data reconstruction |
+| MODEL-013 | Model behavior monitoring | L1 | AML.T0018 | TEST-MODEL-003 | Monitor model behavior for anomalous patterns indicating attacks |
+| MODEL-019 | Differential privacy in model | L2 | AML.T0024.000 | TEST-MODEL-003 | Implement differential privacy guarantees in model training |
+| MODEL-020 | Membership inference prevention | L2 | AML.T0024.000 | TEST-MODEL-003 | Prevent adversaries from determining if specific records were in training data |
 
 ## Implementation Guidance
 
@@ -39,4 +39,4 @@ Model inversion and privacy controls prevent adversaries from reconstructing tra
 - [MLASTG-TEST-MODEL-003: Membership Inference Testing](../../MLASTG/MODEL-Tests/MLASTG-TEST-MODEL-003.md)
 - [MLASWE-0004: Model Inversion](../../MLASWE/MLASWE-0004-Model-Inversion.md)
 - [MLASWE-0005: Membership Inference](../../MLASWE/MLASWE-0005-Membership-Inference.md)
-- **MITRE ATLAS:** AML.T0018 (Model Inversion)
+- **MITRE ATLAS:** AML.T0024.001 (Invert AI Model)

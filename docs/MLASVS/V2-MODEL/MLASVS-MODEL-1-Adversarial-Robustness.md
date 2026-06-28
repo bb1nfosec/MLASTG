@@ -22,7 +22,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-001: Adversarial Robustness Testing (L1)
 **Description:** Models must be tested against common adversarial attack methods (FGSM, PGD for white-box; HopSkipJump, Boundary Attack for black-box).
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Prerequisites:**
@@ -47,7 +47,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-002: Input Perturbation Limits (L1)
 **Description:** Models must define and enforce maximum allowed input perturbation boundaries.
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Verification:**
@@ -62,7 +62,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-003: Model Input Validation (L1)
 **Description:** All inputs to the model must be validated against expected ranges, types, and formats before inference.
 
-**MITRE ATLAS:** AML.T0007 (Input Manipulation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Verification:**
@@ -77,7 +77,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-016: Certified Adversarial Robustness (L2)
 **Description:** For high-security models, certified (provable) robustness bounds must be established using methods like randomized smoothing or Lipschitz-based certification.
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Verification:**
@@ -93,7 +93,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-024: Adversarial Training Validation (L2)
 **Description:** Models trained for sensitive applications must incorporate adversarial training as a defense mechanism.
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Verification:**
@@ -123,7 +123,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 ### MODEL-029: Continuous Adversarial Retesting (L2)
 **Description:** Models must be continuously tested against new adversarial attack methods in a CI/CD pipeline.
 
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-MODEL-001
 
 **Verification:**
@@ -155,7 +155,7 @@ Detecting adversarial attacks through anomalous input/output patterns.
 
 ## Cross-References
 
-- **MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+- **MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 - **NIST AI RMF:** MEASURE-1, MEASURE-2, MANAGE-1
 - **NIST AI 100-2e2025:** Evasion category
 - **OWASP AI Exchange:** Input Threats, AI Security Testing

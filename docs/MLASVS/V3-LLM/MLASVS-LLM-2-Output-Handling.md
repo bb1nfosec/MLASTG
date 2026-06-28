@@ -11,10 +11,10 @@ LLM output handling ensures that model outputs are properly validated, filtered,
 
 | ID | Control | Level | MITRE ATLAS | Test Reference | Description |
 |----|---------|-------|-------------|----------------|-------------|
-| LLM-003 | Output validation and filtering | L1 | AML.T0052 | TEST-LLM-002 | Validate and filter LLM outputs before rendering or execution |
-| LLM-008 | Sensitive data exfiltration prevention | L1 | AML.T0052 | TEST-LLM-002 | Prevent LLM from outputting API keys, credentials, or PII |
-| LLM-009 | Content filtering pipeline | L1 | AML.T0052 | TEST-LLM-002 | Deploy content moderation to block policy-violating outputs |
-| LLM-014 | Output length limits | L1 | AML.T0052 | TEST-LLM-002 | Enforce maximum output length to prevent resource exhaustion |
+| LLM-003 | Output validation and filtering | L1 | AML.T0057 | TEST-LLM-002 | Validate and filter LLM outputs before rendering or execution |
+| LLM-008 | Sensitive data exfiltration prevention | L1 | AML.T0057 | TEST-LLM-002 | Prevent LLM from outputting API keys, credentials, or PII |
+| LLM-009 | Content filtering pipeline | L1 | AML.T0057 | TEST-LLM-002 | Deploy content moderation to block policy-violating outputs |
+| LLM-014 | Output length limits | L1 | AML.T0057 | TEST-LLM-002 | Enforce maximum output length to prevent resource exhaustion |
 
 ## Implementation Guidance
 
@@ -38,4 +38,4 @@ LLM output handling ensures that model outputs are properly validated, filtered,
 - [MLASTG-TEST-LLM-002: Output Validation & Data Exfiltration Testing](../../MLASTG/LLM-Tests/MLASTG-TEST-LLM-002.md)
 - [MLASWE-0010: Insecure Output Handling](../../MLASWE/MLASWE-0010-Insecure-Output-Handling.md)
 - **OWASP LLM Top 10:** LLM02 (Insecure Output Handling), LLM06 (Sensitive Information Disclosure)
-- **MITRE ATLAS:** AML.T0052 (LLM Data Leakage)
+- **MITRE ATLAS:** AML.T0057 (LLM Data Leakage)

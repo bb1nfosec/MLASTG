@@ -9,15 +9,15 @@ Large Language Models (LLMs) present a unique security challenge. Unlike traditi
 | Threat | MITRE ATLAS | OWASP LLM | MLASWE Reference |
 |--------|-------------|-----------|------------------|
 | Prompt injection | AML.T0051 | LLM01 | MLASWE-0006 |
-| Insecure output handling | AML.T0052 | LLM02 | MLASWE-0010 |
+| Insecure output handling | AML.T0057 | LLM02 | MLASWE-0010 |
 | Training data poisoning | AML.T0020 | LLM03 | MLASWE-0002 |
-| Model denial of service | AML.T0037 | LLM04 | MLASWE-0008 |
+| Model denial of service | AML.T0029 | LLM04 | MLASWE-0008 |
 | Supply chain vulnerabilities | AML.TA0003 | LLM05 | MLASWE-0009 |
-| Sensitive information disclosure | AML.T0052 | LLM06 | MLASWE-0012 |
+| Sensitive information disclosure | AML.T0057 | LLM06 | MLASWE-0012 |
 | Insecure plugin design | AML.T0053 | LLM07 | MLASWE-0011 |
 | Excessive agency | AML.T0053 | LLM08 | MLASWE-0011 |
 | Overreliance | AML.T0056 | LLM09 | — |
-| Model theft | AML.T0034 | LLM10 | MLASWE-0003 |
+| Model theft | AML.T0024.002 | LLM10 | MLASWE-0003 |
 
 ## Subcategories
 
@@ -44,18 +44,18 @@ Designing robust system prompts resistant to extraction and manipulation.
 |----|---------|-------------|-----------|----------|
 | LLM-001 | Prompt injection prevention | AML.T0051 | LLM01 | TEST-LLM-001 |
 | LLM-002 | Input/output boundary enforcement | AML.T0051 | LLM01 | TEST-LLM-001 |
-| LLM-003 | Output validation and filtering | AML.T0052 | LLM02 | TEST-LLM-002 |
+| LLM-003 | Output validation and filtering | AML.T0057 | LLM02 | TEST-LLM-002 |
 | LLM-004 | System prompt isolation | AML.T0051 | LLM01 | TEST-LLM-001 |
-| LLM-005 | Context window limits | AML.T0037 | LLM04 | TEST-LLM-003 |
+| LLM-005 | Context window limits | AML.T0029 | LLM04 | TEST-LLM-003 |
 | LLM-006 | Plugin permission scoping | AML.T0053 | LLM07 | TEST-LLM-001 |
 | LLM-007 | Tool call authorization | AML.T0053 | LLM08 | TEST-LLM-001 |
-| LLM-008 | Sensitive data exfiltration prevention | AML.T0052 | LLM06 | TEST-LLM-002 |
-| LLM-009 | Content filtering pipeline | AML.T0052 | LLM02 | TEST-LLM-002 |
+| LLM-008 | Sensitive data exfiltration prevention | AML.T0057 | LLM06 | TEST-LLM-002 |
+| LLM-009 | Content filtering pipeline | AML.T0057 | LLM02 | TEST-LLM-002 |
 | LLM-010 | Human-in-the-loop for critical actions | AML.T0053 | LLM08 | TEST-LLM-003 |
-| LLM-011 | Rate limiting on LLM endpoints | AML.T0037 | LLM04 | TEST-LLM-003 |
-| LLM-012 | Token usage monitoring | AML.T0037 | LLM04 | TEST-LLM-003 |
-| LLM-013 | Input token limits | AML.T0037 | LLM04 | TEST-LLM-003 |
-| LLM-014 | Output length limits | AML.T0052 | LLM02 | TEST-LLM-002 |
+| LLM-011 | Rate limiting on LLM endpoints | AML.T0029 | LLM04 | TEST-LLM-003 |
+| LLM-012 | Token usage monitoring | AML.T0029 | LLM04 | TEST-LLM-003 |
+| LLM-013 | Input token limits | AML.T0029 | LLM04 | TEST-LLM-003 |
+| LLM-014 | Output length limits | AML.T0057 | LLM02 | TEST-LLM-002 |
 
 ### L2 Controls (10)
 

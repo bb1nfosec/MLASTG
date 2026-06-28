@@ -70,14 +70,14 @@ Each MLASWE entry follows this format:
 |----|----------|----------|----------------|-------------|
 | 0001 | Adversarial Perturbation | High | MODEL-001, MODEL-002, MODEL-016 | AML.T0010 |
 | 0002 | Data Poisoning | Critical | DATA-011, DATA-024, DATA-025 | AML.T0020 |
-| 0003 | Model Extraction | High | MODEL-005, MODEL-018, MODEL-023 | AML.T0034 |
+| 0003 | Model Extraction | High | MODEL-005, MODEL-018, MODEL-023 | AML.T0024.002 |
 | 0004 | Model Inversion | Medium | MODEL-019, MODEL-020 | AML.T0018 |
 | 0005 | Membership Inference | Medium | MODEL-020, DATA-019 | AML.T0018 |
 | 0006 | Prompt Injection | Critical | LLM-001, LLM-015, LLM-016 | AML.T0051 |
 | 0007 | Backdoor/Trojan | Critical | MODEL-021, MODEL-022 | AML.T0020 |
-| 0008 | Model Denial of Service | High | LLM-011, MODEL-012 | AML.T0037 |
+| 0008 | Model Denial of Service | High | LLM-011, MODEL-012 | AML.T0029 |
 | 0009 | Supply Chain Compromise | Critical | SUPPLY-001 through SUPPLY-022 | AML.TA0003 |
-| 0010 | Insecure Output Handling | High | LLM-003, LLM-009, LLM-014 | AML.T0052 |
+| 0010 | Insecure Output Handling | High | LLM-003, LLM-009, LLM-014 | AML.T0057 |
 | 0011 | Excessive Agency | High | LLM-007, LLM-010, LLM-020 | AML.T0053 |
 | 0012 | Training Data Leakage | High | DATA-005, DATA-010, DATA-015 | AML.TA0010 |
 

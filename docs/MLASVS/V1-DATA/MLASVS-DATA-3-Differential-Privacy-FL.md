@@ -34,7 +34,7 @@ This document extends the base MLASVS-DATA-3 controls with federated learning-sp
 ### DATA-023: Secure Aggregation Verification (L2)
 **Description:** In federated learning, the aggregation protocol must prevent the central server from inspecting individual participant model updates. Use homomorphic encryption, secure multi-party computation (SMPC), or trusted execution environments (TEEs).
 
-**MITRE ATLAS:** AML.T0013 (Extract ML Model)
+**MITRE ATLAS:** AML.T0024.002 (Extract AI Model)
 **Test Reference:** MLASTG-TEST-DATA-005
 
 **Verification:**
@@ -58,7 +58,7 @@ This document extends the base MLASVS-DATA-3 controls with federated learning-sp
 
 ## Cross-References
 
-- **MITRE ATLAS:** AML.T0020, AML.T0013
+- **MITRE ATLAS:** AML.T0020, AML.T0024.002
 - **Academic:** Abadi et al., "Deep Learning with Differential Privacy" (2016)
 - **Academic:** Bonawitz et al., "Practical Secure Aggregation for Privacy-Preserving Machine Learning" (2017)
 - **Framework:** PySyft, TensorFlow Privacy, Opacus

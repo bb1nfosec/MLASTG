@@ -175,7 +175,7 @@ For each test case:
 ## References
 - **MITRE ATLAS:**
   - AML.T0051 - LLM Prompt Injection
-  - AML.T0052 - LLM Indirect Prompt Injection
+  - AML.T0057 - LLM Indirect Prompt Injection
   - AML.T0054 - LLM Jailbreak
 - **OWASP LLM Top 10:** LLM01 (Prompt Injection), LLM06 (Excessive Agency), LLM07 (System Prompt Leakage), LLM08 (Vector and Embedding Weaknesses)
 - **MLASWE:** MLASWE-0006 (Prompt Injection), MLASWE-0010 (System Prompt Leakage), MLASWE-0011 (Indirect RAG Injection)

@@ -49,14 +49,14 @@
 | ATLAS ID | Technique | Controls | Density |
 |----------|-----------|----------|---------|
 | AML.T0010 | Adversarial Perturbation | 10 controls | 🔥 High |
-| AML.T0037 | Model DoS | 6 controls | 🔥 High |
+| AML.T0029 | Model DoS | 6 controls | 🔥 High |
 | AML.T0051 | LLM Prompt Injection | 8 controls | 🔥 High |
-| AML.T0034 | Model Extraction | 6 controls | 🔥 High |
+| AML.T0024.002 | Model Extraction | 6 controls | 🔥 High |
 | AML.T0053 | LLM Plugin Compromise | 5 controls | 🔥 Medium |
 | AML.T0020 | Data Poisoning | 5 controls | 🔥 Medium |
-| AML.T0052 | LLM Data Leakage | 4 controls | 🔥 Medium |
+| AML.T0057 | LLM Data Leakage | 4 controls | 🔥 Medium |
 | AML.T0018 | Model Inversion | 3 controls | ⚡ Low |
-| AML.T0007 | Input Manipulation | 2 controls | ⚡ Low |
+| AML.T0043 | Input Manipulation | 2 controls | ⚡ Low |
 | AML.T0056 | ML Behavioral Manipulation | 4 controls | 🔥 Medium |
 | — | ML Model Discovery (TA0001) | 0 controls | ❌ None |
 

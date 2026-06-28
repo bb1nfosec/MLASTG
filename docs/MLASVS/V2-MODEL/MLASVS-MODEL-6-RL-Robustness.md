@@ -11,7 +11,7 @@ Reinforcement learning systems have unique attack surfaces including reward mani
 ### MODEL-010: Reward Function Robustness (L2)
 **Description:** RL reward functions must be validated for robustness against unintended optimization. The reward function should be analyzed for potential loopholes that allow the agent to achieve high reward without performing the intended task.
 
-**MITRE ATLAS:** AML.T0056 (ML Model Behavioral Manipulation)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-MODEL-006
 
 **Verification:**
@@ -30,7 +30,7 @@ Reinforcement learning systems have unique attack surfaces including reward mani
 ### MODEL-012: Adversarial Policy Robustness (L2)
 **Description:** RL policies must be robust to adversarial perturbations of observations, actions, and policy parameters. Small perturbations should not cause catastrophic behavioral changes.
 
-**MITRE ATLAS:** AML.T0010 (Exploit ML Model)
+**MITRE ATLAS:** AML.T0049 (Exploit Public-Facing Application)
 **Test Reference:** MLASTG-TEST-MODEL-006
 
 **Verification:**
@@ -49,7 +49,7 @@ Reinforcement learning systems have unique attack surfaces including reward mani
 ### MODEL-016: Out-of-Distribution Detection for RL (L2)
 **Description:** RL agents must detect when observations fall outside the training distribution and revert to safe behavior.
 
-**MITRE ATLAS:** AML.T0011 (Evade ML Model)
+**MITRE ATLAS:** AML.T0015 (Evade AI Model)
 **Test Reference:** MLASTG-TEST-MODEL-006
 
 **Verification:**
@@ -68,7 +68,7 @@ Reinforcement learning systems have unique attack surfaces including reward mani
 ### MODEL-024: Safe Exploration Boundaries (L2)
 **Description:** RL agents must respect safety constraints during exploration. Actions must be bounded by physical, legal, and operational safety limits.
 
-**MITRE ATLAS:** AML.T0056 (ML Model Behavioral Manipulation)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-MODEL-006
 
 **Verification:**
@@ -86,7 +86,7 @@ Reinforcement learning systems have unique attack surfaces including reward mani
 
 ## Cross-References
 
-- **MITRE ATLAS:** AML.T0010, AML.T0011, AML.T0056
+- **MITRE ATLAS:** AML.T0010, AML.T0015, AML.T0056
 - **Academic:** Amodei et al., "Concrete Problems in AI Safety" (2016)
 - **Academic:** Skalse et al., "Defining and Characterizing Reward Gaming" (2022)
 - **Framework:** SafeRL, OMNIGYM safety benchmarks

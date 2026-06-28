@@ -24,7 +24,7 @@ Monitoring and incident response for ML systems requires capabilities beyond tra
 
 ### INFRA-013: Adversarial Input Detection at Inference (L2)
 **Description:** Real-time detection of adversarial inputs during inference to block evasion attacks.
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
@@ -38,7 +38,7 @@ Monitoring and incident response for ML systems requires capabilities beyond tra
 
 ### INFRA-014: Runtime Model Behavior Monitoring (L2)
 **Description:** Continuous monitoring of model behavior metrics to detect compromise.
-**MITRE ATLAS:** AML.T0056 (ML Model Behavior)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
@@ -81,7 +81,7 @@ Monitoring and incident response for ML systems requires capabilities beyond tra
 
 ### MON-001: Alerting Thresholds (L1)
 **Description:** Alert thresholds for model behavior anomalies must be defined and documented.
-**MITRE ATLAS:** AML.T0056 (ML Model Behavior)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**

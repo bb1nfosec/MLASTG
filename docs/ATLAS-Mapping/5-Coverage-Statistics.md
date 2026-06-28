@@ -45,18 +45,18 @@ This page provides a quantitative summary of MLASTG's coverage of the MITRE ATLA
 | AML.T0000 | ML Attack Staging | 100% | PIPELINE-001 | — |
 | AML.T0001 | Search for Tainted ML Data | 100% | DATA-001 | — |
 | AML.T0003 | Compromise ML Supply Chain | 100% | SUPPLY-001, SUPPLY-002 | — |
-| AML.T0007 | ML Model Inversion Attack | 100% | MODEL-003 | — |
+| AML.T0043 | ML Model Inversion Attack | 100% | MODEL-003 | — |
 | AML.T0010 | Exploit ML Model | 100% | MODEL-001, MODEL-002 | — |
-| AML.T0011 | Evade ML Model | 100% | MODEL-001, MODEL-002 | — |
+| AML.T0015 | Evade ML Model | 100% | MODEL-001, MODEL-002 | — |
 | AML.T0012 | Backdoor ML Model | 100% | MODEL-004, MODEL-005 | — |
-| AML.T0013 | Extract ML Model | 100% | MODEL-002, MODEL-003 | — |
+| AML.T0024.002 | Extract ML Model | 100% | MODEL-002, MODEL-003 | — |
 | AML.T0014 | Invert ML Model | 100% | MODEL-003 | — |
 | AML.T0020 | Poison Training Data | 100% | DATA-001, DATA-002 | — |
 | AML.T0035 | Erode ML Model Integrity | 100% | MODEL-004, MODEL-005 | — |
-| AML.T0037 | ML Model Extraction | 100% | MODEL-002 | — |
+| AML.T0029 | ML Model Extraction | 100% | MODEL-002 | — |
 | AML.T0043 | Exploit Adversarial ML Vulnerability | 100% | MODEL-001 | — |
 | AML.T0051 | LLM Prompt Injection | 100% | LLM-001, LLM-004 | — |
-| AML.T0052 | LLM Output Handling | 100% | LLM-002 | — |
+| AML.T0057 | LLM Output Handling | 100% | LLM-002 | — |
 | AML.T0054 | LLM Jailbreak | 100% | LLM-005 | — |
 | AML.T0056 | ML Model Behavioral Manipulation | 100% | MODEL-004, INFRA-012, INFRA-018 | — |
 | AML.T0058 | ML Model Inversion Attack | 100% | MODEL-003 | — |
@@ -71,7 +71,7 @@ This page provides a quantitative summary of MLASTG's coverage of the MITRE ATLA
 | AML.T0018 | Poison Training Data | 50% | DATA-001, DATA-002 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
 | AML.T0021 | Clean Training Data | 50% | DATA-002 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
 | AML.T0031 | Exfiltration via ML Inference | 50% | LLM-002 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
-| AML.T0034 | Denial of ML Service | 50% | LLM-010 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
+| AML.T0024.002 | Denial of ML Service | 50% | LLM-010 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
 | AML.T0040 | Establish Adversarial ML Infrastructure | 50% | INFRA-001 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
 | AML.T0053 | LLM Plugin Compromise | 50% | LLM-006, LLM-007 | Identified in [Gap Analysis](3-Gap-Analysis.md) |
 | AML.T0057 | ML Model Data Exfiltration | 50% | MODEL-003 | Identified in [Gap Analysis](3-Gap-Analysis.md) |

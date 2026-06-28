@@ -114,7 +114,7 @@ Model extraction attacks allow an adversary to reconstruct a functional copy of 
 
 ## References
 - **MITRE ATLAS:**
-  - `AML.T0034` — ML Model Inference API Access (extraction context)
+  - `AML.T0024.002` — ML Model Inference API Access (extraction context)
   - `AML.T0005` — Create Proxy ML Model
 - **MLASWE:** MLASWE-0003 (Model Extraction / Intellectual Property Theft)
 - **NIST AI RMF:** MANAGE 2.4, MEASURE 2.6

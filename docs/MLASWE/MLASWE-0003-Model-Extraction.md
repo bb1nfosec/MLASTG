@@ -34,7 +34,7 @@ Model extraction attacks, also known as model stealing, involve an adversary sys
 - **MLASVS-MODEL-023:** Model watermarking (L2)
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.T0034:** Model Extraction (Primary)
+- **AML.T0024.002:** Model Extraction (Primary)
 
 ## Remediation
 1. **Output Precision Truncation:** APIs MUST truncate or obfuscate confidence scores (e.g., rounding to two decimal places, returning top-k labels instead of full vectors) to minimize gradient leakage.
@@ -51,4 +51,4 @@ Model extraction attacks, also known as model stealing, involve an adversary sys
 ## References
 - Tramèr et al., "Stealing Machine Learning Models via Prediction APIs" (USENIX Security 2016)
 - Orekondy et al., "Knockoff Nets: Stealing Functionality of Black-Box Models" (CVPR 2019)
-- MITRE ATLAS: AML.T0034
+- MITRE ATLAS: AML.T0024.002

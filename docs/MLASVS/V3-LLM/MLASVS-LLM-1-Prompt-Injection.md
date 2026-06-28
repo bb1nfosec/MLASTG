@@ -160,7 +160,7 @@ Prompt injection is the most critical LLM security risk (OWASP LLM Top 10, #1). 
 
 ## Cross-References
 
-- **MITRE ATLAS:** AML.T0051 (LLM Prompt Injection), AML.T0052 (LLM Data Leakage), AML.T0053 (LLM Plugin Compromise)
+- **MITRE ATLAS:** AML.T0051 (LLM Prompt Injection), AML.T0057 (LLM Data Leakage), AML.T0053 (LLM Plugin Compromise)
 - **OWASP LLM Top 10:** LLM01 (Prompt Injection), LLM07 (Insecure Plugin Design)
 - **NIST AI RMF:** MEASURE-1, MANAGE-1
 - **OWASP AI Exchange:** Input Threats section

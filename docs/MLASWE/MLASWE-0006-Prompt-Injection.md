@@ -38,7 +38,7 @@ Prompt injection is a critical vulnerability wherein an adversary exploits Large
 
 ## Attack Techniques (MITRE ATLAS)
 - **AML.T0051:** LLM Prompt Injection (primary)
-- **AML.T0052:** LLM Data Leakage
+- **AML.T0057:** LLM Data Leakage
 - **AML.T0053:** LLM Plugin Compromise
 
 ## Remediation

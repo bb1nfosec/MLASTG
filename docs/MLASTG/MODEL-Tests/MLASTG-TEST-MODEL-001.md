@@ -114,6 +114,6 @@
 
 ## References
 - MITRE ATLAS: AML.T0010 - Adversarial Examples (Evasion)
-- MITRE ATLAS: AML.T0037 - Craft Adversarial Data
-- MITRE ATLAS: AML.T0007 - Discover Model Ontology
+- MITRE ATLAS: AML.T0029 - Craft Adversarial Data
+- MITRE ATLAS: AML.T0043 - Discover Model Ontology
 - MLASWE: MLASWE-0001 (Adversarial Perturbation)

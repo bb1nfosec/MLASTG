@@ -52,7 +52,7 @@ ML inference APIs are the primary interface to model functionality and must be s
 
 ### INFRA-009: API Rate Limiting (L1)
 **Description:** Rate limiting must be configured per user/API key to prevent extraction and DoS.
-**MITRE ATLAS:** AML.T0034 (Model Extraction)
+**MITRE ATLAS:** AML.T0024.002 (Extract AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-002
 
 **Verification:**
@@ -66,7 +66,7 @@ ML inference APIs are the primary interface to model functionality and must be s
 
 ### INFRA-010: Input Size Validation (L1)
 **Description:** Input payload size must be validated to prevent resource exhaustion.
-**MITRE ATLAS:** AML.T0037 (Model DoS)
+**MITRE ATLAS:** AML.T0029 (Denial of AI Service)
 **Test Reference:** MLASTG-TEST-INFRA-002
 
 **Verification:**
@@ -106,4 +106,4 @@ ML inference APIs are the primary interface to model functionality and must be s
 
 ## Cross-References
 - OWASP API Security Top 10
-- MITRE ATLAS: AML.TA0001, AML.TA0002, AML.T0010, AML.T0034, AML.T0037
+- MITRE ATLAS: AML.TA0001, AML.TA0002, AML.T0010, AML.T0024.002, AML.T0029

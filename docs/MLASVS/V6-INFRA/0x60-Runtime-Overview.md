@@ -9,8 +9,8 @@ Runtime and infrastructure security covers the production deployment of ML model
 | Threat | MITRE ATLAS | MLASWE Reference |
 |--------|-------------|------------------|
 | Model serving infrastructure compromise | AML.TA0002 | — |
-| API abuse / excessive queries | AML.T0034 | MLASWE-0003 |
-| Denial of service against model endpoint | AML.T0037 | MLASWE-0008 |
+| API abuse / excessive queries | AML.T0024.002 | MLASWE-0003 |
+| Denial of service against model endpoint | AML.T0029 | MLASWE-0008 |
 | Inference data interception | AML.TA0010 | MLASWE-0012 |
 | Side-channel attacks | AML.T0018 | — |
 | Model cache poisoning | AML.TA0005 | — |
@@ -40,8 +40,8 @@ Runtime monitoring, anomaly detection, and incident response for ML systems.
 | INFRA-006 | Model cache security | AML.TA0005 | TEST-INFRA-001 |
 | INFRA-007 | Inference request logging | AML.TA0009 | TEST-INFRA-001 |
 | INFRA-008 | Batch inference security | AML.TA0002 | TEST-INFRA-001 |
-| INFRA-009 | API rate limiting | AML.T0034 | TEST-INFRA-002 |
-| INFRA-010 | Input size validation | AML.T0037 | TEST-INFRA-002 |
+| INFRA-009 | API rate limiting | AML.T0024.002 | TEST-INFRA-002 |
+| INFRA-010 | Input size validation | AML.T0029 | TEST-INFRA-002 |
 | INFRA-011 | API versioning | AML.TA0002 | TEST-INFRA-002 |
 | INFRA-012 | Model health monitoring | AML.TA0005 | TEST-INFRA-001 |
 
@@ -49,12 +49,12 @@ Runtime monitoring, anomaly detection, and incident response for ML systems.
 
 | ID | Control | MITRE ATLAS | Test Ref |
 |----|---------|-------------|----------|
-| INFRA-013 | Adversarial input detection at inference | AML.T0010 | TEST-INFRA-001 |
-| INFRA-014 | Runtime model behavior monitoring | AML.T0056 | TEST-INFRA-001 |
+| INFRA-013 | Adversarial input detection at inference | AML.T0015 | TEST-INFRA-001 |
+| INFRA-014 | Runtime model behavior monitoring | AML.T0018 | TEST-INFRA-001 |
 | INFRA-015 | Automated model rollback on anomaly | AML.T0006 | TEST-INFRA-001 |
-| INFRA-016 | Side-channel attack prevention | AML.T0018 | TEST-INFRA-001 |
+| INFRA-016 | Side-channel attack prevention | AML.T0024.001 | TEST-INFRA-001 |
 | INFRA-017 | Confidential computing for inference | AML.TA0010 | TEST-INFRA-001 |
-| INFRA-018 | Real-time drift monitoring | AML.T0056 | TEST-INFRA-001 |
+| INFRA-018 | Real-time drift monitoring | AML.T0018 | TEST-INFRA-001 |
 | INFRA-019 | ML-specific SIEM integration | AML.TA0009 | TEST-INFRA-001 |
 | INFRA-020 | Dedicated ML incident response playbook | AML.TA0009 | TEST-INFRA-001 |
 | INFRA-021 | Continuous penetration testing | AML.TA0001 | TEST-INFRA-002 |

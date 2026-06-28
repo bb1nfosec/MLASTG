@@ -43,35 +43,35 @@
 
 | ID | Control | Level | MITRE ATLAS | Test Reference |
 |----|---------|-------|-------------|----------------|
-| MODEL-001 | Adversarial robustness testing | L1 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-002 | Input perturbation limits | L1 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-003 | Model input validation | L1 | AML.T0007 | TEST-MODEL-001 |
-| MODEL-004 | Output confidence calibration | L1 | AML.T0018 | TEST-MODEL-002 |
-| MODEL-005 | API rate limiting | L1 | AML.T0034 | TEST-MODEL-002 |
+| MODEL-001 | Adversarial robustness testing | L1 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-002 | Input perturbation limits | L1 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-003 | Model input validation | L1 | AML.T0043 | TEST-MODEL-001 |
+| MODEL-004 | Output confidence calibration | L1 | AML.T0024.001 | TEST-MODEL-002 |
+| MODEL-005 | API rate limiting | L1 | AML.T0024.002 | TEST-MODEL-002 |
 | MODEL-006 | Access control on model endpoints | L1 | AML.TA0002 | TEST-MODEL-002 |
 | MODEL-007 | Model versioning | L1 | AML.TA0006 | TEST-MODEL-005 |
 | MODEL-008 | Model signing | L1 | AML.TA0006 | TEST-MODEL-005 |
 | MODEL-009 | Inference logging | L1 | AML.TA0009 | TEST-MODEL-003 |
-| MODEL-010 | Anomalous input detection | L1 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-011 | Output sanitization | L1 | AML.T0018 | TEST-MODEL-003 |
-| MODEL-012 | Resource limits on inference | L1 | AML.T0037 | TEST-MODEL-001 |
-| MODEL-013 | Model behavior monitoring | L1 | AML.T0056 | TEST-MODEL-003 |
+| MODEL-010 | Anomalous input detection | L1 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-011 | Output sanitization | L1 | AML.T0024.001 | TEST-MODEL-003 |
+| MODEL-012 | Resource limits on inference | L1 | AML.T0029 | TEST-MODEL-001 |
+| MODEL-013 | Model behavior monitoring | L1 | AML.T0018 | TEST-MODEL-003 |
 | MODEL-014 | Secure model serialization | L1 | AML.TA0002 | TEST-MODEL-005 |
 | MODEL-015 | Model rollback capability | L1 | AML.TA0006 | TEST-MODEL-005 |
-| MODEL-016 | Certified adversarial robustness | L2 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-017 | Robustness certification (provable bounds) | L2 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-018 | Extraction resistance validation | L2 | AML.T0034 | TEST-MODEL-002 |
-| MODEL-019 | Differential privacy in model | L2 | AML.T0018 | TEST-MODEL-003 |
-| MODEL-020 | Membership inference prevention | L2 | AML.T0018 | TEST-MODEL-003 |
+| MODEL-016 | Certified adversarial robustness | L2 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-017 | Robustness certification (provable bounds) | L2 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-018 | Extraction resistance validation | L2 | AML.T0024.002 | TEST-MODEL-002 |
+| MODEL-019 | Differential privacy in model | L2 | AML.T0024.000 | TEST-MODEL-003 |
+| MODEL-020 | Membership inference prevention | L2 | AML.T0024.000 | TEST-MODEL-003 |
 | MODEL-021 | Backdoor detection validation | L2 | AML.T0020 | TEST-MODEL-004 |
 | MODEL-022 | Trojan detection | L2 | AML.T0020 | TEST-MODEL-004 |
-| MODEL-023 | Model watermarking | L2 | AML.T0034 | TEST-MODEL-002 |
-| MODEL-024 | Adversarial training validation | L2 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-025 | Feature squeezing validation | L2 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-026 | Model ensemble diversity | L2 | AML.T0010 | TEST-MODEL-001 |
-| MODEL-027 | Certified defense mechanisms | L2 | AML.T0010 | TEST-MODEL-001 |
+| MODEL-023 | Model watermarking | L2 | AML.T0024.002 | TEST-MODEL-002 |
+| MODEL-024 | Adversarial training validation | L2 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-025 | Feature squeezing validation | L2 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-026 | Model ensemble diversity | L2 | AML.T0015 | TEST-MODEL-001 |
+| MODEL-027 | Certified defense mechanisms | L2 | AML.T0015 | TEST-MODEL-001 |
 | MODEL-028 | Red team exercise completion | L2 | AML.TA0001 | TEST-MODEL-001 |
-| MODEL-029 | Continuous adversarial retesting | L2 | AML.T0010 | TEST-MODEL-001 |
+| MODEL-029 | Continuous adversarial retesting | L2 | AML.T0015 | TEST-MODEL-001 |
 | MODEL-030 | Model provenance attestation | L2 | AML.TA0006 | TEST-MODEL-005 |
 
 ### V3: LLM Security — 24 Controls (14 L1 + 10 L2)
@@ -80,18 +80,18 @@
 |----|---------|-------|-------------|----------------|
 | LLM-001 | Prompt injection prevention | L1 | AML.T0051 | TEST-LLM-001 |
 | LLM-002 | Input/output boundary enforcement | L1 | AML.T0051 | TEST-LLM-001 |
-| LLM-003 | Output validation and filtering | L1 | AML.T0052 | TEST-LLM-002 |
+| LLM-003 | Output validation and filtering | L1 | AML.T0057 | TEST-LLM-002 |
 | LLM-004 | System prompt isolation | L1 | AML.T0051 | TEST-LLM-001 |
-| LLM-005 | Context window limits | L1 | AML.T0037 | TEST-LLM-003 |
+| LLM-005 | Context window limits | L1 | AML.T0029 | TEST-LLM-003 |
 | LLM-006 | Plugin permission scoping | L1 | AML.T0053 | TEST-LLM-001 |
 | LLM-007 | Tool call authorization | L1 | AML.T0053 | TEST-LLM-001 |
-| LLM-008 | Sensitive data exfiltration prevention | L1 | AML.T0052 | TEST-LLM-002 |
-| LLM-009 | Content filtering pipeline | L1 | AML.T0052 | TEST-LLM-002 |
+| LLM-008 | Sensitive data exfiltration prevention | L1 | AML.T0057 | TEST-LLM-002 |
+| LLM-009 | Content filtering pipeline | L1 | AML.T0057 | TEST-LLM-002 |
 | LLM-010 | Human-in-the-loop for critical actions | L1 | AML.T0053 | TEST-LLM-003 |
-| LLM-011 | Rate limiting on LLM endpoints | L1 | AML.T0037 | TEST-LLM-003 |
-| LLM-012 | Token usage monitoring | L1 | AML.T0037 | TEST-LLM-003 |
-| LLM-013 | Input token limits | L1 | AML.T0037 | TEST-LLM-003 |
-| LLM-014 | Output length limits | L1 | AML.T0052 | TEST-LLM-002 |
+| LLM-011 | Rate limiting on LLM endpoints | L1 | AML.T0029 | TEST-LLM-003 |
+| LLM-012 | Token usage monitoring | L1 | AML.T0029 | TEST-LLM-003 |
+| LLM-013 | Input token limits | L1 | AML.T0029 | TEST-LLM-003 |
+| LLM-014 | Output length limits | L1 | AML.T0057 | TEST-LLM-002 |
 | LLM-015 | Prompt firewall deployment | L2 | AML.T0051 | TEST-LLM-001 |
 | LLM-016 | Semantic prompt filtering | L2 | AML.T0051 | TEST-LLM-001 |
 | LLM-017 | Jailbreak detection system | L2 | AML.T0051 | TEST-LLM-003 |

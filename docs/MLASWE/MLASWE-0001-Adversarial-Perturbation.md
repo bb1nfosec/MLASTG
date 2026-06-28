@@ -29,7 +29,7 @@ Adversarial perturbation involves the deliberate crafting of inputs with subtle,
 
 ## Attack Techniques (MITRE ATLAS)
 - **AML.T0010:** Adversarial Perturbation (Primary)
-- **AML.T0007:** Input Manipulation
+- **AML.T0043:** Input Manipulation
 
 ## Remediation
 1. **Adversarial Training:** The training pipeline MUST incorporate adversarial training by continuously augmenting the training corpus with adversarial examples (e.g., PGD, CW) to harden the model's decision boundaries.

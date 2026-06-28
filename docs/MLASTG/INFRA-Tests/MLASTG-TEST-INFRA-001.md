@@ -128,7 +128,7 @@ Model serving infrastructure is the external-facing component most exposed to ad
 
 ## References
 - **MITRE ATLAS:**
-  - `AML.T0034` — ML Inference API Access (serving attack surface)
+  - `AML.T0024.002` — ML Inference API Access (serving attack surface)
   - `AML.T0040` — ML Service Disruption
 - **MLASWE:** MLASWE-0012 (Insufficient Runtime Monitoring), MLASWE-0013 (Missing ML Incident Response)
 - **NIST AI RMF:** MANAGE 1.3 (Incident response), MEASURE 2.6 (Runtime monitoring)

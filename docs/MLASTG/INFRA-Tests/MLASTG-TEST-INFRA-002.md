@@ -139,7 +139,7 @@ ML inference APIs expose model predictions to consumers and attackers alike. Wea
 
 ## References
 - **MITRE ATLAS:**
-  - `AML.T0034` — ML Inference API Access
+  - `AML.T0024.002` — ML Inference API Access
   - `AML.T0040` — ML Service Disruption (DoS context)
 - **OWASP API Security Top 10:** API1 (Broken Object Level Authorization), API2 (Broken Authentication), API4 (Unrestricted Resource Consumption), API8 (Security Misconfiguration)
 - **MLASWE:** MLASWE-0012 (Insufficient Runtime Monitoring), MLASWE-0014 (Insecure ML API)

@@ -34,7 +34,7 @@ Insecure output handling arises when an application implicitly trusts the output
 - **MLASVS-APP-005:** Strict output encoding
 
 ## Attack Techniques (MITRE ATLAS)
-- **AML.T0052:** LLM Data Leakage (often combined with output handling flaws)
+- **AML.T0057:** LLM Data Leakage (often combined with output handling flaws)
 - **AML.T0053:** LLM Plugin Compromise
 
 ## Remediation
@@ -50,4 +50,4 @@ Insecure output handling arises when an application implicitly trusts the output
 
 ## References
 - OWASP LLM Top 10: LLM02 (Insecure Output Handling)
-- MITRE ATLAS: AML.T0052
+- MITRE ATLAS: AML.T0057

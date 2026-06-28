@@ -94,7 +94,7 @@ Model serving security addresses the infrastructure that hosts ML models for inf
 
 ### INFRA-013: Adversarial Input Detection at Inference (L2)
 **Description:** Real-time detection of adversarial inputs during inference.
-**MITRE ATLAS:** AML.T0010 (Adversarial Perturbation)
+**MITRE ATLAS:** AML.T0043 (Craft Adversarial Data)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
@@ -108,7 +108,7 @@ Model serving security addresses the infrastructure that hosts ML models for inf
 
 ### INFRA-014: Runtime Model Behavior Monitoring (L2)
 **Description:** Runtime monitoring must detect anomalous model behavior.
-**MITRE ATLAS:** AML.T0056 (ML Model Behavior)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
@@ -136,7 +136,7 @@ Model serving security addresses the infrastructure that hosts ML models for inf
 
 ### INFRA-016: Side-Channel Attack Prevention (L2)
 **Description:** Mitigations for side-channel attacks on model inference.
-**MITRE ATLAS:** AML.T0018 (Model Inversion)
+**MITRE ATLAS:** AML.T0024.001 (Invert AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
@@ -164,7 +164,7 @@ Model serving security addresses the infrastructure that hosts ML models for inf
 
 ### INFRA-018: Real-time Drift Monitoring (L2)
 **Description:** Model drift (data distribution and concept drift) must be monitored in real-time.
-**MITRE ATLAS:** AML.T0056 (ML Model Behavior)
+**MITRE ATLAS:** AML.T0018 (Manipulate AI Model)
 **Test Reference:** MLASTG-TEST-INFRA-001
 
 **Verification:**
