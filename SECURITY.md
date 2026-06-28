@@ -20,7 +20,7 @@ This is a documentation/framework project. Reportable security issues include:
 Please report security issues using one of these methods:
 
 1. **GitHub Private Vulnerability Reporting** (preferred): Use the [Security tab](../../security/advisories/new) to submit a private advisory
-2. **Email**: Send details to the maintainers via the contact listed in the GitHub profile
+2. **Email**: Send details to **vignesh4303@gmail.com**
 
 ### What to Include
 

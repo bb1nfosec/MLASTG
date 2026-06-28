@@ -8,6 +8,9 @@ version = "0.2.0"
 authors = [
   { name="MLASTG Contributors" },
 ]
+maintainers = [
+  { name="MLASTG Maintainers", email="vignesh4303@gmail.com" },
+]
 urls.Homepage = "https://mlastg.vercel.app/"
 urls.Repository = "https://github.com/bb1nfosec/MLASTG"
 description = "Automated Security Testing CLI for the MLSec Application Security Testing Guide (MLASTG)."
