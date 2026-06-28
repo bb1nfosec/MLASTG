@@ -7,6 +7,10 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Expanded ATLAS coverage** from 26 to 39 techniques, now spanning all 7
+  control families (Runtime/Infra and Governance previously had none) — adding
+  real techniques such as Cost Harvesting, AI Model Inference API Access,
+  External Harms, RAG Poisoning, and User Execution.
 - **Conformance self-assessment** — an interactive, client-side page to mark each
   of the 168 controls Pass/Fail/N-A, see live L1/L2 and per-category conformance
   scores, and export an evidence JSON (`mlastg-conformance.json`).

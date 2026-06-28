@@ -143,9 +143,9 @@ Every MLASVS control is mapped to the **[MITRE ATLAS](https://atlas.mitre.org/)*
 
 | Coverage | Techniques | Meaning |
 |----------|:---------:|---------|
-| 🟢 Full | 18 | MLASVS controls **and** MLASTG test cases exist |
-| 🟡 Partial | 8 | Some controls mapped; gaps remain |
-| **Total mapped** | **26** | **≈69% fully covered** |
+| 🟢 Full | 20 | MLASVS controls **and** MLASTG test cases exist |
+| 🟡 Partial | 19 | Some controls mapped; gaps remain |
+| **Total mapped** | **39** | **All 7 control families covered** |
 
 > Technique IDs and names are reconciled against the official
 > [MITRE ATLAS data](https://github.com/mitre-atlas/atlas-data).
@@ -305,7 +305,7 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | MLASTG test procedures | ✅ Implemented | Step-by-step, pass/fail criteria |
 | `mlastg` CLI + Python harnesses | ✅ Implemented | Real ART-based harnesses; `--demo` stubs for safe CI |
 | MITRE ATLAS coverage map | ✅ Reconciled | 26 techniques; IDs/names verified against official ATLAS data across the coverage map, Navigator layer, control docs, and register |
-| Expanded ATLAS coverage (beyond 26 techniques) | 🟡 In progress | Mapping additional ATLAS techniques to controls |
+| Expanded ATLAS coverage | ✅ Implemented | 39 techniques across all 7 families (INFRA & GOV now covered); further breadth ongoing |
 | Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
 | End-to-end reference run + green CI | ✅ Implemented | `test-scripts.yml` runs all 10 harness demos + pytest; `mlastg-scan.yml` runs the full demo scan and gates on compliance score — both green on every push |
 | Control → ATLAS → test → weakness traceability | ✅ Implemented | The register now maps each control to the MLASWE weaknesses it mitigates |

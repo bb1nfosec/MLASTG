@@ -37,16 +37,33 @@
 
     ["AML.T0010", "CS", "AI Supply Chain Compromise", "SUPPLY", "full", "SUPPLY-001, SUPPLY-002"],
     ["AML.T0002.001", "PA", "Acquire Public AI Artifacts: Models", "SUPPLY", "partial", "SUPPLY-002"],
+    ["AML.T0011", "UE", "User Execution (Unsafe AI Artifacts)", "SUPPLY", "partial", "SUPPLY dependency/artifact scanning"],
 
-    ["AML.T0010.001", "AS", "AI Supply Chain Compromise: AI Software", "PIPELINE", "full", "PIPELINE controls"]
+    ["AML.T0010.001", "AS", "AI Supply Chain Compromise: AI Software", "PIPELINE", "full", "PIPELINE CI/CD controls"],
+
+    // --- Expanded coverage (reconciled against official ATLAS) ---
+    ["AML.T0046", "CD", "Spamming AI System with Chaff Data", "DATA", "partial", "DATA input validation, anomaly detection"],
+    ["AML.T0048.004", "IP", "AI Intellectual Property Theft", "MODEL", "partial", "MODEL-004…006 extraction resistance"],
+    ["AML.T0018.001", "MA", "Modify AI Model Architecture", "MODEL", "partial", "MODEL integrity controls"],
+    ["AML.T0005", "PX", "Create Proxy AI Model", "MODEL", "partial", "MODEL-018 extraction resistance"],
+    ["AML.T0034", "CH", "Cost Harvesting", "LLM", "full", "LLM-011…013 rate limiting, MODEL-012"],
+    ["AML.T0070", "RP", "RAG Poisoning", "LLM", "partial", "LLM-018 RAG security controls"],
+    ["AML.T0069", "LD", "Discover LLM System Information", "LLM", "partial", "LLM system-prompt hardening"],
+    ["AML.T0067", "OC", "LLM Trusted Output Components Manipulation", "LLM", "partial", "LLM output handling controls"],
+    ["AML.T0040", "AP", "AI Model Inference API Access", "INFRA", "full", "INFRA-001, INFRA-002 (TEST-INFRA-002)"],
+    ["AML.T0055", "UC", "Unsecured Credentials", "INFRA", "partial", "INFRA secrets management"],
+    ["AML.T0050", "CL", "Command and Scripting Interpreter", "INFRA", "partial", "INFRA/pipeline execution isolation"],
+    ["AML.T0048", "EH", "External Harms", "GOV", "partial", "GOV bias/fairness, oversight, audit controls"]
   ];
 
   var FAMILIES = [
-    ["DATA",     "Data Security",   "MLASVS-DATA"],
-    ["MODEL",    "Model Security",  "MLASVS-MODEL"],
-    ["LLM",      "LLM Security",    "MLASVS-LLM"],
-    ["SUPPLY",   "Supply Chain",    "MLASVS-SUPPLY"],
-    ["PIPELINE", "Pipeline & MLOps","MLASVS-PIPELINE"]
+    ["DATA",     "Data Security",      "MLASVS-DATA"],
+    ["MODEL",    "Model Security",     "MLASVS-MODEL"],
+    ["LLM",      "LLM Security",       "MLASVS-LLM"],
+    ["SUPPLY",   "Supply Chain",       "MLASVS-SUPPLY"],
+    ["PIPELINE", "Pipeline & MLOps",   "MLASVS-PIPELINE"],
+    ["INFRA",    "Runtime & Infra",    "MLASVS-INFRA"],
+    ["GOV",      "Governance",         "MLASVS-GOV"]
   ];
 
   function onReady(fn) {

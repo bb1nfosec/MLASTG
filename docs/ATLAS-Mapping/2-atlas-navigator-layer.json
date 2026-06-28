@@ -33,7 +33,20 @@
     { "techniqueID": "AML.T0029", "score": 100, "enabled": true, "comment": "Denial of AI Service - LLM-011, LLM-012, LLM-013, MODEL-012" },
     { "techniqueID": "AML.T0010", "score": 100, "enabled": true, "comment": "AI Supply Chain Compromise - SUPPLY-001, SUPPLY-002 fully covered" },
     { "techniqueID": "AML.T0002.001", "score": 50, "enabled": true, "comment": "Acquire Public AI Artifacts: Models - SUPPLY-002 partial" },
-    { "techniqueID": "AML.T0010.001", "score": 100, "enabled": true, "comment": "AI Supply Chain Compromise: AI Software - PIPELINE CI/CD & registry controls" }
+    { "techniqueID": "AML.T0010.001", "score": 100, "enabled": true, "comment": "AI Supply Chain Compromise: AI Software - PIPELINE CI/CD & registry controls" },
+    { "techniqueID": "AML.T0011", "score": 50, "enabled": true, "comment": "User Execution (Unsafe AI Artifacts) - SUPPLY dependency/artifact scanning" },
+    { "techniqueID": "AML.T0046", "score": 50, "enabled": true, "comment": "Spamming AI System with Chaff Data - DATA input validation, anomaly detection" },
+    { "techniqueID": "AML.T0048.004", "score": 50, "enabled": true, "comment": "AI Intellectual Property Theft - MODEL-004..006 extraction resistance" },
+    { "techniqueID": "AML.T0018.001", "score": 50, "enabled": true, "comment": "Modify AI Model Architecture - MODEL integrity controls" },
+    { "techniqueID": "AML.T0005", "score": 50, "enabled": true, "comment": "Create Proxy AI Model - MODEL-018 extraction resistance" },
+    { "techniqueID": "AML.T0034", "score": 100, "enabled": true, "comment": "Cost Harvesting - LLM-011..013 rate limiting, MODEL-012" },
+    { "techniqueID": "AML.T0070", "score": 50, "enabled": true, "comment": "RAG Poisoning - LLM-018 RAG security controls" },
+    { "techniqueID": "AML.T0069", "score": 50, "enabled": true, "comment": "Discover LLM System Information - LLM system-prompt hardening" },
+    { "techniqueID": "AML.T0067", "score": 50, "enabled": true, "comment": "LLM Trusted Output Components Manipulation - LLM output handling controls" },
+    { "techniqueID": "AML.T0040", "score": 100, "enabled": true, "comment": "AI Model Inference API Access - INFRA-001, INFRA-002 (TEST-INFRA-002)" },
+    { "techniqueID": "AML.T0055", "score": 50, "enabled": true, "comment": "Unsecured Credentials - INFRA secrets management" },
+    { "techniqueID": "AML.T0050", "score": 50, "enabled": true, "comment": "Command and Scripting Interpreter - INFRA/pipeline execution isolation" },
+    { "techniqueID": "AML.T0048", "score": 50, "enabled": true, "comment": "External Harms - GOV bias/fairness, oversight, audit controls" }
   ],
   "gradient": {
     "colors": ["#ff6666", "#ffdd57", "#23d160"],
@@ -50,9 +63,9 @@
     { "name": "source", "value": "MLASTG v0.1" },
     { "name": "generated", "value": "2026-06-28" },
     { "name": "atlas_reconciled", "value": "true" },
-    { "name": "total_techniques", "value": "26" },
-    { "name": "full_coverage_count", "value": "18" },
-    { "name": "partial_coverage_count", "value": "8" },
+    { "name": "total_techniques", "value": "39" },
+    { "name": "full_coverage_count", "value": "20" },
+    { "name": "partial_coverage_count", "value": "19" },
     { "name": "coverage_url", "value": "https://mlastg.vercel.app/ATLAS-Mapping/2-Coverage-Map/" },
     { "name": "import_url", "value": "https://mitre-atlas.github.io/atlas-navigator/" }
   ]
