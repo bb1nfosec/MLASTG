@@ -7,6 +7,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **GOVERNANCE.md** — maintainership, decision-making, SemVer policy, the
+  control-ID stability/deprecation contract, and the release process.
 - **Expanded ATLAS coverage** from 26 to 39 techniques, now spanning all 7
   control families (Runtime/Infra and Governance previously had none) — adding
   real techniques such as Cost Harvesting, AI Model Inference API Access,

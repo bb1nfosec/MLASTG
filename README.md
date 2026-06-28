@@ -330,7 +330,7 @@ This project is in active development. Contributions are welcome across:
 - Translations and internationalization (see `docs/zh/` for Chinese)
 - Additional MLASVS control categories and ATLAS mappings
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md) for guidelines, and [SECURITY.md](SECURITY.md) for responsible disclosure.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md) for guidelines, [GOVERNANCE.md](GOVERNANCE.md) for maintainership, versioning, and the control-ID stability policy, and [SECURITY.md](SECURITY.md) for responsible disclosure.
 
 ---
 
