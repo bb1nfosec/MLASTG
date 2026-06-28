@@ -6,6 +6,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Per-control framework citations** — the register now surfaces each control's
+  NIST AI RMF / OWASP / OWASP AI Exchange references (extracted from the control
+  pages' Cross-References) as a Frameworks column and in `controls.json`.
+- Security disclosure contact (`vignesh4303@gmail.com`) in SECURITY.md and
+  `pyproject` maintainers.
+
 ## [0.2.0] — 2026-06-28
 
 ### Added

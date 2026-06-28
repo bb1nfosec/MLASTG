@@ -59,7 +59,7 @@
       '<p class="cr-count" id="cr-count"></p>' +
       '<div class="cr-tablewrap"><table class="cr-table">' +
         "<thead><tr>" +
-          "<th>ID</th><th>Control</th><th>Lvl</th><th>MITRE ATLAS</th><th>Test</th><th>Weakness</th><th>Description</th>" +
+          "<th>ID</th><th>Control</th><th>Lvl</th><th>MITRE ATLAS</th><th>Test</th><th>Weakness</th><th>Frameworks</th><th>Description</th>" +
         "</tr></thead><tbody id='cr-body'></tbody>" +
       "</table></div>";
 
@@ -69,7 +69,12 @@
       tr.setAttribute("data-cat", c.category);
       tr.setAttribute("data-lvl", c.level);
       var weak = (c.mlaswe || []).join(", ");
-      tr.setAttribute("data-q", (c.id + " " + (c.title || "") + " " + (c.description || "") + " " + (c.atlas || "") + " " + weak).toLowerCase());
+      var refs = c.references || {};
+      var refMap = { nist_ai_rmf: "NIST", owasp: "OWASP", owasp_ai_exchange: "AIX", eu_ai_act: "EU" };
+      var refTags = Object.keys(refMap).filter(function (k) { return refs[k]; }).map(function (k) {
+        return '<span class="cr-fw" title="' + esc(refMap[k] + ": " + refs[k]) + '">' + refMap[k] + "</span>";
+      }).join("");
+      tr.setAttribute("data-q", (c.id + " " + (c.title || "") + " " + (c.description || "") + " " + (c.atlas || "") + " " + weak + " " + Object.values(refs).join(" ")).toLowerCase());
       tr.innerHTML =
         '<td class="cr-id">' + esc(c.id) + "</td>" +
         "<td>" + esc(c.title) + "</td>" +
@@ -77,6 +82,7 @@
         "<td class='cr-atlas'>" + atlasLink(c.atlas) + "</td>" +
         '<td class="cr-test">' + (c.test ? esc(c.test) : '<span class="cr-muted">—</span>') + "</td>" +
         '<td class="cr-weak">' + (weak ? esc(weak) : '<span class="cr-muted">—</span>') + "</td>" +
+        '<td class="cr-fws">' + (refTags || '<span class="cr-muted">—</span>') + "</td>" +
         '<td class="cr-desc">' + esc(c.description) + "</td>";
       body.appendChild(tr);
     });

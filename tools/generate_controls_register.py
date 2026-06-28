@@ -67,6 +67,7 @@ def _make(cid, title, level, desc, atlas_raw, owasp, test, rel, fmt):
         "owasp": owasp,
         "test": (test or "").strip() or None,
         "mlaswe": [],
+        "references": {},
         "source": rel,
         "format": fmt,
     }
@@ -155,6 +156,49 @@ def parse_file(path: Path) -> list[dict]:
     return parse_blocks(lines, rel) + parse_tables(lines, rel)
 
 
+def build_reference_map() -> dict[str, dict]:
+    """source-page path -> {framework: value} extracted from each page's
+    Cross-References / Related section. Page-level (control sub-area) alignment,
+    inherited by every control defined on the page. MITRE ATLAS is excluded
+    here (captured per-control already)."""
+    ref_line = re.compile(r"^\s*[-*]\s*\*\*(?P<k>[^:*]+?):?\*\*\s*(?P<v>.+?)\s*$")
+    sec_start = re.compile(r"^##\s*(Cross-References|Related)\b", re.I)
+    skip = {"mitre atlas"}
+    keymap = {
+        "owasp llm top 10": "owasp",
+        "owasp ml top 10": "owasp",
+        "nist ai rmf": "nist_ai_rmf",
+        "owasp ai exchange": "owasp_ai_exchange",
+        "eu ai act": "eu_ai_act",
+    }
+    out: dict[str, dict] = {}
+    for path in MLASVS.rglob("*.md"):
+        lines = path.read_text(encoding="utf-8").splitlines()
+        rel = path.relative_to(ROOT).as_posix()
+        refs: dict[str, str] = {}
+        in_sec = False
+        for line in lines:
+            if sec_start.match(line):
+                in_sec = True
+                continue
+            if in_sec and re.match(r"^##\s", line):
+                in_sec = False
+            if not in_sec:
+                continue
+            m = ref_line.match(line)
+            if not m:
+                continue
+            k = m.group("k").strip().lower()
+            if k in skip:
+                continue
+            key = keymap.get(k)
+            if key and key not in refs:
+                refs[key] = m.group("v").strip()
+        if refs:
+            out[rel] = refs
+    return out
+
+
 def build_weakness_map() -> dict[str, list[str]]:
     """control_id -> sorted list of MLASWE weakness IDs that the control mitigates.
 
@@ -197,8 +241,14 @@ def main() -> None:
         referenced.update(REF_RE.findall(path.read_text(encoding="utf-8")))
 
     weak_map = build_weakness_map()
+    ref_map = build_reference_map()
     for c in seen.values():
         c["mlaswe"] = weak_map.get(c["id"], [])
+        # Per-control OWASP (block format) wins; otherwise inherit page-level refs.
+        page_refs = dict(ref_map.get(c["source"], {}))
+        if c.get("owasp"):
+            page_refs["owasp"] = c["owasp"]
+        c["references"] = page_refs
 
     controls = sorted(
         seen.values(), key=lambda c: (c["category"], int(c["id"].split("-")[1]))
@@ -224,6 +274,7 @@ def main() -> None:
         "with_atlas": sum(1 for c in controls if c["atlas"]),
         "with_test": sum(1 for c in controls if c["test"]),
         "with_weakness": sum(1 for c in controls if c["mlaswe"]),
+        "with_references": sum(1 for c in controls if c["references"]),
         "format_block": sum(1 for c in controls if c["format"] == "block"),
         "format_table": sum(1 for c in controls if c["format"] == "table"),
         "missing_atlas": sorted(c["id"] for c in controls if not c["atlas"]),

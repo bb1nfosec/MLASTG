@@ -311,6 +311,7 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | Control → ATLAS → test → weakness traceability | ✅ Implemented | The register now maps each control to the MLASWE weaknesses it mitigates |
 | Conformance self-assessment + scoring | ✅ Implemented | Interactive [self-assessment](https://mlastg.vercel.app/MLASVS/Conformance/) with live L1/L2 scoring and JSON evidence export |
 | Worked ML-SBOM example | ✅ Implemented | [`demos/ml-sbom/`](demos/ml-sbom/) — native + CycloneDX 1.6, CI-validated |
+| Per-control framework citations | 🟡 Partial | NIST AI RMF / OWASP references surfaced in the register for controls whose pages cite them (page-level alignment); inheritance to table-format controls pending |
 | Versioned releases (SemVer + tags) | ✅ Implemented | [v0.2.0](https://github.com/bb1nfosec/MLASTG/releases/tag/v0.2.0) tagged; CHANGELOG + GOVERNANCE release process |
 | Independent / external review | ⬜ Planned | Peer review and recognition (e.g., OWASP/MITRE) |
 
