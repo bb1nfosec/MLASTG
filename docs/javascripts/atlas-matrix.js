@@ -5,38 +5,40 @@
   "use strict";
 
   // id, symbol, name, family, coverage, mapped controls
+  // ATLAS IDs and names reconciled against the official MITRE ATLAS data
+  // (mitre-atlas/atlas-data). Names are the canonical ATLAS technique names;
+  // the family/coverage/control associations are MLASTG's mappings.
   var T = [
-    ["AML.T0001", "TD", "Search for Tainted ML Data", "DATA", "full", "DATA-001"],
     ["AML.T0020", "PD", "Poison Training Data", "DATA", "full", "DATA-011, DATA-024, DATA-025"],
-    ["AML.T0020.001", "LP", "Label Poisoning", "DATA", "partial", "DATA-011, DATA-013"],
-    ["AML.T0021", "PP", "Publish Poisoned Datasets", "DATA", "partial", "DATA-002"],
+    ["AML.T0010.002", "SD", "AI Supply Chain Compromise: Data", "DATA", "full", "DATA-001, DATA-002"],
+    ["AML.T0059", "ED", "Erode Dataset Integrity", "DATA", "partial", "DATA-011, DATA-013"],
+    ["AML.T0019", "PP", "Publish Poisoned Datasets", "DATA", "partial", "DATA-002"],
 
-    ["AML.T0005", "IA", "Exploit ML Model for Initial Access", "MODEL", "partial", "MODEL (partial)"],
-    ["AML.T0007", "MI", "ML Model Inversion Attack", "MODEL", "full", "MODEL-003, MODEL-019, MODEL-020"],
-    ["AML.T0010", "AD", "Craft Adversarial Data", "MODEL", "full", "MODEL-001, MODEL-002, MODEL-010, MODEL-016"],
-    ["AML.T0011", "EV", "Evade ML Model", "MODEL", "full", "MODEL-001…003, INFRA-013"],
-    ["AML.T0012", "BD", "Backdoor ML Model", "MODEL", "full", "MODEL-021, MODEL-022, SUPPLY-019"],
-    ["AML.T0013", "EQ", "Model Extraction via Repeated Queries", "MODEL", "full", "MODEL-004…006, MODEL-018"],
-    ["AML.T0014", "IV", "Invert ML Model", "MODEL", "full", "MODEL-003, MODEL-019, MODEL-020"],
-    ["AML.T0018", "Bs", "Backdoor ML Model (supply variant)", "MODEL", "partial", "MODEL-021 (L2)"],
-    ["AML.T0034", "MX", "ML Model Extraction", "MODEL", "full", "MODEL-004…006, MODEL-018, MODEL-023"],
-    ["AML.T0035", "EI", "Erode ML Model Integrity", "MODEL", "full", "MODEL-007, MODEL-008, MODEL-014, MODEL-015"],
-    ["AML.T0056", "BM", "ML Model Behavioral Manipulation", "MODEL", "full", "MODEL-013, INFRA-014, INFRA-018"],
-    ["AML.T0058", "Mv", "ML Model Inversion Attack", "MODEL", "full", "MODEL-003, MODEL-019"],
-    ["AML.T0059", "BP", "Backdoor ML Model via Poisoning", "MODEL", "full", "MODEL-021, MODEL-022, DATA-001"],
+    ["AML.T0043", "AD", "Craft Adversarial Data", "MODEL", "full", "MODEL-001, MODEL-002, MODEL-010, MODEL-016"],
+    ["AML.T0015", "EV", "Evade AI Model", "MODEL", "full", "MODEL-001…003, INFRA-013"],
+    ["AML.T0024.001", "MI", "Invert AI Model", "MODEL", "full", "MODEL-003, MODEL-019, MODEL-020"],
+    ["AML.T0024.000", "MS", "Infer Training Data Membership", "MODEL", "full", "MODEL-019, MODEL-020"],
+    ["AML.T0024.002", "MX", "Extract AI Model", "MODEL", "full", "MODEL-004…006, MODEL-018, MODEL-023"],
+    ["AML.T0018.000", "BD", "Poison AI Model", "MODEL", "full", "MODEL-021, MODEL-022, SUPPLY-019"],
+    ["AML.T0043.004", "BT", "Insert Backdoor Trigger", "MODEL", "full", "MODEL-021, MODEL-022, DATA-001"],
+    ["AML.T0018", "MM", "Manipulate AI Model", "MODEL", "full", "MODEL-013, INFRA-014, INFRA-018"],
+    ["AML.T0031", "EI", "Erode AI Model Integrity", "MODEL", "full", "MODEL-007, MODEL-008, MODEL-014, MODEL-015"],
+    ["AML.T0058", "PM", "Publish Poisoned Models", "MODEL", "partial", "MODEL-021 (L2)"],
+    ["AML.T0049", "XP", "Exploit Public-Facing Application", "MODEL", "partial", "MODEL (partial)"],
 
-    ["AML.T0037", "DoS", "Model Denial of Service", "LLM", "full", "LLM-011…013, MODEL-012"],
     ["AML.T0051", "PI", "LLM Prompt Injection", "LLM", "full", "LLM-001, LLM-002, LLM-004, LLM-015, LLM-016"],
-    ["AML.T0052", "DL", "LLM Data Leakage", "LLM", "full", "LLM-003, LLM-008, LLM-009, LLM-014"],
-    ["AML.T0053", "PC", "LLM Plugin Compromise", "LLM", "partial", "LLM-006, LLM-007, LLM-020, LLM-021 (L2)"],
+    ["AML.T0057", "DL", "LLM Data Leakage", "LLM", "full", "LLM-003, LLM-008, LLM-009, LLM-014"],
     ["AML.T0054", "JB", "LLM Jailbreak", "LLM", "full", "LLM-005, LLM-017, LLM-022"],
-    ["AML.T0031", "XA", "Exfiltration via ML Inference API", "LLM", "partial", "LLM-008, MODEL-009"],
-    ["AML.T0057", "DX", "ML Model Data Exfiltration", "LLM", "partial", "LLM-008, DATA-015"],
+    ["AML.T0056", "SP", "Extract LLM System Prompt", "LLM", "full", "LLM-003, LLM-004"],
+    ["AML.T0029", "DoS", "Denial of AI Service", "LLM", "full", "LLM-011…013, MODEL-012"],
+    ["AML.T0053", "TI", "AI Agent Tool Invocation", "LLM", "partial", "LLM-006, LLM-007, LLM-020, LLM-021 (L2)"],
+    ["AML.T0024", "XA", "Exfiltration via AI Inference API", "LLM", "partial", "LLM-008, MODEL-009"],
+    ["AML.T0025", "XC", "Exfiltration via Cyber Means", "LLM", "partial", "LLM-008, DATA-015"],
 
-    ["AML.T0002", "PM", "Obtain ML Model from Public Source", "SUPPLY", "partial", "SUPPLY-002"],
-    ["AML.T0003", "CS", "Compromise ML Supply Chain", "SUPPLY", "full", "SUPPLY-001, SUPPLY-002"],
+    ["AML.T0010", "CS", "AI Supply Chain Compromise", "SUPPLY", "full", "SUPPLY-001, SUPPLY-002"],
+    ["AML.T0002.001", "PA", "Acquire Public AI Artifacts: Models", "SUPPLY", "partial", "SUPPLY-002"],
 
-    ["AML.T0000", "AS", "ML Attack Staging", "PIPELINE", "full", "PIPELINE controls"]
+    ["AML.T0010.001", "AS", "AI Supply Chain Compromise: AI Software", "PIPELINE", "full", "PIPELINE controls"]
   ];
 
   var FAMILIES = [

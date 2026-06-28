@@ -13,10 +13,10 @@ MITRE&nbsp;ATLAS technique; colour shows how completely MLASTG controls and
 test cases address it. Select a tile to see its mapped controls.
 
 <div class="atlas-stats">
-  <div class="atlas-stat"><b>27</b><span>Techniques mapped</span></div>
-  <div class="atlas-stat atlas-stat--full"><b>17</b><span>Full coverage</span></div>
-  <div class="atlas-stat atlas-stat--partial"><b>10</b><span>Partial coverage</span></div>
-  <div class="atlas-stat"><b>63%</b><span>Fully covered</span></div>
+  <div class="atlas-stat"><b>26</b><span>Techniques mapped</span></div>
+  <div class="atlas-stat atlas-stat--full"><b>18</b><span>Full coverage</span></div>
+  <div class="atlas-stat atlas-stat--partial"><b>8</b><span>Partial coverage</span></div>
+  <div class="atlas-stat"><b>69%</b><span>Fully covered</span></div>
 </div>
 
 <div class="atlas-board">
