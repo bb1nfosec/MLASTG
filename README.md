@@ -10,6 +10,7 @@
 > [![Documentation](https://img.shields.io/badge/docs-live-green)](https://mlastg.vercel.app/)
 > [![Docs Build](https://github.com/bb1nfosec/MLASTG/actions/workflows/mkdocs-publish.yml/badge.svg)](https://github.com/bb1nfosec/MLASTG/actions/workflows/mkdocs-publish.yml)
 > [![Test Scripts](https://github.com/bb1nfosec/MLASTG/actions/workflows/test-scripts.yml/badge.svg)](https://github.com/bb1nfosec/MLASTG/actions/workflows/test-scripts.yml)
+> [![Security Scan](https://github.com/bb1nfosec/MLASTG/actions/workflows/mlastg-scan.yml/badge.svg)](https://github.com/bb1nfosec/MLASTG/actions/workflows/mlastg-scan.yml)
 
 ---
 
@@ -306,7 +307,8 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | MITRE ATLAS coverage map | ✅ Reconciled | 26 techniques; IDs/names verified against official ATLAS data across the coverage map, Navigator layer, control docs, and register. zh translations pending |
 | Expanded ATLAS coverage (beyond 26 techniques) | 🟡 In progress | Mapping additional ATLAS techniques to controls |
 | Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
-| End-to-end reference run (sample model + fixtures) | ⬜ Planned | A reproducible green-path example |
+| End-to-end reference run + green CI | ✅ Implemented | `test-scripts.yml` runs all 10 harness demos + pytest; `mlastg-scan.yml` runs the full demo scan and gates on compliance score — both green on every push |
+| Control → ATLAS → test → weakness traceability | ✅ Implemented | The register now maps each control to the MLASWE weaknesses it mitigates |
 | Independent review / release tags | ⬜ Planned | Versioned releases and external review |
 
 > **Adoption guidance:** today MLASTG is best used as a **reference standard,

@@ -7,6 +7,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Green CI on the working branch** — fixed `test-scripts.yml` (was `main`-only,
+  so it never ran on `master`) and `mlastg-scan.yml` (was `pip install mlastg`
+  from PyPI, plus a broken compliance-score parser). All 10 harness demos,
+  pytest, and the full demo scan now pass in CI on every push.
+- **Control → ATLAS → test → weakness traceability** — the control register now
+  maps each control to the MLASWE weaknesses it mitigates (48 controls), and the
+  register UI gained a Weakness column.
 - **Machine-readable control register** — `tools/generate_controls_register.py`
   extracts all 168 controls (from both block- and table-format pages) into
   [`docs/MLASVS/controls.json`](docs/MLASVS/controls.json), surfaced through a
