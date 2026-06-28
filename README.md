@@ -304,7 +304,7 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | MLASVS standard (168 controls, 7 categories) | ✅ Implemented | Documented with L1/L2 levels |
 | MLASTG test procedures | ✅ Implemented | Step-by-step, pass/fail criteria |
 | `mlastg` CLI + Python harnesses | ✅ Implemented | Real ART-based harnesses; `--demo` stubs for safe CI |
-| MITRE ATLAS coverage map | ✅ Reconciled | 26 techniques; IDs/names verified against official ATLAS data across the coverage map, Navigator layer, control docs, and register. zh translations pending |
+| MITRE ATLAS coverage map | ✅ Reconciled | 26 techniques; IDs/names verified against official ATLAS data across the coverage map, Navigator layer, control docs, and register |
 | Expanded ATLAS coverage (beyond 26 techniques) | 🟡 In progress | Mapping additional ATLAS techniques to controls |
 | Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
 | End-to-end reference run + green CI | ✅ Implemented | `test-scripts.yml` runs all 10 harness demos + pytest; `mlastg-scan.yml` runs the full demo scan and gates on compliance score — both green on every push |
@@ -336,8 +336,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT
 
 MLASTG is **dual-licensed** so it fits cleanly into both documentation and engineering pipelines:
 
-- **Documentation, standard, and guidance content** — [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](LICENSE).
-- **Code** (the `mlastg` CLI, test harnesses, and tooling) — **MIT License**.
+- **Documentation, standard, and guidance content** (`docs/`) — [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](LICENSE).
+- **Code** (the `mlastg` CLI, test harnesses, and tooling) — [MIT License](LICENSE-CODE).
 
 ---
 
