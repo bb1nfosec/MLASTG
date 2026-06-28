@@ -11,7 +11,7 @@ from .reporter import generate_report
 console = Console()
 
 @click.group()
-@click.version_option(version="0.1.0")
+@click.version_option(version="0.2.0")
 def cli():
     """MLASTG Automated Security Testing CLI."""
     pass

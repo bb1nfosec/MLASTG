@@ -6,6 +6,8 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-06-28
+
 ### Added
 - **GOVERNANCE.md** — maintainership, decision-making, SemVer policy, the
   control-ID stability/deprecation contract, and the release process.
@@ -60,5 +62,6 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 - CI workflows: security scan, test scripts, docs publish, Vercel deploy,
   Navigator validation.
 
-[Unreleased]: https://github.com/bb1nfosec/MLASTG/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bb1nfosec/MLASTG/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/bb1nfosec/MLASTG/releases/tag/v0.2.0
 [0.1.0]: https://github.com/bb1nfosec/MLASTG/releases/tag/v0.1.0
