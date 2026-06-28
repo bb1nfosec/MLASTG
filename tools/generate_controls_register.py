@@ -66,6 +66,7 @@ def _make(cid, title, level, desc, atlas_raw, owasp, test, rel, fmt):
         "atlas_raw": (atlas_raw or "").strip() or None,
         "owasp": owasp,
         "test": (test or "").strip() or None,
+        "mlaswe": [],
         "source": rel,
         "format": fmt,
     }
@@ -154,6 +155,30 @@ def parse_file(path: Path) -> list[dict]:
     return parse_blocks(lines, rel) + parse_tables(lines, rel)
 
 
+def build_weakness_map() -> dict[str, list[str]]:
+    """control_id -> sorted list of MLASWE weakness IDs that the control mitigates.
+
+    Read from each MLASWE page's "Preventive Controls (MLASVS)" section."""
+    mlaswe_dir = ROOT / "docs" / "MLASWE"
+    ctrl_to_weak: dict[str, set[str]] = {}
+    wid_re = re.compile(r"MLASWE-\d{4}")
+    ctrl_ref_re = re.compile(r"MLASVS-((?:%s)-\d{3})" % CAT_RE)
+    for path in sorted(mlaswe_dir.glob("MLASWE-*.md")):
+        text = path.read_text(encoding="utf-8")
+        m = wid_re.search(text)
+        if not m:
+            continue
+        wid = m.group(0)
+        # Limit to the Preventive Controls section if present
+        sec = re.search(
+            r"##\s*Preventive Controls.*?(?=\n##\s|\Z)", text, re.S | re.I
+        )
+        scope = sec.group(0) if sec else text
+        for cm in ctrl_ref_re.finditer(scope):
+            ctrl_to_weak.setdefault(cm.group(1), set()).add(wid)
+    return {k: sorted(v) for k, v in ctrl_to_weak.items()}
+
+
 def main() -> None:
     files = sorted(MLASVS.rglob("MLASVS-*.md")) + sorted(MLASVS.rglob("0x*.md"))
     seen: dict[str, dict] = {}
@@ -170,6 +195,10 @@ def main() -> None:
         if "/zh/" in path.as_posix():
             continue
         referenced.update(REF_RE.findall(path.read_text(encoding="utf-8")))
+
+    weak_map = build_weakness_map()
+    for c in seen.values():
+        c["mlaswe"] = weak_map.get(c["id"], [])
 
     controls = sorted(
         seen.values(), key=lambda c: (c["category"], int(c["id"].split("-")[1]))
@@ -194,6 +223,7 @@ def main() -> None:
         "l2": sum(1 for c in controls if c["level"] == "L2"),
         "with_atlas": sum(1 for c in controls if c["atlas"]),
         "with_test": sum(1 for c in controls if c["test"]),
+        "with_weakness": sum(1 for c in controls if c["mlaswe"]),
         "format_block": sum(1 for c in controls if c["format"] == "block"),
         "format_table": sum(1 for c in controls if c["format"] == "table"),
         "missing_atlas": sorted(c["id"] for c in controls if not c["atlas"]),

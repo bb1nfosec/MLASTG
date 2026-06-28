@@ -59,7 +59,7 @@
       '<p class="cr-count" id="cr-count"></p>' +
       '<div class="cr-tablewrap"><table class="cr-table">' +
         "<thead><tr>" +
-          "<th>ID</th><th>Control</th><th>Lvl</th><th>MITRE ATLAS</th><th>Test</th><th>Description</th>" +
+          "<th>ID</th><th>Control</th><th>Lvl</th><th>MITRE ATLAS</th><th>Test</th><th>Weakness</th><th>Description</th>" +
         "</tr></thead><tbody id='cr-body'></tbody>" +
       "</table></div>";
 
@@ -68,13 +68,15 @@
       var tr = document.createElement("tr");
       tr.setAttribute("data-cat", c.category);
       tr.setAttribute("data-lvl", c.level);
-      tr.setAttribute("data-q", (c.id + " " + (c.title || "") + " " + (c.description || "") + " " + (c.atlas || "")).toLowerCase());
+      var weak = (c.mlaswe || []).join(", ");
+      tr.setAttribute("data-q", (c.id + " " + (c.title || "") + " " + (c.description || "") + " " + (c.atlas || "") + " " + weak).toLowerCase());
       tr.innerHTML =
         '<td class="cr-id">' + esc(c.id) + "</td>" +
         "<td>" + esc(c.title) + "</td>" +
         '<td><span class="cr-lvl cr-lvl--' + c.level.toLowerCase() + '">' + c.level + "</span></td>" +
         "<td class='cr-atlas'>" + atlasLink(c.atlas) + "</td>" +
         '<td class="cr-test">' + (c.test ? esc(c.test) : '<span class="cr-muted">—</span>') + "</td>" +
+        '<td class="cr-weak">' + (weak ? esc(weak) : '<span class="cr-muted">—</span>') + "</td>" +
         '<td class="cr-desc">' + esc(c.description) + "</td>";
       body.appendChild(tr);
     });

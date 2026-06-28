@@ -599,7 +599,8 @@ html { scroll-behavior: smooth; }
 .md-typeset .cr-table td { padding: .55rem .8rem; border-top: 1px solid var(--mlx-border-2); vertical-align: top; color: var(--mlx-ink); }
 .md-typeset .cr-table tbody tr:hover { background: var(--mlx-surface-2); }
 .cr-table .cr-id { font-family: var(--md-code-font); font-size: .76rem; color: var(--mlx-indigo-2); white-space: nowrap; }
-.cr-table .cr-atlas, .cr-table .cr-test { font-family: var(--md-code-font); font-size: .74rem; white-space: nowrap; }
+.cr-table .cr-atlas, .cr-table .cr-test, .cr-table .cr-weak { font-family: var(--md-code-font); font-size: .74rem; white-space: nowrap; }
+.cr-table .cr-weak { color: var(--mlx-orange); }
 .cr-table .cr-desc { color: var(--mlx-muted); min-width: 240px; }
 .cr-muted { color: var(--mlx-muted); }
 .cr-lvl { font-family: var(--md-code-font); font-size: .68rem; font-weight: 700; padding: .12rem .45rem; border-radius: 5px; }

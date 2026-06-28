@@ -9,8 +9,9 @@ hide:
 
 A machine-readable register of all **168 MLASVS controls**, generated directly
 from the standard's documentation. Each row links a control to its assurance
-level, MITRE&nbsp;ATLAS reference, and companion test case — the traceability
-view GRC tooling and auditors need. Filter by category or level, search, or
+level, MITRE&nbsp;ATLAS technique, companion test case, and the MLASWE
+weaknesses it mitigates — the full control → ATLAS → test → weakness
+traceability chain GRC tooling and auditors need. Filter by category or level, search, or
 download the raw [`controls.json`](controls.json).
 
 <div class="cr-summary">
