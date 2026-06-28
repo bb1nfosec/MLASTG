@@ -309,6 +309,8 @@ hardening. See [CHANGELOG.md](CHANGELOG.md) for release history.
 | Machine-readable control register (JSON) | ✅ Implemented | [`controls.json`](docs/MLASVS/controls.json) + interactive [register](https://mlastg.vercel.app/MLASVS/Control-Register/); generated from the docs |
 | End-to-end reference run + green CI | ✅ Implemented | `test-scripts.yml` runs all 10 harness demos + pytest; `mlastg-scan.yml` runs the full demo scan and gates on compliance score — both green on every push |
 | Control → ATLAS → test → weakness traceability | ✅ Implemented | The register now maps each control to the MLASWE weaknesses it mitigates |
+| Conformance self-assessment + scoring | ✅ Implemented | Interactive [self-assessment](https://mlastg.vercel.app/MLASVS/Conformance/) with live L1/L2 scoring and JSON evidence export |
+| Worked ML-SBOM example | ✅ Implemented | [`demos/ml-sbom/`](demos/ml-sbom/) — native + CycloneDX 1.6, CI-validated |
 | Independent review / release tags | ⬜ Planned | Versioned releases and external review |
 
 > **Adoption guidance:** today MLASTG is best used as a **reference standard,

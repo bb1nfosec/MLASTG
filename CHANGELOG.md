@@ -7,6 +7,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Conformance self-assessment** — an interactive, client-side page to mark each
+  of the 168 controls Pass/Fail/N-A, see live L1/L2 and per-category conformance
+  scores, and export an evidence JSON (`mlastg-conformance.json`).
+- **ML-SBOM worked example** (`demos/ml-sbom/`) — a validatable ML-SBOM in both
+  MLASTG-native and CycloneDX 1.6 ML-BOM formats, checked in CI (must pass; an
+  incomplete SBOM must fail). Added real `__main__` entrypoints to four harnesses
+  whose CI `--demo` steps were previously silent no-ops.
 - **Green CI on the working branch** — fixed `test-scripts.yml` (was `main`-only,
   so it never ran on `master`) and `mlastg-scan.yml` (was `pip install mlastg`
   from PyPI, plus a broken compliance-score parser). All 10 harness demos,
